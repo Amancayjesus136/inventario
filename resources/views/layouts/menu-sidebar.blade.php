@@ -466,7 +466,7 @@
 
                         <div class="tab-content position-relative" id="notificationItemsTabContent">
                             <div class="tab-pane fade show active py-2 ps-2" id="all-noti-tab" role="tabpanel">
-                                <div data-simplebar style="max-height: 300px;" class="pe-2">
+                                <div data-simplebar style="max-height: 300px;" class="pe-2" id="notification-list">
                                     @foreach($notifications as $notification)
                                         <div class="text-reset notification-item d-block dropdown-item position-relative">
                                             <div class="d-flex">
@@ -482,56 +482,16 @@
                                                         <span><i class="mdi mdi-clock-outline"></i> {{ $notification->created_at->diffForHumans() }}</span>
                                                     </p>
                                                 </div>
-                                                <div class="px-2 fs-15">
-                                                    <div class="form-check notification-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="notification-check{{ $notification->id }}">
-                                                        <label class="form-check-label" for="notification-check{{ $notification->id }}"></label>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     @endforeach
-                                    <div class="my-3 text-center view-all">
-                                        <button type="button" class="btn btn-soft-success waves-effect waves-light">View All Notifications <i class="ri-arrow-right-line align-middle"></i></button>
-                                    </div>
+                                </div>
+                                <div class="my-3 text-center view-all">
+                                    <button type="button" class="btn btn-soft-success waves-effect waves-light">View All Notifications <i class="ri-arrow-right-line align-middle"></i></button>
                                 </div>
                             </div>
-                            <div class="tab-pane fade py-2 ps-2" id="messages-tab" role="tabpanel" aria-labelledby="messages-tab">
-                                <div data-simplebar style="max-height: 300px;" class="pe-2">
-                                    <div class="text-reset notification-item d-block dropdown-item">
-                                        <div class="d-flex">
-                                            <img src="{{ asset('assets/images/users/avatar-3.jpg') }}" class="me-3 rounded-circle avatar-xs" alt="user-pic3">
-                                            <div class="flex-1">
-                                                <a href="#!" class="stretched-link">
-                                                    <h6 class="mt-0 mb-1 fs-13 fw-semibold">James Lemire</h6>
-                                                </a>
-                                                <div class="fs-13 text-muted">
-                                                    <p class="mb-1">We talked about a project on linkedin.</p>
-                                                </div>
-                                                <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                    <span><i class="mdi mdi-clock-outline"></i> 30 min ago</span>
-                                                </p>
-                                            </div>
-                                            <div class="px-2 fs-15">
-                                                <div class="form-check notification-check">
-                                                    <input class="form-check-input" type="checkbox" value="" id="messages-notification-check01">
-                                                    <label class="form-check-label" for="messages-notification-check01"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="my-3 text-center view-all">
-                                        <button type="button" class="btn btn-soft-success waves-effect waves-light">View All Messages <i class="ri-arrow-right-line align-middle"></i></button>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="tab-pane fade py-2 ps-2" id="messages-tab" role="tabpanel" aria-labelledby="messages-tab"></div>
                             <div class="tab-pane fade p-4" id="alerts-tab" role="tabpanel" aria-labelledby="alerts-tab"></div>
-
-                            <div class="notification-actions" id="notification-actions">
-                                <div class="d-flex text-muted justify-content-center">
-                                    Select <div id="select-content" class="text-body fw-semibold px-1">0</div> Result <button type="button" class="btn btn-link link-danger p-0 ms-3" data-bs-toggle="modal" data-bs-target="#removeNotificationModal">Remove</button>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -540,16 +500,56 @@
 
                 <script>
                     document.addEventListener('DOMContentLoaded', function () {
-                        var newNotificationCount = {{ $newNotificationCount }};
-                        var previousNotificationCount = localStorage.getItem('notificationCount') || 0;
+                        var previousNotificationCount = {{ $newNotificationCount }};
+                        var notificationSound = document.getElementById('notificationSound');
 
-                        if (newNotificationCount > previousNotificationCount) {
-                            document.getElementById('notificationSound').play();
+                        function fetchNotifications() {
+                            fetch('/notifications')
+                                .then(response => response.json())
+                                .then(data => {
+                                    var notificationList = document.getElementById('notification-list');
+                                    notificationList.innerHTML = '';
+
+                                    data.notifications.forEach(notification => {
+                                        var notificationItem = document.createElement('div');
+                                        notificationItem.className = 'text-reset notification-item d-block dropdown-item position-relative';
+                                        notificationItem.innerHTML = `
+                                            <div class="d-flex">
+                                                <img src="{{ asset('assets/images/users/avatar-2.jpg') }}" class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                <div class="flex-1">
+                                                    <a href="#!" class="stretched-link">
+                                                        <h6 class="mt-0 mb-1 fs-13 fw-semibold">Nueva Consulta</h6>
+                                                    </a>
+                                                    <div class="fs-13 text-muted">
+                                                        <p class="mb-1">${JSON.parse(notification.data).message}</p>
+                                                    </div>
+                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                        <span><i class="mdi mdi-clock-outline"></i> ${new Date(notification.created_at).toLocaleString()}</span>
+                                                    </p>
+                                                </div>
+                                            </div>`;
+                                        notificationList.appendChild(notificationItem);
+                                    });
+
+                                    // Update counts
+                                    var newNotificationCount = data.newNotificationCount;
+                                    if (newNotificationCount > previousNotificationCount) {
+                                        notificationSound.play().catch(function(error) {
+                                            console.error('Error playing notification sound:', error);
+                                        });
+                                    }
+
+                                    previousNotificationCount = newNotificationCount;
+                                })
+                                .catch(error => console.error('Error fetching notifications:', error));
                         }
 
-                        localStorage.setItem('notificationCount', newNotificationCount);
+                        // Fetch notifications every 30 seconds
+                        setInterval(fetchNotifications, 30000);
                     });
                 </script>
+
+
 
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

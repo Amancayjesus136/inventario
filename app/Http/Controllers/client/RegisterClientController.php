@@ -11,7 +11,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use App\Models\Notificacion;
 use Illuminate\View\View;
+use App\Events\NewNotification;
 
 class RegisterClientController extends Controller
 {
@@ -45,6 +47,15 @@ class RegisterClientController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+
+        // Agregar la lógica de notificación
+        Notificacion::create([
+            'type' => 'Consulta',
+            'data' => json_encode(['message' => 'Nueva consulta registrada por ' . $user->name]),
+            'status' => 1,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
 
         return redirect(RouteServiceProvider::HOME_CLIENT);
     }
