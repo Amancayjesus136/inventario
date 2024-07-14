@@ -427,19 +427,19 @@
                     </div>
                 </div>
 
-                <div class="ms-1 header-item d-none d-sm-flex">
-                    <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none" data-toggle="fullscreen">
+                {{-- <div class="ms-1 header-item d-none d-sm-flex">
+                    <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none">
                         <i class='bx bx-fullscreen fs-22'></i>
                     </button>
-                </div>
+                </div> --}}
 
-                <div class="ms-1 header-item d-none d-sm-flex">
+                {{-- <div class="ms-1 header-item d-none d-sm-flex">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode shadow-none">
                         <i class='bx bx-moon fs-22'></i>
                     </button>
-                </div>
+                </div> --}}
 
-                <div class="dropdown topbar-head-dropdown ms-1 header-item" id="notificationDropdown">
+                {{-- <div class="dropdown topbar-head-dropdown ms-1 header-item" id="notificationDropdown">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
                         <i class='bx bx-bell fs-22'></i>
                         <span class="position-absolute topbar-badge fs-10 translate-middle badge rounded-pill bg-danger">3<span class="visually-hidden">unread messages</span></span>
@@ -701,9 +701,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
-                <div class="dropdown ms-sm-3 header-item topbar-user">
+                {{-- <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button type="button" class="btn shadow-none" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="d-flex align-items-center">
                             <img class="rounded-circle header-profile-user" src="assets2/images/users/avatar-1.jpg" alt="Header Avatar">
@@ -726,7 +726,7 @@
                         <a class="dropdown-item" href="auth-lockscreen-basic.html"><i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a>
                         <a class="dropdown-item" href="auth-logout-basic.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -1772,8 +1772,8 @@
                             <div class="row justify-content-between align-items-center">
                                 <div class="col-lg-6">
                                     <div>
-                                        <h1 class="display-6 fw-semibold text-capitalize mb-3 lh-base">Find your next job and build your dream here</h1>
-                                        <p class="lead text-muted lh-base mb-4">Find jobs, create trackable resumes and enrich your applications. Carefully crafted after analyzing the needs of different industries.</p>
+                                        <h1 class="display-6 fw-semibold text-capitalize mb-3 lh-base">Regístrate y aprovecha promociones exclusivas</h1>
+                                        <p class="lead text-muted lh-base mb-4">Crea una cuenta para recibir ofertas especiales. Al realizar compras iniciando sesión, disfrutarás de precios con descuentos por preferencia al ser nuestro cliente.</p>
                                         <form action="#" class="job-panel-filter">
                                             <div class="row g-md-0 g-2">
                                                 <div class="col-md-6">
@@ -1788,13 +1788,10 @@
                                             <!--end row-->
                                         </form>
 
-                                        <ul class="treding-keywords list-inline mb-0 mt-3 fs-13">
-                                            <li class="list-inline-item text-danger fw-semibold"><i class="mdi mdi-tag-multiple-outline align-middle"></i> Trending Keywords:</li>
-                                            <li class="list-inline-item"><a href="javascript:void(0)">Design,</a></li>
-                                            <li class="list-inline-item"><a href="javascript:void(0)">Development,</a></li>
-                                            <li class="list-inline-item"><a href="javascript:void(0)">Manager,</a></li>
-                                            <li class="list-inline-item"><a href="javascript:void(0)">Senior</a></li>
-                                        </ul>
+                                        <div class="hstack gap-2 justify-content-center">
+                                            <a href="{{ route('login.usuario') }}" class="btn btn-primary">¡Iniciar Sesión! <i class="ri-arrow-right-line align-middle ms-1"></i></a>
+                                            <a href="{{ route('register.usuario') }}" class="btn btn-danger">¡Crear Cuenta! <i class="ri-arrow-right-line align-middle ms-1"></i></a>
+                                        </div>
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -1807,7 +1804,7 @@
                                                         <i class="ri-mail-send-line"></i>
                                                     </div>
                                                 </div>
-                                                <h5 class="fs-15 lh-base mb-0">Work Inquiry from velzon</h5>
+                                                <h5 class="fs-15 lh-base mb-0">Delivery incluido</h5>
                                             </div>
                                         </div>
 
@@ -1885,71 +1882,71 @@
                             </div>
                             <!-- end row -->
 
-                            <style>
-                                .promotion-card {
-                                    border-radius: 10px;
-                                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-                                }
-                            </style>
-
                             <div class="row g-3">
-                                <div class="col-lg-4">
-                                    <div class="promotion-card d-flex p-3">
-                                        <div class="flex-shrink-0 me-3">
-                                            <div class="avatar-sm icon-effect">
-                                                <div class="avatar-title bg-transparent text-success rounded-circle">
-                                                    <i class="ri-pencil-ruler-2-line fs-36"></i>
+                                <div class="col-12 col-md-6">
+                                    <div class="card">
+                                        <div class="card-body p-0">
+                                            <div class="alert alert-warning border-0 rounded-0 m-0 d-flex align-items-center" role="alert">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle text-warning me-2 icon-sm"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                                                <div class="flex-grow-1 text-truncate">
+                                                    Your free trial expired in <b>17</b> days.
+                                                </div>
+                                                <div class="flex-shrink-0">
+                                                    <a href="pages-pricing.html" class="text-reset text-decoration-underline"><b>Upgrade</b></a>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h5 class="fs-18">Promocion 1</h5>
-                                            <p class="text-muted my-3 ff-secondary">The Promocion 1 includes designs that are unique, effective and memorable.</p>
-                                            <div>
-                                                <a href="#" class="fs-13 fw-medium">Learn More <i class="ri-arrow-right-s-line align-bottom"></i></a>
+
+                                            <div class="row align-items-end">
+                                                <div class="col-sm-8">
+                                                    <div class="p-3">
+                                                        <p class="fs-16 lh-base">Upgrade your plan from a <span class="fw-semibold">Free trial</span>, to ‘Premium Plan’ <i class="mdi mdi-arrow-right"></i></p>
+                                                        <div class="mt-3">
+                                                            <a href="pages-pricing.html" class="btn btn-success">Upgrade Account!</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="px-3">
+                                                        <img src="assets/images/user-illustarator-2.png" class="img-fluid" alt="">
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </div> <!-- end card-body-->
                                     </div>
                                 </div>
-                                <!-- end col -->
-                                <div class="col-lg-4">
-                                    <div class="promotion-card d-flex p-3">
-                                        <div class="flex-shrink-0 me-3">
-                                            <div class="avatar-sm icon-effect">
-                                                <div class="avatar-title bg-transparent text-success rounded-circle">
-                                                    <i class="ri-pencil-ruler-2-line fs-36"></i>
+                                <div class="col-12 col-md-6">
+                                    <div class="card">
+                                        <div class="card-body p-0">
+                                            <div class="alert alert-warning border-0 rounded-0 m-0 d-flex align-items-center" role="alert">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle text-warning me-2 icon-sm"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                                                <div class="flex-grow-1 text-truncate">
+                                                    Your free trial expired in <b>17</b> days.
+                                                </div>
+                                                <div class="flex-shrink-0">
+                                                    <a href="pages-pricing.html" class="text-reset text-decoration-underline"><b>Upgrade</b></a>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h5 class="fs-18">Promocion 2</h5>
-                                            <p class="text-muted my-3 ff-secondary">The Promocion 2 includes designs that are unique, effective and memorable.</p>
-                                            <div>
-                                                <a href="#" class="fs-13 fw-medium">Learn More <i class="ri-arrow-right-s-line align-bottom"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end col -->
-                                <div class="col-lg-4">
-                                    <div class="promotion-card d-flex p-3">
-                                        <div class="flex-shrink-0 me-3">
-                                            <div class="avatar-sm icon-effect">
-                                                <div class="avatar-title bg-transparent text-success rounded-circle">
-                                                    <i class="ri-pencil-ruler-2-line fs-36"></i>
+
+                                            <div class="row align-items-end">
+                                                <div class="col-sm-8">
+                                                    <div class="p-3">
+                                                        <p class="fs-16 lh-base">Upgrade your plan from a <span class="fw-semibold">Free trial</span>, to ‘Premium Plan’ <i class="mdi mdi-arrow-right"></i></p>
+                                                        <div class="mt-3">
+                                                            <a href="pages-pricing.html" class="btn btn-success">Upgrade Account!</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="px-3">
+                                                        <img src="assets/images/user-illustarator-2.png" class="img-fluid" alt="">
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h5 class="fs-18">Promocion 3</h5>
-                                            <p class="text-muted my-3 ff-secondary">The creative design includes designs that are unique, effective and memorable.</p>
-                                            <div>
-                                                <a href="#" class="fs-13 fw-medium">Learn More <i class="ri-arrow-right-s-line align-bottom"></i></a>
-                                            </div>
-                                        </div>
+                                        </div> <!-- end card-body-->
                                     </div>
                                 </div>
                             </div>
+
 
                             <!-- end row -->
                         </div>
@@ -1995,8 +1992,9 @@
                                         <div class="explore-place-bid-img">
                                             <img src="assets/images/nft/img-03.jpg" alt="" class="card-img-top explore-img">
                                             <div class="bg-overlay"></div>
-                                            <div class="place-bid-btn">
-                                                <a href="#!" class="btn btn-success"><i class="ri-auction-fill align-bottom me-1"></i> Place Bid</a>
+                                            <div class="place-bid-btn d-flex justify-content-between">
+                                                <a href="#!" class="btn btn-info me-1"><i class="ri-eye-fill align-bottom me-1"></i></a>
+                                                <a href="#!" class="btn btn-warning"><i class="ri-shopping-cart-fill align-bottom me-1"></i></a>
                                             </div>
                                         </div>
                                         <div class="card-body">
@@ -2014,141 +2012,65 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 product-item music crypto-card games">
+
+                                <div class="col-lg-4 product-item artwork crypto-card 3d-style">
                                     <div class="card explore-box card-animate">
                                         <div class="bookmark-icon position-absolute top-0 end-0 p-2">
                                             <button type="button" class="btn btn-icon active" data-bs-toggle="button" aria-pressed="true"><i class="mdi mdi-cards-heart fs-16"></i></button>
                                         </div>
                                         <div class="explore-place-bid-img">
-                                            <img src="assets/images/nft/img-02.jpg" alt="" class="card-img-top explore-img">
+                                            <img src="assets/images/nft/img-03.jpg" alt="" class="card-img-top explore-img">
                                             <div class="bg-overlay"></div>
-                                            <div class="place-bid-btn">
-                                                <a href="#!" class="btn btn-success"><i class="ri-auction-fill align-bottom me-1"></i> Place Bid</a>
+                                            <div class="place-bid-btn d-flex justify-content-between">
+                                                <a href="#!" class="btn btn-info me-1"><i class="ri-eye-fill align-bottom me-1"></i></a>
+                                                <a href="#!" class="btn btn-warning"><i class="ri-shopping-cart-fill align-bottom me-1"></i></a>
                                             </div>
                                         </div>
                                         <div class="card-body">
-                                            <p class="fw-medium mb-0 float-end"><i class="mdi mdi-heart text-danger align-middle"></i> 23.63k </p>
-                                            <h5 class="mb-1"><a href="apps-nft-item-details.html">The Chirstoper</a></h5>
-                                            <p class="text-muted mb-0">Music</p>
+                                            <p class="fw-medium mb-0 float-end"><i class="mdi mdi-heart text-danger align-middle"></i> 19.29k </p>
+                                            <h5 class="mb-1"><a href="apps-nft-item-details.html">Creative Filtered Portrait</a></h5>
+                                            <p class="text-muted mb-0">Photography</p>
                                         </div>
                                         <div class="card-footer border-top border-top-dashed">
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1 fs-14">
-                                                    <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i> Highest: <span class="fw-medium">412.30ETH</span>
+                                                    <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i> Highest: <span class="fw-medium">75.3ETH</span>
                                                 </div>
-                                                <h5 class="flex-shrink-0 fs-14 text-primary mb-0">394.7 ETH</h5>
+                                                <h5 class="flex-shrink-0 fs-14 text-primary mb-0">67.36 ETH</h5>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 product-item artwork music games">
+
+                                <div class="col-lg-4 product-item artwork crypto-card 3d-style">
                                     <div class="card explore-box card-animate">
                                         <div class="bookmark-icon position-absolute top-0 end-0 p-2">
                                             <button type="button" class="btn btn-icon active" data-bs-toggle="button" aria-pressed="true"><i class="mdi mdi-cards-heart fs-16"></i></button>
                                         </div>
                                         <div class="explore-place-bid-img">
-                                            <img src="https://img.themesbrand.com/velzon/images/img-4.gif" alt="" class="card-img-top explore-img">
+                                            <img src="assets/images/nft/img-03.jpg" alt="" class="card-img-top explore-img">
                                             <div class="bg-overlay"></div>
-                                            <div class="place-bid-btn">
-                                                <a href="#!" class="btn btn-success"><i class="ri-auction-fill align-bottom me-1"></i> Place Bid</a>
+                                            <div class="place-bid-btn d-flex justify-content-between">
+                                                <a href="#!" class="btn btn-info me-1"><i class="ri-eye-fill align-bottom me-1"></i></a>
+                                                <a href="#!" class="btn btn-warning"><i class="ri-shopping-cart-fill align-bottom me-1"></i></a>
                                             </div>
                                         </div>
                                         <div class="card-body">
-                                            <p class="fw-medium mb-0 float-end"><i class="mdi mdi-heart text-danger align-middle"></i> 15.93k </p>
-                                            <h5 class="mb-1"><a href="apps-nft-item-details.html">Evolved Reality</a></h5>
-                                            <p class="text-muted mb-0">Video</p>
+                                            <p class="fw-medium mb-0 float-end"><i class="mdi mdi-heart text-danger align-middle"></i> 19.29k </p>
+                                            <h5 class="mb-1"><a href="apps-nft-item-details.html">Creative Filtered Portrait</a></h5>
+                                            <p class="text-muted mb-0">Photography</p>
                                         </div>
                                         <div class="card-footer border-top border-top-dashed">
                                             <div class="d-flex align-items-center">
                                                 <div class="flex-grow-1 fs-14">
-                                                    <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i> Highest: <span class="fw-medium">2.75ETH</span>
+                                                    <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i> Highest: <span class="fw-medium">75.3ETH</span>
                                                 </div>
-                                                <h5 class="flex-shrink-0 fs-14 text-primary mb-0">3.167 ETH</h5>
+                                                <h5 class="flex-shrink-0 fs-14 text-primary mb-0">67.36 ETH</h5>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 product-item crypto-card 3d-style">
-                                    <div class="card explore-box card-animate">
-                                        <div class="bookmark-icon position-absolute top-0 end-0 p-2">
-                                            <button type="button" class="btn btn-icon active" data-bs-toggle="button" aria-pressed="true"><i class="mdi mdi-cards-heart fs-16"></i></button>
-                                        </div>
-                                        <div class="explore-place-bid-img">
-                                            <img src="assets/images/nft/img-01.jpg" alt="" class="card-img-top explore-img">
-                                            <div class="bg-overlay"></div>
-                                            <div class="place-bid-btn">
-                                                <a href="#!" class="btn btn-success"><i class="ri-auction-fill align-bottom me-1"></i> Place Bid</a>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="fw-medium mb-0 float-end"><i class="mdi mdi-heart text-danger align-middle"></i> 14.85k </p>
-                                            <h5 class="mb-1"><a href="apps-nft-item-details.html">Abstract Face Painting</a></h5>
-                                            <p class="text-muted mb-0">Collectibles</p>
-                                        </div>
-                                        <div class="card-footer border-top border-top-dashed">
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1 fs-14">
-                                                    <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i> Highest: <span class="fw-medium">122.34ETH</span>
-                                                </div>
-                                                <h5 class="flex-shrink-0 fs-14 text-primary mb-0">97.8 ETH</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 product-item games music 3d-style">
-                                    <div class="card explore-box card-animate">
-                                        <div class="bookmark-icon position-absolute top-0 end-0 p-2">
-                                            <button type="button" class="btn btn-icon active" data-bs-toggle="button" aria-pressed="true"><i class="mdi mdi-cards-heart fs-16"></i></button>
-                                        </div>
-                                        <div class="explore-place-bid-img">
-                                            <img src="assets/images/nft/img-05.jpg" alt="" class="card-img-top explore-img">
-                                            <div class="bg-overlay"></div>
-                                            <div class="place-bid-btn">
-                                                <a href="#!" class="btn btn-success"><i class="ri-auction-fill align-bottom me-1"></i> Place Bid</a>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="fw-medium mb-0 float-end"><i class="mdi mdi-heart text-danger align-middle"></i> 64.10k </p>
-                                            <h5 class="mb-1"><a href="apps-nft-item-details.html">Long-tailed Macaque</a></h5>
-                                            <p class="text-muted mb-0">Artwork</p>
-                                        </div>
-                                        <div class="card-footer border-top border-top-dashed">
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1 fs-14">
-                                                    <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i> Highest: <span class="fw-medium">874.01ETH</span>
-                                                </div>
-                                                <h5 class="flex-shrink-0 fs-14 text-primary mb-0">745.14 ETH</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 product-item artwork music crypto-card">
-                                    <div class="card explore-box card-animate">
-                                        <div class="bookmark-icon position-absolute top-0 end-0 p-2">
-                                            <button type="button" class="btn btn-icon active" data-bs-toggle="button" aria-pressed="true"><i class="mdi mdi-cards-heart fs-16"></i></button>
-                                        </div>
-                                        <div class="explore-place-bid-img">
-                                            <img src="assets/images/nft/img-06.jpg" alt="" class="card-img-top explore-img">
-                                            <div class="bg-overlay"></div>
-                                            <div class="place-bid-btn">
-                                                <a href="#!" class="btn btn-success"><i class="ri-auction-fill align-bottom me-1"></i> Place Bid</a>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="fw-medium mb-0 float-end"><i class="mdi mdi-heart text-danger align-middle"></i> 36.42k </p>
-                                            <h5 class="mb-1"><a href="apps-nft-item-details.html">Robotic Body Art</a></h5>
-                                            <p class="text-muted mb-0">Artwork</p>
-                                        </div>
-                                        <div class="card-footer border-top border-top-dashed">
-                                            <div class="d-flex align-items-center">
-                                                <div class="flex-grow-1 fs-14">
-                                                    <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i> Highest: <span class="fw-medium">41.658 ETH</span>
-                                                </div>
-                                                <h5 class="flex-shrink-0 fs-14 text-primary mb-0">34.81 ETH</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div><!-- end container -->
                     </section>

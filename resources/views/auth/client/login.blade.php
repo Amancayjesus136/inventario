@@ -9,7 +9,7 @@
         </div>
 
         <div class="mt-4">
-            <form method="POST" action="{{ route('login.usuario') }}">
+            <form method="POST" action="{{ route('login.store') }}">
                 @csrf
 
                 <div class="mb-3">

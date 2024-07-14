@@ -29,7 +29,7 @@ Route::get('/', [LandingController::class, 'welcome'])->name('welcome.landing');
 |
 */
 Route::get('/login/usuario', [AutenticationClientController::class, 'login_user'])->name('login.usuario');
-Route::post('/usuario/autenticado/login', [ClientLoginClientController::class, 'iniciar_usuario'])->name('login.usuario');
+Route::post('/usuario/autenticado/login', [ClientLoginClientController::class, 'iniciar_usuario'])->name('login.store');
 
 Route::get('/register/usuario', [AutenticationClientController::class, 'register_user'])->name('register.usuario');
 Route::post('/usuario/autenticado', [RegisterClientController::class, 'store_registrar'])->name('register.store');
