@@ -13,10 +13,16 @@ class Category extends Model
     protected $fillable =
     [
         'name_category',
+        'photo_category',
         'user_created_category',
         'user_updated_category',
         'date_created_category',
         'date_updated_category',
         'status_category',
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'category_product', 'id_category');
+    }
 }

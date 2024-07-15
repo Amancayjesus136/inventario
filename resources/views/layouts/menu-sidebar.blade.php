@@ -659,7 +659,7 @@
                             <div class="collapse menu-dropdown" id="sidebarProductos">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="{{ route('categories.index') }}" class="nav-link"> Modulos </a>
+                                        <a href="{{ route('products.index') }}" class="nav-link"> Modulos </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#" class="nav-link"> Reportes </a>
@@ -762,7 +762,7 @@
                             <div class="collapse menu-dropdown" id="sidebarDashboards">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link"> Categorias </a>
+                                        <a href="{{ route('categories.index') }}" class="nav-link"> Categorias </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#" class="nav-link"> Logs </a>

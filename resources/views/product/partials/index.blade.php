@@ -85,53 +85,57 @@
                     <table class="table align-middle position-relative table-nowrap">
                         <thead class="table-active">
                             <tr>
-                                <th scope="col">Nombre categoria</th>
-                                <th scope="col">Referencia</th>
-                                <th scope="col">Estado</th>
+                                <th scope="col">Nombre del producto</th>
+                                <th scope="col">Imagen</th>
+                                <th scope="col">Fecha creado</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Descuentos</th>
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
 
                         <tbody id="task-list">
 
-                            @if ($categories->isEmpty())
+                            @if ($products->isEmpty())
                                 <tr>
-                                    <td colspan="12" class="text-center">No hay categorias registradas</td>
+                                    <td colspan="12" class="text-center">No hay productos registradas</td>
                                 </tr>
                             @else
-                                @foreach ($categories as $category)
-                                    <tr>
-
-                                        <td>{{ $category->name_category }}</td>
-                                        <td>
-                                            <div class="flex-shrink-0 me-3">
-                                                <div class="avatar-sm bg-light rounded p-1">
-                                                    @if ($category->photo_category)
-                                                        <img src="{{ asset('storage/' . $category->photo_category) }}" alt="" class="img-fluid d-block">
-                                                    @else
-                                                        <img src="{{ asset('assets/images/sin-foto.png') }}" alt="" class="img-fluid d-block">
-                                                    @endif
-                                                </div>
+                                @foreach ($products as $product)
+                                <tr>
+                                    <td>
+                                        <div class="flex-grow-1"><h5 class="fs-14 mb-1"><a href="apps-ecommerce-product-details.html" class="text-body">{{ $product->name_product}}</a></h5>
+                                        <p class="text-muted mb-0">Categoría : <span class="fw-medium">{{ $product->category->name_category }}</span></p></div>
+                                    </td>
+                                    <td>
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#verProduct{{ $product->id_product }}">
+                                            <div class="avatar-sm bg-light rounded p-1">
+                                                @if ($product->photo_product)
+                                                    <img src="{{ asset('storage/' . $product->photo_product) }}" alt="" class="img-fluid d-block">
+                                                @else
+                                                    <img src="{{ asset('assets/images/sin-foto.png') }}" alt="" class="img-fluid d-block">
+                                                @endif
                                             </div>
-                                        </td>
+                                        </a>
+                                    </td>
 
-                                        <td>
-                                            @if ($category->status_category == 1)
-                                                <span class="badge bg-success text-uppercase">Activado</span>
-                                            @elseif ($category->status_category)
-                                                <span class="badge bg-danger text-uppercase">Desactivado</span>
-                                            @else
-                                                <span class="badge bg-warning text-uppercase">Error de activación</span>
-                                            @endif
-                                        </td>
+                                    <td>{{ \Carbon\Carbon::parse($product->created_at)->format('d M, Y') }}</td>
 
-                                        <td>
-                                            <div class="hstack gap-2">
-                                                <a href="#" class="btn btn-sm btn-soft-success edit-list"><i class="ri-eye-fill align-bottom"></i></a>
-                                                <button class="btn btn-sm btn-soft-info edit-list" data-bs-toggle="modal" data-bs-target="#createTask" data-edit-id="#"><i class="ri-pencil-fill align-bottom"></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    <td>{{ $product->price_product}}</td>
+                                    <td>
+                                        @if($product->dicount_product)
+                                            <span class="text-center">{{ $product->dicount_product }} %</span>
+                                        @else
+                                            <span class="badge bg-info">Sin descuento</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <div class="hstack gap-3 fs-15">
+                                            <a href="#" class="link-primary"><i class="ri-edit-2-fill"></i></a>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#deleteProduct{{ $product->id_product }}" class="link-danger"><i class="ri-delete-bin-5-line"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>s
 
                                 @endforeach
                             @endif
@@ -153,14 +157,14 @@
         </div>
         <div class="modal-body">
 
-            <form action="{{ route('categories.store') }}" method="POST" class="tablelist-form needs-validation" alt="user-profile-image" enctype="multipart/form-data" autocomplete="off" novalidate>
+            <form action="{{ route('products.store') }}" method="POST" class="tablelist-form needs-validation" alt="user-profile-image" enctype="multipart/form-data" autocomplete="off" novalidate>
                 @csrf
                 <div class="row g-3 mb-3">
-                    <div class="col-lg-12">
+                    <div class="col-lg-6">
                         <div class="text-center">
                             <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
                                 <img id="user-profile-image" src="{{ asset('assets/images/sin-foto.png') }}" class="rounded-circle avatar-xl img-thumbnail user-profile-image" alt="user-profile-image">
-                                <input id="profile-img-file-input" name="photo_category" type="file" accept="image/*" class="profile-img-file-input">
+                                <input id="profile-img-file-input" name="photo_product" type="file" accept="image/*" class="profile-img-file-input">
                                 <label for="profile-img-file-input" class="profile-photo-edit avatar-xs">
                                     <span class="avatar-title rounded-circle bg-light text-body">
                                         <i class="ri-camera-fill"></i>
@@ -170,9 +174,43 @@
                         </div>
                     </div>
 
+                    <div class="col-lg-6">
+                        <label for="category" class="form-label">Nombre del producto<span class="text-danger">*</span></label>
+                        <input type="text" name="name_product" class="form-control" placeholder="Ingresar nombre del producto" required />
+                    </div>
+
+                    <div class="col-lg-6">
+                        <label for="category" class="form-label">Categoría<span class="text-danger">*</span></label>
+                        <select id="acceso_admin" name="category_product" class="form-control" required>
+                            <option value="" disabled selected>Selecciona categoría...</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id_category }}">{{ $category->name_category }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <label for="category" class="form-label">Precio<span class="text-danger">*</span></label>
+                        <input type="text" name="price_product" class="form-control" placeholder="Ingresar el precio" required />
+                    </div>
+
+                    <div class="col-lg-6">
+                        <label for="category" class="form-label">Tamaño<span class="text-danger">*</span></label>
+                        <select id="acceso_admin" name="size_product" class="form-control" required>
+                            <option value="" disabled selected>Seleccionar tamaño...</option>
+                            <option value="Mediana">Mediana</option>
+                            <option value="Familiar">Familiar</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <label for="category" class="form-label">Descuentos<span class="text-danger">*</span></label>
+                        <input type="text" name="dicount_product" class="form-control" placeholder="Ingresar el precio" required />
+                    </div>
+
                     <div class="col-lg-12">
-                        <label for="category" class="form-label">Nombres de categoría<span class="text-danger">*</span></label>
-                        <input type="text" name="name_category" class="form-control" placeholder="Ingresar nombre de la categoría" required />
+                        <label for="category" class="form-label">Descripción<span class="text-danger">*</span></label>
+                        <input type="text" name="description_product" class="form-control" placeholder="Ingresar nombre de la categoría" required />
                     </div>
 
                 </div>

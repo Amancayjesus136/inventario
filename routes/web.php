@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [LandingController::class, 'welcome'])->name('welcome.landing');
+Route::get('/detalles/categoria', [LandingController::class, 'details_category'])->name('details.category');
 
 /*
 |--------------------------------------------------------------------------
@@ -69,5 +70,13 @@ Route::middleware('auth')->group(function () {
 Route::get('/categories/list', [ProductionController::class, 'categories_index'])->name('categories.index');
 Route::post('/categories/store', [ProductionController::class, 'categories_store'])->name('categories.store');
 
+/*
+|--------------------------------------------------------------------------
+| Categorias
+|--------------------------------------------------------------------------
+|
+*/
+Route::get('/products/list', [ProductionController::class, 'products_index'])->name('products.index');
+Route::post('/products/store', [ProductionController::class, 'products_store'])->name('products.store');
 
 require __DIR__.'/auth.php';
