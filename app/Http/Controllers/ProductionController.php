@@ -8,10 +8,29 @@ use App\Models\Notificacion;
 use App\Models\Product;
 use App\Models\RelationProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Http\JsonResponse;
 
 class ProductionController extends Controller
 {
+    /*-------------------------------------*
+     * Link simbolico                      *
+     *-------------------------------------*/
+    public function createSymlink(): JsonResponse
+    {
+        // Eliminar symlink si existe
+        if (file_exists(public_path('storage'))) {
+            File::delete(public_path('storage'));
+        }
+
+        // Crear symlink
+        Artisan::call('storage:link');
+
+        return response()->json(['message' => 'Symlink created successfully.']);
+    }
+
     /*-------------------------------------*
      * functions for the categories module *
      *-------------------------------------*/
