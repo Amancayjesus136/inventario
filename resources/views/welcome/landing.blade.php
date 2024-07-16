@@ -232,11 +232,11 @@
                         <div class="p-3 border-top-0 border-start-0 border-end-0 border-dashed border">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h6 class="m-0 fw-semibold fs-15"> Web Apps </h6>
+                                    <h6 class="m-0 fw-semibold fs-15"> Redes Sociales </h6>
                                 </div>
                                 <div class="col-auto">
-                                    <a href="#!" class="btn btn-sm btn-soft-info shadow-none"> View All Apps
-                                        <i class="ri-arrow-right-s-line align-middle"></i></a>
+                                    {{-- <a href="#!" class="btn btn-sm btn-soft-info shadow-none"> View All Apps
+                                        <i class="ri-arrow-right-s-line align-middle"></i></a> --}}
                                 </div>
                             </div>
                         </div>
@@ -245,41 +245,42 @@
                             <div class="row g-0">
                                 <div class="col">
                                     <a class="dropdown-icon-item" href="#!">
-                                        <img src="assets2/images/brands/github.png" alt="Github">
-                                        <span>GitHub</span>
+                                        <img src="{{ asset('assets2/images/brands/fb.png') }}" alt="Github">
+                                        <span>Facebook</span>
                                     </a>
                                 </div>
                                 <div class="col">
                                     <a class="dropdown-icon-item" href="#!">
-                                        <img src="assets2/images/brands/bitbucket.png" alt="bitbucket">
-                                        <span>Bitbucket</span>
+                                        <img src="assets2/images/brands/ig.png" alt="bitbucket">
+                                        <span>Instagram</span>
                                     </a>
                                 </div>
                                 <div class="col">
                                     <a class="dropdown-icon-item" href="#!">
-                                        <img src="assets2/images/brands/dribbble.png" alt="dribbble">
-                                        <span>Dribbble</span>
+                                        <img src="assets2/images/brands/tik.png" alt="dribbble">
+                                        <span>Tik Tok</span>
                                     </a>
                                 </div>
                             </div>
 
                             <div class="row g-0">
                                 <div class="col">
-                                    <a class="dropdown-icon-item" href="#!">
-                                        <img src="assets2/images/brands/dropbox.png" alt="dropbox">
-                                        <span>Dropbox</span>
+                                    <a class="dropdown-icon-item" href="https://wa.me/+51933924456">
+                                        <img src="assets2/images/brands/wsp2.png" alt="dropbox">
+                                        <span>WhatsApp</span>
                                     </a>
                                 </div>
                                 <div class="col">
-                                    <a class="dropdown-icon-item" href="#!">
-                                        <img src="assets2/images/brands/mail_chimp.png" alt="mail_chimp">
-                                        <span>Mail Chimp</span>
+                                    <a class="dropdown-icon-item" href="mailto:amancayjesus136@gmail.com">
+                                        <img src="assets2/images/brands/gmail.png" alt="mail_chimp">
+                                        <span>Gmail</span>
                                     </a>
                                 </div>
+
                                 <div class="col">
                                     <a class="dropdown-icon-item" href="#!">
-                                        <img src="assets2/images/brands/slack.png" alt="slack">
-                                        <span>Slack</span>
+                                        {{-- <img src="assets2/images/brands/slack.png" alt="slack">
+                                        <span>Slack</span> --}}
                                     </a>
                                 </div>
                             </div>
@@ -359,7 +360,7 @@
                         </ul>
                         <ul class="navbar-nav" id="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link menu-link" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                                <a class="nav-link menu-link" href="{{ route('details.category') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                                     <i class="bx bx-book-open"></i> <span data-key="t-dashboard">Carta</span>
                                 </a>
                             </li>
@@ -369,14 +370,14 @@
                         <ul class="navbar-nav" id="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link menu-link" href="tel:+51933924456" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                                    <i class="bx bx-phone-call"></i> <span data-key="t-dashboard">Llámanos <b class="text-danger">+51 933924456</b></span>
+                                    <i class="bx bx-phone-call"></i> <span data-key="t-dashboard">Llámanos <b class="text-danger">+51 958096704</b></span>
                                 </a>
                             </li>
                         </ul>
 
                         <ul class="navbar-nav" id="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link menu-link" href="{{ route('login') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                                <a class="nav-link menu-link" href="#" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                                     <i class="bx bx-map"></i> <span data-key="t-dashboard">Dirección del local</span>
                                 </a>
                             </li>
@@ -389,19 +390,19 @@
                             <div class="collapse menu-dropdown" id="sidebarDashboards">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="dashboard-analytics.html" class="nav-link" data-key="t-analytics"> Contactos </a>
+                                        <a href="#" class="nav-link" data-key="t-analytics"> Contactos </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="dashboard-crm.html" class="nav-link" data-key="t-crm"> Horarios </a>
+                                        <a href="#" class="nav-link" data-key="t-crm"> Horarios </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="dashboard-crypto.html" class="nav-link" data-key="t-crypto"> Sobre nosotros </a>
+                                        <a href="#" class="nav-link" data-key="t-crypto"> Sobre nosotros </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="dashboard-projects.html" class="nav-link" data-key="t-projects"> Terminos y condiciones </a>
+                                        <a href="#" class="nav-link" data-key="t-projects"> Terminos y condiciones </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="dashboard-nft.html" class="nav-link" data-key="t-nft"> Terminos y condiciones de whatsapp</a>
+                                        <a href="#" class="nav-link" data-key="t-nft"> Terminos y condiciones de whatsapp</a>
                                     </li>
                                 </ul>
                             </div>
@@ -454,7 +455,7 @@
 
                                         <div class="hstack gap-2 justify-content-center">
                                             <a href="{{ route('login.usuario') }}" class="btn btn-primary">¡Iniciar Sesión! <i class="ri-arrow-right-line align-middle ms-1"></i></a>
-                                            <a href="{{ route('register.usuario') }}" class="btn btn-danger">¡Crear Cuenta! <i class="ri-arrow-right-line align-middle ms-1"></i></a>
+                                            <a href="#" class="btn btn-danger">¡Crear Cuenta! <i class="ri-arrow-right-line align-middle ms-1"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -468,10 +469,12 @@
                                                         <i class="ri-mail-send-line"></i>
                                                     </div>
                                                 </div>
-                                                <h5 class="fs-15 lh-base mb-0">Delivery incluido</h5>
+                                                <h5 class="fs-15 lh-base mb-0">
+                                                    <a href="mailto:amancayjesus136@gmail.com">Correo electrónico</a>
+                                                </h5>
                                             </div>
                                         </div>
-
+{{--
                                         <div class="card p-3 rounded shadow-lg application-box">
                                             <h5 class="fs-15 lh-base mb-3">Applications</h5>
                                             <div class="avatar-group">
@@ -512,7 +515,7 @@
                                                     </div>
                                                 </a>
                                             </div>
-                                        </div>
+                                        </div> --}}
 
                                         <style>
                                             .user-img {
@@ -659,7 +662,7 @@
                                                                 break;
                                                         }
                                                     @endphp
-                                                    <a href="{{ $routeName }}" class="btn btn-info me-1"><i class="ri-eye-fill align-bottom me-1"></i></a>
+                                                    <a href="{{ $routeName }}" class="btn btn-info me-1"><i class="ri-eye-fill align-bottom me-1"></i>Ver productos</a>
                                                     {{-- <a href="#!" class="btn btn-warning"><i class="ri-shopping-cart-fill align-bottom me-1"></i></a> --}}
                                                 </div>
                                             </div>
@@ -668,14 +671,14 @@
                                                 <h5 class="mb-1"><a href="{{ route('details.category', ['category' => $category->id]) }}">{{ $category->name_category }}</a></h5>
                                                 {{-- <p class="text-muted mb-0">Photography</p> --}}
                                             </div>
-                                            <div class="card-footer border-top border-top-dashed">
+                                            {{-- <div class="card-footer border-top border-top-dashed">
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex-grow-1 fs-14">
                                                         <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i> Total de productos: <span class="fw-medium"></span>
                                                     </div>
                                                     <h5 class="flex-shrink-0 fs-14 text-primary mb-0">0</h5>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 @endforeach
