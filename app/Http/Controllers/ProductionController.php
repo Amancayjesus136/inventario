@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\MultipleProduct;
 use App\Models\Notificacion;
 use App\Models\Product;
+use App\Models\RelationProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -74,7 +76,7 @@ class ProductionController extends Controller
      *     functions for product module   *
      *------------------------------------*/
 
-     public function products_index()
+    public function products_index()
     {
         $products = Product::all();
         $categories = Category::all();
@@ -85,27 +87,49 @@ class ProductionController extends Controller
     {
         $data = $request->all();
         $data['status_product'] = $data['status_product'] ?? 1;
-
         $data['user_created_product'] = Auth::user()->name;
         $data['user_updated_product'] = Auth::user()->name;
         $data['date_created_product'] = now();
         $data['date_updated_product'] = now();
 
-        $products = Product::create($data);
+        $product = Product::create($data);
 
         if ($request->hasFile('photo_product')) {
             $file = $request->file('photo_product');
             $fileName = $file->getClientOriginalName();
-
             $fotoPath = $file->storeAs('assets/imagenes/product', $fileName, 'public');
-            $products->photo_product = $fotoPath;
-            $products->save();
+            $product->photo_product = $fotoPath;
+            $product->save();
         }
 
-        if  ($products) {
-            return redirect()->route('products.index')->with('success', 'Product creada correctamente');
+        if ($product) {
+            $sizes = $request->input('size_product_multiple', []);
+            $prices = $request->input('price_product_multiple', []);
+            $discounts = $request->input('discount_product_multiple', []);
+
+            foreach ($sizes as $index => $size) {
+                if (!empty($size) && !empty($prices[$index])) {
+                    $multipleProduct = MultipleProduct::create([
+                        'size_product_multiple' => $size,
+                        'price_product_multiple' => $prices[$index],
+                        'discount_product_multiple' => $discounts[$index] ?? 0,
+                        'user_created_product_multiple' => Auth::user()->name,
+                        'user_updated_product_multiple' => Auth::user()->name,
+                        'date_created_product_multiple' => now(),
+                        'date_updated_product_multiple' => now(),
+                        'status_product_multiple' => 1,
+                    ]);
+
+                    RelationProduct::create([
+                        'id_product' => $product->id_product,
+                        'id_multiple_products' => $multipleProduct->id_multiple_products,
+                    ]);
+                }
+            }
+
+            return redirect()->route('products.index')->with('success', 'Producto creado correctamente');
         } else {
-            return redirect()->back()->with('error', 'Hubo un error al crear el product');
+            return redirect()->back()->with('error', 'Hubo un error al crear el producto');
         }
     }
 

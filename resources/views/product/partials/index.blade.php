@@ -160,7 +160,7 @@
             <form action="{{ route('products.store') }}" method="POST" class="tablelist-form needs-validation" alt="user-profile-image" enctype="multipart/form-data" autocomplete="off" novalidate>
                 @csrf
                 <div class="row g-3 mb-3">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="text-center">
                             <div class="profile-user position-relative d-inline-block mx-auto  mb-4">
                                 <img id="user-profile-image" src="{{ asset('assets/images/sin-foto.png') }}" class="rounded-circle avatar-xl img-thumbnail user-profile-image" alt="user-profile-image">
@@ -174,14 +174,25 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6">
-                        <label for="category" class="form-label">Nombre del producto<span class="text-danger">*</span></label>
+                    <div class="col-lg-4 mb-4">
+                        <label for="name_product" class="form-label">Nombre del producto<span class="text-danger">*</span></label>
                         <input type="text" name="name_product" class="form-control" placeholder="Ingresar nombre del producto" required />
                     </div>
 
-                    <div class="col-lg-6">
-                        <label for="category" class="form-label">Categoría<span class="text-danger">*</span></label>
-                        <select id="acceso_admin" name="category_product" class="form-control" required>
+                    <div class="col-lg-4 mb-4">
+                        <label for="category_product" class="form-label">Tipo<span class="text-danger">*</span></label>
+                        <select name="filtro_product" class="form-control" required>
+                            <option value="" disabled selected>Selecciona ...</option>
+                                <option value="Clasicas">Clasicas</option>
+                                <option value="Especiales">Especiales</option>
+                                <option value="Entradas">Entradas</option>
+                                <option value="Promociones">Promociones</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-4 mb-4">
+                        <label for="category_product" class="form-label">Categoría<span class="text-danger">*</span></label>
+                        <select name="category_product" class="form-control" required>
                             <option value="" disabled selected>Selecciona categoría...</option>
                             @foreach ($categories as $category)
                                 <option value="{{ $category->id_category }}">{{ $category->name_category }}</option>
@@ -189,30 +200,41 @@
                         </select>
                     </div>
 
-                    <div class="col-lg-6">
-                        <label for="category" class="form-label">Precio<span class="text-danger">*</span></label>
-                        <input type="text" name="price_product" class="form-control" placeholder="Ingresar el precio" required />
+                    <div id="input-container" class="row">
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <label for="size_product_multiple" class="form-label">Tamaño<span class="text-danger">*</span></label>
+                                    <select name="size_product_multiple[]" class="form-control" required>
+                                        <option value="" disabled selected>Seleccionar tamaño...</option>
+                                        <option value="Mediana">Mediana</option>
+                                        <option value="Familiar">Familiar</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <label for="price_product_multiple" class="form-label">Precio<span class="text-danger">*</span></label>
+                                    <input type="text" name="price_product_multiple[]" class="form-control" placeholder="Ingresar el precio" required />
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <label for="discount_product_multiple" class="form-label">Descuentos<span class="text-danger">*</span></label>
+                                    <input type="text" name="discount_product_multiple[]" class="form-control" placeholder="Ingresar el descuento" required />
+                                </div>
+
+                                <div class="col-lg-2" style="margin-top: 30px">
+                                    <a href="#" id="add-button" class="btn btn-primary">Agregar</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="col-lg-6">
-                        <label for="category" class="form-label">Tamaño<span class="text-danger">*</span></label>
-                        <select id="acceso_admin" name="size_product" class="form-control" required>
-                            <option value="" disabled selected>Seleccionar tamaño...</option>
-                            <option value="Mediana">Mediana</option>
-                            <option value="Familiar">Familiar</option>
-                        </select>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <label for="category" class="form-label">Descuentos<span class="text-danger">*</span></label>
-                        <input type="text" name="dicount_product" class="form-control" placeholder="Ingresar el precio" required />
-                    </div>
+                    <div id="additional-inputs" class="row"></div>
 
                     <div class="col-lg-12">
-                        <label for="category" class="form-label">Descripción<span class="text-danger">*</span></label>
-                        <input type="text" name="description_product" class="form-control" placeholder="Ingresar nombre de la categoría" required />
+                        <label for="description_product" class="form-label">Descripción<span class="text-danger">*</span></label>
+                        <input type="text" name="description_product" class="form-control" placeholder="Ingresar la descripción" required />
                     </div>
-
                 </div>
 
                 <div class="hstack gap-2 justify-content-end">
@@ -225,6 +247,65 @@
       </div>
     </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const addButton = document.getElementById('add-button');
+        const inputContainer = document.getElementById('input-container');
+        const additionalInputs = document.getElementById('additional-inputs');
+        let inputCount = 0; // Contador para limitar la cantidad de duplicados
+
+        addButton.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            if (inputCount >= 2) {
+                alert('Solo se pueden agregar un máximo de 2 conjuntos de campos.');
+                return;
+            }
+
+            const newInputGroup = document.createElement('div');
+            newInputGroup.className = 'col-lg-12 mt-3';
+            newInputGroup.innerHTML = `
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label for="category" class="form-label">Tamaño<span class="text-danger">*</span></label>
+                        <select name="size_product_multiple[]" class="form-control" required>
+                            <option value="" disabled selected>Seleccionar tamaño...</option>
+                            <option value="Mediana">Mediana</option>
+                            <option value="Familiar">Familiar</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <label for="category" class="form-label">Precio<span class="text-danger">*</span></label>
+                        <input type="text" name="price_product_multiple[]" class="form-control" placeholder="Ingresar el precio" required />
+                    </div>
+
+                    <div class="col-lg-3">
+                        <label for="category" class="form-label">Descuentos<span class="text-danger">*</span></label>
+                        <input type="text" name="discount_product_multiple[]" class="form-control" placeholder="Ingresar el descuento" required />
+                    </div>
+
+                    <div class="col-lg-2" style="margin-top: 30px">
+                        <a href="#" class="btn btn-danger delete-button">Eliminar</a>
+                    </div>
+                </div>
+            `;
+
+            // Añadir evento de eliminar al botón
+            const deleteButton = newInputGroup.querySelector('.delete-button');
+            deleteButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                newInputGroup.remove();
+                inputCount--;
+            });
+
+            additionalInputs.appendChild(newInputGroup);
+            inputCount++;
+        });
+    });
+</script>
+
 
   <script>
     (function () {

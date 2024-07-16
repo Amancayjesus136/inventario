@@ -1763,12 +1763,18 @@
         <!-- Start right Content here -->
         <!-- ============================================================== -->
 
+        <style>
+            .section {
+                padding: 30px 0;
+                position: relative;
+            }
+        </style>
 
         <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-12 col-md-9">
+                        <div class="col-12 col-md-12">
                             <section class="section bg-light" id="marketplace">
                                 <div class="container">
                                     <div class="row justify-content-center">
@@ -1777,16 +1783,25 @@
                                                 <h2 class="mb-3 fw-semibold lh-base">Menú</h2>
                                                 <ul class="nav nav-pills filter-btns justify-content-center" role="tablist">
                                                     <li class="nav-item" role="presentation">
-                                                        <button class="nav-link fw-medium active" type="button" data-filter="all">Clasicas</button>
+                                                        <button class="nav-link fw-medium active" type="button" data-filter="all">Todos</button>
                                                     </li>
                                                     <li class="nav-item" role="presentation">
-                                                        <button class="nav-link fw-medium" type="button" data-filter="artwork">Especiales</button>
+                                                        <button class="nav-link fw-medium" type="button" data-filter="Clasicas">Clásicas</button>
                                                     </li>
                                                     <li class="nav-item" role="presentation">
-                                                        <button class="nav-link fw-medium" type="button" data-filter="artwork">Entradas</button>
+                                                        <button class="nav-link fw-medium" type="button" data-filter="Especiales">Especiales</button>
                                                     </li>
                                                     <li class="nav-item" role="presentation">
-                                                        <button class="nav-link fw-medium" type="button" data-filter="music">Promociones</button>
+                                                        <button class="nav-link fw-medium" type="button" data-filter="Entradas">Entradas</button>
+                                                    </li>
+                                                    <li class="nav-item" role="presentation">
+                                                        <button class="nav-link fw-medium" type="button" data-filter="Bebidas">Bebidas</button>
+                                                    </li>
+                                                    <li class="nav-item" role="presentation">
+                                                        <button class="nav-link fw-medium" type="button" data-filter="Cócteles">Cócteles</button>
+                                                    </li>
+                                                    <li class="nav-item" role="presentation">
+                                                        <button class="nav-link fw-medium" type="button" data-filter="Promociones">Promociones</button>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -1794,7 +1809,7 @@
                                     </div>
                                     <div class="row">
                                         @foreach ($products as $product)
-                                            <div class="col-12 col-md-6 col-lg-4 product-item artwork crypto-card 3d-style">
+                                        <div class="col-12 col-md-6 col-lg-4 product-item artwork crypto-card 3d-style" data-category="{{ $product->filtro_product }}">
                                                 <div class="card explore-box card-animate">
                                                     <div class="bookmark-icon position-absolute top-0 end-0 p-2">
                                                         <button type="button" class="btn btn-icon active" data-bs-toggle="button" aria-pressed="true"><i class="mdi mdi-cards-heart fs-16"></i></button>
@@ -1818,19 +1833,21 @@
                                                     </div>
                                                     <div class="card-footer border-top border-top-dashed">
                                                         <div class="d-flex align-items-center">
-                                                            <select class="form-select mb-3" aria-label="Default select example">
-                                                                <option value="1">{{ $product->size_product }} </option>
+                                                            <select class="form-select mb-3 size-select" id="size-select-{{ $product->id_product }}" aria-label="Default select example">
+                                                                @foreach ($product->multipleProducts as $multipleProduct)
+                                                                    <option value="{{ $multipleProduct->price_product_multiple }}">{{ $multipleProduct->size_product_multiple }}</option>
+                                                                @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="card-footer border-top border-top-dashed">
                                                         <div class="d-flex align-items-center">
                                                             <div class="flex-grow-1 fs-14">
-                                                                <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i> {{$product->price_product }}<span class="fw-medium"></span>
+                                                                <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i>
+                                                                <span id="price-display-{{ $product->id_product }}" class="fw-medium"></span>
                                                             </div>
                                                             <h5 class="flex-shrink-0 fs-14 text-primary mb-0">
-                                                            <a href="#!" class="btn btn-danger"><i class="ri-shopping-cart-fill align-bottom me-1"></i></a>
-
+                                                                <a href="#!" class="btn btn-danger"><i class="ri-shopping-cart-fill align-bottom me-1"></i></a>
                                                             </h5>
                                                         </div>
                                                     </div>
@@ -1838,73 +1855,6 @@
                                             </div>
                                         @endforeach
                                     </div>
-                                </div><!-- end container -->
-                            </section>
-                        </div>
-
-
-                        <div class="col-12 col-md-6 col-lg-3">
-                            <section class="section" id="services">
-                                <div class="container">
-                                    <div class="row justify-content-center">
-                                        <div class="col-lg-8">
-                                            <div class="text-center mb-5">
-                                                <h2 class="mb-3 fw-semibold lh-base">Categorias</h2>
-                                                <p>Puedes ver otras opciones...</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        @foreach ($categories as $category)
-                                            @php
-                                                $excludeWords = ['pizza', 'pizzas', 'piza', 'pisa', 'pica'];
-                                                $shouldExclude = false;
-                                                foreach ($excludeWords as $word) {
-                                                    if (stripos($category->name_category, $word) !== false) {
-                                                        $shouldExclude = true;
-                                                        break;
-                                                    }
-                                                }
-                                            @endphp
-
-                                            @if (!$shouldExclude)
-                                                <div class="col-12 product-item artwork crypto-card 3d-style">
-                                                    <div class="card explore-box card-animate">
-                                                        <div class="bookmark-icon position-absolute top-0 end-0 p-2">
-                                                            <button type="button" class="btn btn-icon active" data-bs-toggle="button" aria-pressed="true"><i class="mdi mdi-cards-heart fs-16"></i></button>
-                                                        </div>
-                                                        <div class="explore-place-bid-img">
-                                                            @if ($category->photo_category)
-                                                                <img src="{{ asset('storage/' . $category->photo_category) }}" alt="" class="card-img-top explore-img">
-                                                            @else
-                                                                <img src="{{ asset('assets/images/sin-foto.png') }}" alt="" class="card-img-top explore-img">
-                                                            @endif
-                                                            <div class="bg-overlay"></div>
-                                                            <div class="place-bid-btn d-flex justify-content-between">
-                                                                <a href="#!" class="btn btn-info me-1"><i class="ri-eye-fill align-bottom me-1"></i>ver detalles</a>
-                                                                {{-- <a href="#!" class="btn btn-warning"><i class="ri-shopping-cart-fill align-bottom me-1"></i></a> --}}
-                                                            </div>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            {{-- <p class="fw-medium mb-0 float-end"><i class="mdi mdi-heart text-danger align-middle"></i> 19.29k </p> --}}
-                                                            <h5 class="mb-1"><a href="apps-nft-item-details.html">{{ $category->name_category }}</a></h5>
-                                                            {{-- <p class="text-muted mb-0">Photography</p> --}}
-                                                        </div>
-                                                        <div class="card-footer border-top border-top-dashed">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-grow-1 fs-14">
-                                                                    <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i> Total de productos: <span class="fw-medium"></span>
-                                                                </div>
-                                                                <h5 class="flex-shrink-0 fs-14 text-primary mb-0">0</h5>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endif
-                                        @endforeach
-                                    </div>
-
                                 </div>
                             </section>
                         </div>
@@ -2025,11 +1975,51 @@
 
     </div>
 
-    <!--start back-to-top-->
     <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
         <i class="ri-arrow-up-line"></i>
     </button>
-    <!--end back-to-top-->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.filter-btns button').on('click', function() {
+                const filterValue = $(this).data('filter');
+
+                // Mostrar todos los productos si se selecciona "Todos"
+                if (filterValue === 'all') {
+                    $('.product-item').show();
+                } else {
+                    // Ocultar todos los productos
+                    $('.product-item').hide();
+
+                    // Mostrar solo los productos que coincidan con el filtro seleccionado
+                    $(`.product-item[data-category="${filterValue}"]`).show();
+                }
+
+                // Cambiar el estado activo del botón
+                $('.filter-btns button').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sizeSelects = document.querySelectorAll('.size-select');
+
+            sizeSelects.forEach(select => {
+                const productId = select.id.split('-').pop();
+                const priceDisplay = document.getElementById(`price-display-${productId}`);
+
+                priceDisplay.innerText = select.options[select.selectedIndex].value;
+
+                select.addEventListener('change', function() {
+                    priceDisplay.innerText = this.value;
+                });
+            });
+        });
+    </script>
 
     <!-- JAVASCRIPT -->
     <script src="{{ asset('assets2/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -2038,21 +2028,11 @@
     <script src="{{ asset('assets2/libs/feather-icons/feather.min.js') }}"></script>
     <script src="{{ asset('assets2/js/pages/plugins/lord-icon-2.1.0.js') }}"></script>
     <script src="{{ asset('assets2/js/plugins.js') }}"></script>
-
-    <!-- apexcharts -->
     <script src="{{ asset('assets2/libs/apexcharts/apexcharts.min.js') }}"></script>
-
-    <!-- Vector map-->
     <script src="{{ asset('assets2/libs/jsvectormap/js/jsvectormap.min.js') }}"></script>
     <script src="{{ asset('assets2/libs/jsvectormap/maps/world-merc.js') }}"></script>
-
-    <!-- Swiper slider js-->
     <script src="{{ asset('assets2/libs/swiper/swiper-bundle.min.js') }}"></script>
-
-    <!-- Dashboard init -->
     <script src="{{ asset('assets2/js/pages/dashboard-ecommerce.init.js') }}"></script>
-
-    <!-- App js -->
     <script src="{{ asset('assets2/js/app.js') }}"></script>
 
 </body>

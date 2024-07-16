@@ -10,15 +10,13 @@ class Product extends Model
     use HasFactory;
     protected $table = 'products';
     protected $primaryKey = 'id_product';
-    protected $fillable =
-    [
+    protected $fillable = [
         'name_product',
         'price_product',
         'photo_product',
         'category_product',
-        'size_product',
+        'filtro_product',
         'description_product',
-        'dicount_product',
         'user_created_product',
         'user_updated_product',
         'date_created_product',
@@ -29,5 +27,10 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_product', 'id_category');
+    }
+
+    public function multipleProducts()
+    {
+        return $this->belongsToMany(MultipleProduct::class, 'relation_products', 'id_product', 'id_multiple_products');
     }
 }
