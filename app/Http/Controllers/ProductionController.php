@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Storage;
 
 class ProductionController extends Controller
 {
@@ -50,31 +51,30 @@ class ProductionController extends Controller
         $data['date_created_category'] = now();
         $data['date_updated_category'] = now();
 
-        $categories = Category::create($data);
+        $category = Category::create($data);
 
         if ($request->hasFile('photo_category')) {
             $file = $request->file('photo_category');
-            $fileName = $file->getClientOriginalName();
 
-            $fotoPath = $file->storeAs('assets/imagenes/category', $fileName, 'public');
-            $categories->photo_category = $fotoPath;
-            $categories->save();
+            $request->validate([
+                'photo_category' => 'required|image|max:2048'
+            ]);
+
+            $imagenPath = $file->store('public/imagenes');
+
+            $url = Storage::url($imagenPath);
+
+            $category->photo_category = $url;
+            $category->save();
         }
 
-        // if ($categories) {
-        //     Notificacion::create([
-        //         'type' => 'Consulta',
-        //         'data' => json_encode(['message' => 'Nueva consulta registrada por ' . $data['user_created_category']]),
-        //         'status' => 1,
-        //         'created_at' => now(),
-        //         'updated_at' => now()
-        //     ]);
-        if  ($categories) {
+        if ($category) {
             return redirect()->route('categories.index')->with('success', 'Categoría creada correctamente');
         } else {
             return redirect()->back()->with('error', 'Hubo un error al crear la categoría');
         }
     }
+
 
     public function categories_show(string $id)
     {
