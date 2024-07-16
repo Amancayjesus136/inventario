@@ -316,12 +316,13 @@
                                     <h5 id="cart-item-total">$0.00</h5>
                                 </div>
                             </div>
-                            <a href="apps-ecommerce-checkout.html" class="btn btn-success text-center w-100">
+                            <button onclick="sendWhatsAppMessage()" class="btn btn-success text-center w-100">
                                 Enviar al WhatsApp
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>
+
 
 
                 {{-- <div class="ms-1 header-item d-none d-sm-flex">
@@ -2012,6 +2013,48 @@
             });
         });
     </script>
+
+    <script>
+        function sendWhatsAppMessage() {
+            // Obtener los elementos del carrito
+            const cartItems = [];
+            $('.dropdown-menu-cart .dropdown-item-cart').each(function() {
+                const productName = $(this).find('.fs-14 a').text();
+                const selectedSize = $(this).find('.fs-12 span:nth-child(2)').text();
+                const selectedPrice = $(this).find('.cart-item-price').text();
+
+                // Construir el texto del mensaje
+                const itemText = `Producto: ${productName}\nTamaño: ${selectedSize}\nPrecio: ${selectedPrice}\n\n`;
+                cartItems.push(itemText);
+            });
+
+            // Construir el mensaje completo
+            const message = encodeURIComponent("Estoy interesado en los siguientes productos:\n\n" + cartItems.join(""));
+
+            // Abrir el enlace de WhatsApp
+            const whatsappLink = `https://api.whatsapp.com/send?phone=+51963795809&text=${message}`;
+            window.open(whatsappLink, '_blank');
+
+            // Opcional: Reiniciar el carrito después de enviar
+            resetCart();
+        }
+
+        // Función para reiniciar el carrito
+        function resetCart() {
+            // Limpiar el carrito visualmente
+            $('#cart-items-list').empty();
+            $('.cartitem-badge').text('0');
+            $('#cart-item-total').text('$0.00');
+            $('#empty-cart').show();
+
+            // Limpiar el estado en localStorage si lo deseas
+            localStorage.removeItem('cartItems');
+        }
+    </script>
+
+
+
+
 
     <script>
         $(document).ready(function() {
