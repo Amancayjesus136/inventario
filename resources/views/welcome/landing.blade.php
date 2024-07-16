@@ -352,7 +352,7 @@
                         <ul class="navbar-nav" id="navbar-nav">
                             {{-- <li class="menu-title"><span data-key="t-menu">Menu</span></li> --}}
                             <li class="nav-item">
-                                <a class="nav-link menu-link" href="{{ route('login') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                                <a class="nav-link menu-link" href="{{ route('welcome.landing') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                                     <i class="bx bx-home"></i> <span data-key="t-dashboard">Inicio</span>
                                 </a>
                             </li>
@@ -628,7 +628,6 @@
                                 </div>
                             </div>
                             <div class="row">
-
                                 @foreach ($categories as $category)
                                     <div class="col-lg-4 product-item artwork crypto-card 3d-style">
                                         <div class="card explore-box card-animate">
@@ -643,13 +642,30 @@
                                                 @endif
                                                 <div class="bg-overlay"></div>
                                                 <div class="place-bid-btn d-flex justify-content-between">
-                                                    <a href="{{ route('details.category') }}" class="btn btn-info me-1"><i class="ri-eye-fill align-bottom me-1"></i></a>
+                                                    @php
+                                                        $routeName = '';
+                                                        switch ($category->name_category) {
+                                                            case 'Pizzas':
+                                                                $routeName = route('details.category');
+                                                                break;
+                                                            case 'Bebidas':
+                                                                $routeName = route('listado.bebidas');
+                                                                break;
+                                                            case 'Cocteles':
+                                                                $routeName = route('listado.cocteles');
+                                                                break;
+                                                            default:
+                                                                $routeName = route('details.category', ['category' => $category->id]);
+                                                                break;
+                                                        }
+                                                    @endphp
+                                                    <a href="{{ $routeName }}" class="btn btn-info me-1"><i class="ri-eye-fill align-bottom me-1"></i></a>
                                                     {{-- <a href="#!" class="btn btn-warning"><i class="ri-shopping-cart-fill align-bottom me-1"></i></a> --}}
                                                 </div>
                                             </div>
                                             <div class="card-body">
                                                 {{-- <p class="fw-medium mb-0 float-end"><i class="mdi mdi-heart text-danger align-middle"></i> 19.29k </p> --}}
-                                                <h5 class="mb-1"><a href="apps-nft-item-details.html">{{ $category->name_category }}</a></h5>
+                                                <h5 class="mb-1"><a href="{{ route('details.category', ['category' => $category->id]) }}">{{ $category->name_category }}</a></h5>
                                                 {{-- <p class="text-muted mb-0">Photography</p> --}}
                                             </div>
                                             <div class="card-footer border-top border-top-dashed">
@@ -663,9 +679,9 @@
                                         </div>
                                     </div>
                                 @endforeach
-
                             </div>
-                        </div><!-- end container -->
+
+                        </div>
                     </section>
                 </div>
             </div>

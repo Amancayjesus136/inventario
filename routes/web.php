@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingController::class, 'welcome'])->name('welcome.landing');
 Route::get('/detalles/categoria', [LandingController::class, 'details_category'])->name('details.category');
+Route::get('/listado/bebidas', [LandingController::class, 'details_bebidas'])->name('listado.bebidas');
+Route::get('/listado/cocteles', [LandingController::class, 'details_cocteles'])->name('listado.cocteles');
 
 /*
 |--------------------------------------------------------------------------

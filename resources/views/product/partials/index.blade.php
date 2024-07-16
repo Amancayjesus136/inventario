@@ -185,6 +185,8 @@
                             <option value="" disabled selected>Selecciona ...</option>
                                 <option value="Clasicas">Clasicas</option>
                                 <option value="Especiales">Especiales</option>
+                                <option value="Bebidas">Bebidas</option>
+                                <option value="Cocteles">Cocteles</option>
                                 <option value="Entradas">Entradas</option>
                                 <option value="Promociones">Promociones</option>
                         </select>
@@ -209,6 +211,11 @@
                                         <option value="" disabled selected>Seleccionar tamaño...</option>
                                         <option value="Mediana">Mediana</option>
                                         <option value="Familiar">Familiar</option>
+                                        <option value="Personal">Personal</option>
+                                        <option value="1L">1L</option>
+                                        <option value="600 ml">600 ml</option>
+                                        <option value="Chicha 500 ml">Chicha 500 ml</option>
+                                        <option value="Chicha 1L">Chicha 1L</option>
                                     </select>
                                 </div>
 
@@ -258,7 +265,7 @@
         addButton.addEventListener('click', function(event) {
             event.preventDefault();
 
-            if (inputCount >= 2) {
+            if (inputCount >= 5) {
                 alert('Solo se pueden agregar un máximo de 2 conjuntos de campos.');
                 return;
             }
@@ -273,6 +280,11 @@
                             <option value="" disabled selected>Seleccionar tamaño...</option>
                             <option value="Mediana">Mediana</option>
                             <option value="Familiar">Familiar</option>
+                            <option value="Personal">Personal</option>
+                            <option value="1L">1L</option>
+                            <option value="600 ml">600 ml</option>
+                            <option value="Chicha 500 ml">Chicha 500 ml</option>
+                            <option value="Chicha 1L">Chicha 1L</option>
                         </select>
                     </div>
 

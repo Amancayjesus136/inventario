@@ -424,13 +424,14 @@
                         <div class="col-12 col-md-12">
                             <section class="section bg-light" id="marketplace">
                                 <div class="container">
+
                                     <div class="row justify-content-center">
                                         <div class="col-lg-8">
                                             <div class="text-center mb-5">
                                                 <h2 class="mb-3 fw-semibold lh-base">Menú</h2>
                                                 <ul class="nav nav-pills filter-btns justify-content-center" role="tablist">
                                                     <li class="nav-item" role="presentation">
-                                                        <button class="nav-link fw-medium active" type="button" data-filter="all">Todos</button>
+                                                        <button class="nav-link fw-medium" type="button" data-filter="all">Todos</button>
                                                     </li>
                                                     <li class="nav-item" role="presentation">
                                                         <button class="nav-link fw-medium" type="button" data-filter="Clasicas">Clásicas</button>
@@ -442,10 +443,10 @@
                                                         <button class="nav-link fw-medium" type="button" data-filter="Entradas">Entradas</button>
                                                     </li>
                                                     <li class="nav-item" role="presentation">
-                                                        <button class="nav-link fw-medium" type="button" data-filter="Bebidas">Bebidas</button>
+                                                        <button class="nav-link fw-medium active" type="button" data-filter="Cocteles">Cócteles</button>
                                                     </li>
                                                     <li class="nav-item" role="presentation">
-                                                        <button class="nav-link fw-medium" type="button" data-filter="Cócteles">Cócteles</button>
+                                                        <button class="nav-link fw-medium" type="button" data-filter="Bebidas">Bebidas</button>
                                                     </li>
                                                     <li class="nav-item" role="presentation">
                                                         <button class="nav-link fw-medium" type="button" data-filter="Promociones">Promociones</button>
@@ -454,54 +455,78 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row" id="product-container">
                                         @foreach ($products as $product)
-                                        <div class="col-12 col-md-6 col-lg-4 product-item artwork crypto-card 3d-style" data-category="{{ $product->filtro_product }}">
-                                            <div class="card explore-box card-animate">
-                                                <div class="bookmark-icon position-absolute top-0 end-0 p-2">
-                                                    <button type="button" class="btn btn-icon active" data-bs-toggle="button" aria-pressed="true"><i class="mdi mdi-cards-heart fs-16"></i></button>
-                                                </div>
-                                                <div class="explore-place-bid-img">
-                                                    @if ($product->photo_product)
-                                                    <img src="{{ asset('storage/' . $product->photo_product) }}" alt="" class="card-img-top explore-img">
-                                                    @else
-                                                    <img src="{{ asset('assets/images/sin-foto.png') }}" alt="" class="card-img-top explore-img">
-                                                    @endif
-                                                    <div class="bg-overlay"></div>
-                                                    <div class="place-bid-btn d-flex justify-content-between">
-                                                        {{-- Agregar al carrito --}}
-
+                                            <div class="col-12 col-md-6 col-lg-4 product-item artwork crypto-card 3d-style" data-category="{{ $product->filtro_product }}">
+                                                <div class="card explore-box card-animate">
+                                                    <div class="bookmark-icon position-absolute top-0 end-0 p-2">
+                                                        <button type="button" class="btn btn-icon active" data-bs-toggle="button" aria-pressed="true"><i class="mdi mdi-cards-heart fs-16"></i></button>
                                                     </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    <h5 class="mb-1"><a href="apps-nft-item-details.html">{{ $product->name_product }}</a></h5>
-                                                </div>
-                                                <div class="card-footer border-top border-top-dashed">
-                                                    <div class="d-flex align-items-center">
-                                                        <select class="form-select mb-3 size-select" id="size-select-{{ $product->id_product }}" aria-label="Default select example">
-                                                            @foreach ($product->multipleProducts as $multipleProduct)
-                                                            <option value="{{ $multipleProduct->price_product_multiple }}">{{ $multipleProduct->size_product_multiple }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="card-footer border-top border-top-dashed">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="flex-grow-1 fs-14">
-                                                            <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i>
-                                                            <span id="price-display-{{ $product->id_product }}" class="fw-medium"></span>
+                                                    <div class="explore-place-bid-img">
+                                                        @if ($product->photo_product)
+                                                            <img src="{{ asset('storage/' . $product->photo_product) }}" alt="" class="card-img-top explore-img">
+                                                        @else
+                                                            <img src="{{ asset('assets/images/sin-foto.png') }}" alt="" class="card-img-top explore-img">
+                                                        @endif
+                                                        <div class="bg-overlay"></div>
+                                                        <div class="place-bid-btn d-flex justify-content-between">
+                                                            {{-- Agregar al carrito --}}
                                                         </div>
-                                                        <button type="button" class="btn btn-warning add-to-cart-btn"
-                                                            data-product-id="{{ $product->id_product }}"
-                                                            data-product-name="{{ $product->name_product }}">
-                                                            <i class="ri-shopping-cart-fill align-bottom me-1"></i>Agregar al carrito
-                                                        </button>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <h5 class="mb-1"><a href="apps-nft-item-details.html">{{ $product->name_product }}</a></h5>
+                                                    </div>
+                                                    <div class="card-footer border-top border-top-dashed">
+                                                        <div class="d-flex align-items-center">
+                                                            <select class="form-select mb-3 size-select" id="size-select-{{ $product->id_product }}" aria-label="Default select example">
+                                                                @foreach ($product->multipleProducts as $multipleProduct)
+                                                                    <option value="{{ $multipleProduct->price_product_multiple }}">{{ $multipleProduct->size_product_multiple }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer border-top border-top-dashed">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="flex-grow-1 fs-14">
+                                                                <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i>
+                                                                <span id="price-display-{{ $product->id_product }}" class="fw-medium"></span>
+                                                            </div>
+                                                            <button type="button" class="btn btn-warning add-to-cart-btn"
+                                                                data-product-id="{{ $product->id_product }}"
+                                                                data-product-name="{{ $product->name_product }}">
+                                                                <i class="ri-shopping-cart-fill align-bottom me-1"></i>Agregar al carrito
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         @endforeach
                                     </div>
+
+                                    <script>
+                                        document.addEventListener('DOMContentLoaded', function() {
+                                                filterProducts('Cocteles');
+
+                                                const filterButtons = document.querySelectorAll('.filter-btns button');
+                                                filterButtons.forEach(function(button) {
+                                                    button.addEventListener('click', function() {
+                                                        const filter = this.getAttribute('data-filter');
+                                                        filterProducts(filter);
+                                                    });
+                                                });
+
+                                                function filterProducts(filter) {
+                                                    const products = document.querySelectorAll('.product-item');
+                                                    products.forEach(function(product) {
+                                                        if (filter === 'all' || product.dataset.category === filter) {
+                                                            product.style.display = 'block';
+                                                        } else {
+                                                            product.style.display = 'none';
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                    </script>
 
                                 </div>
                             </section>

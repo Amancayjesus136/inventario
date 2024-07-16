@@ -21,4 +21,18 @@ class LandingController extends Controller
         return view('welcome.details_category', compact('products', 'categories'));
     }
 
+    public function details_bebidas()
+    {
+        $products = Product::all();
+        $categories = Category::all();
+        return view('welcome.list_bebidas', compact('products', 'categories'));
+    }
+
+    public function details_cocteles()
+    {
+        $products = Product::all();
+        $categories = Category::all();
+        return view('welcome.list_tragos', compact('products', 'categories'));
+    }
+
 }
