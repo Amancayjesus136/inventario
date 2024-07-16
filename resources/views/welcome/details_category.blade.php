@@ -1899,9 +1899,7 @@
                                 <a href="apps-ecommerce-product-details.html" class="text-reset">${productName}</a>
                             </h6>
                             <p class="mb-0 fs-12 text-muted">
-                                Quantity: <span class="cart-item-quantity">1</span><br>
                                 Tamaño: <span>${selectedSize}</span><br>
-                                Precio unitario: <span>${selectedPrice}</span>
                             </p>
                         </div>
                         <div class="px-2">
@@ -1927,7 +1925,7 @@
                 let total = 0;
 
                 $('.dropdown-menu-cart .dropdown-item-cart').each(function() {
-                    const price = parseFloat($(this).find('.fw-normal').text().replace('$', ''));
+                    const price = parseFloat($(this).find('.cart-item-price').text().replace('$', ''));
                     total += price;
                 });
 
@@ -1940,7 +1938,7 @@
                 $('.dropdown-menu-cart .dropdown-item-cart').each(function() {
                     const productId = $(this).find('.product-id').text();
                     const productName = $(this).find('.fs-14 a').text();
-                    const selectedSize = $(this).find('.fs-12 span:nth-child(2)').text();
+                    const selectedSize = $(this).find('.fs-12 span').text();
                     const selectedPrice = $(this).find('.cart-item-price').text();
                     const productImage = $(this).find('img').attr('src');
 
@@ -1970,9 +1968,7 @@
                                     <a href="apps-ecommerce-product-details.html" class="text-reset">${item.productName}</a>
                                 </h6>
                                 <p class="mb-0 fs-12 text-muted">
-                                    Cantidad: <span class="cart-item-quantity">1</span><br> <!-- Puedes cambiar esto según tu lógica -->
                                     Tamaño: <span>${item.selectedSize}</span><br>
-                                    // Precio unitario: <span>${item.selectedPrice}</span>
                                 </p>
                             </div>
                             <div class="px-2">
@@ -2012,73 +2008,81 @@
                 }
             });
         });
-    </script>
 
-    <script>
         function sendWhatsAppMessage() {
-            // Obtener los elementos del carrito
             const cartItems = [];
             $('.dropdown-menu-cart .dropdown-item-cart').each(function() {
-                const productName = $(this).find('.fs-14 a').text();
-                const selectedSize = $(this).find('.fs-12 span:nth-child(2)').text();
-                const selectedPrice = $(this).find('.cart-item-price').text();
+                const productName = $(this).find('.fs-14 a').text().trim();
+                const selectedPrice = $(this).find('.cart-item-price').text().trim();
 
-                // Construir el texto del mensaje
-                const itemText = `Producto: ${productName}\nTamaño: ${selectedSize}\nPrecio: ${selectedPrice}\n\n`;
+                const selectedSize = findSizeByPrice(productName, selectedPrice);
+
+                const itemText = `🍕 *Producto:* ${productName}\n 💲 *Precio:* ${selectedPrice}\n\n`;
                 cartItems.push(itemText);
             });
 
-            // Construir el mensaje completo
-            const message = encodeURIComponent("Estoy interesado en los siguientes productos:\n\n" + cartItems.join(""));
+            if (cartItems.length === 0) {
+                alert('No hay productos seleccionados para enviar.');
+                return;
+            }
 
-            // Abrir el enlace de WhatsApp
-            const whatsappLink = `https://api.whatsapp.com/send?phone=+51963795809&text=${message}`;
+            const introMessage = "Estoy interesado en los siguientes productos:\n\n";
+            const productsMessage = cartItems.join("");
+
+            const fullMessage = encodeURIComponent(introMessage + productsMessage);
+
+            const whatsappLink = `https://api.whatsapp.com/send?phone=+51963795809&text=${fullMessage}`;
             window.open(whatsappLink, '_blank');
 
-            // Opcional: Reiniciar el carrito después de enviar
             resetCart();
         }
 
-        // Función para reiniciar el carrito
+        function findSizeByPrice(productName, selectedPrice) {
+            let selectedSize = '';
+
+            return selectedSize;
+        }
+
         function resetCart() {
-            // Limpiar el carrito visualmente
             $('#cart-items-list').empty();
             $('.cartitem-badge').text('0');
             $('#cart-item-total').text('$0.00');
             $('#empty-cart').show();
 
-            // Limpiar el estado en localStorage si lo deseas
+            $('#whatsapp-button').prop('disabled', true);
+
             localStorage.removeItem('cartItems');
         }
+
+        function checkCartItems() {
+            let itemCount = parseInt(document.getElementById('cart-item-total').innerText);
+
+            $('#whatsapp-button').prop('disabled', itemCount === 0);
+        }
+
+        $(document).ready(function() {
+            checkCartItems();
+        });
     </script>
-
-
-
-
 
     <script>
         $(document).ready(function() {
             $('.filter-btns button').on('click', function() {
                 const filterValue = $(this).data('filter');
 
-                // Mostrar todos los productos si se selecciona "Todos"
                 if (filterValue === 'all') {
                     $('.product-item').show();
                 } else {
-                    // Ocultar todos los productos
                     $('.product-item').hide();
 
-                    // Mostrar solo los productos que coincidan con el filtro seleccionado
                     $(`.product-item[data-category="${filterValue}"]`).show();
                 }
 
-                // Cambiar el estado activo del botón
                 $('.filter-btns button').removeClass('active');
                 $(this).addClass('active');
             });
         });
     </script>
-
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -2097,7 +2101,6 @@
         });
     </script>
 
-    <!-- JAVASCRIPT -->
     <script src="{{ asset('assets2/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets2/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ asset('assets2/libs/node-waves/waves.min.js') }}"></script>
