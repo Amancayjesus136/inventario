@@ -283,7 +283,7 @@
                 <div class="dropdown topbar-head-dropdown ms-1 header-item">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none" id="page-header-cart-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
                         <i class='bx bx-shopping-bag fs-22'></i>
-                        <span class="position-absolute topbar-badge cartitem-badge fs-10 translate-middle badge rounded-pill bg-info">5</span>
+                        <span id="cart-item-count" class="position-absolute topbar-badge cartitem-badge fs-10 translate-middle badge rounded-pill bg-info">0</span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-xl dropdown-menu-end p-0 dropdown-menu-cart" aria-labelledby="page-header-cart-dropdown">
                         <div class="p-3 border-top-0 border-start-0 border-end-0 border-dashed border">
@@ -292,123 +292,20 @@
                                     <h6 class="m-0 fs-16 fw-semibold"> My Cart</h6>
                                 </div>
                                 <div class="col-auto">
-                                    <span class="badge bg-warning-subtle text-warning fs-13"><span class="cartitem-badge">7</span>
-                                        items</span>
+                                    <span id="cart-item-total-count" class="badge bg-warning-subtle text-warning fs-13"><span class="cartitem-badge">0</span> items</span>
                                 </div>
                             </div>
                         </div>
                         <div data-simplebar style="max-height: 300px;">
-                            <div class="p-2">
+                            <div id="cart-items-list" class="p-2">
                                 <div class="text-center empty-cart" id="empty-cart">
                                     <div class="avatar-md mx-auto my-3">
                                         <div class="avatar-title bg-info-subtle text-info fs-36 rounded-circle">
                                             <i class='bx bx-cart'></i>
                                         </div>
                                     </div>
-                                    <h5 class="mb-3">Your Cart is Empty!</h5>
-                                    <a href="apps-ecommerce-products.html" class="btn btn-success w-md mb-3">Shop Now</a>
-                                </div>
-                                <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
-                                    <div class="d-flex align-items-center">
-                                        <img src="{{ asset('assets2/images/products/img-1.png') }}" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
-                                        <div class="flex-grow-1">
-                                            <h6 class="mt-0 mb-1 fs-14">
-                                                <a href="apps-ecommerce-product-details.html" class="text-reset">Branded
-                                                    T-Shirts</a>
-                                            </h6>
-                                            <p class="mb-0 fs-12 text-muted">
-                                                Quantity: <span>10 x $32</span>
-                                            </p>
-                                        </div>
-                                        <div class="px-2">
-                                            <h5 class="m-0 fw-normal">$<span class="cart-item-price">320</span></h5>
-                                        </div>
-                                        <div class="ps-2">
-                                            <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn shadow-none"><i class="ri-close-fill fs-16"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
-                                    <div class="d-flex align-items-center">
-                                        <img src="assets2/images/products/img-2.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
-                                        <div class="flex-grow-1">
-                                            <h6 class="mt-0 mb-1 fs-14">
-                                                <a href="apps-ecommerce-product-details.html" class="text-reset">Bentwood Chair</a>
-                                            </h6>
-                                            <p class="mb-0 fs-12 text-muted">
-                                                Quantity: <span>5 x $18</span>
-                                            </p>
-                                        </div>
-                                        <div class="px-2">
-                                            <h5 class="m-0 fw-normal">$<span class="cart-item-price">89</span></h5>
-                                        </div>
-                                        <div class="ps-2">
-                                            <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn shadow-none"><i class="ri-close-fill fs-16"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
-                                    <div class="d-flex align-items-center">
-                                        <img src="assets2/images/products/img-3.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
-                                        <div class="flex-grow-1">
-                                            <h6 class="mt-0 mb-1 fs-14">
-                                                <a href="apps-ecommerce-product-details.html" class="text-reset">
-                                                    Borosil Paper Cup</a>
-                                            </h6>
-                                            <p class="mb-0 fs-12 text-muted">
-                                                Quantity: <span>3 x $250</span>
-                                            </p>
-                                        </div>
-                                        <div class="px-2">
-                                            <h5 class="m-0 fw-normal">$<span class="cart-item-price">750</span></h5>
-                                        </div>
-                                        <div class="ps-2">
-                                            <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn shadow-none"><i class="ri-close-fill fs-16"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
-                                    <div class="d-flex align-items-center">
-                                        <img src="assets2/images/products/img-6.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
-                                        <div class="flex-grow-1">
-                                            <h6 class="mt-0 mb-1 fs-14">
-                                                <a href="apps-ecommerce-product-details.html" class="text-reset">Gray
-                                                    Styled T-Shirt</a>
-                                            </h6>
-                                            <p class="mb-0 fs-12 text-muted">
-                                                Quantity: <span>1 x $1250</span>
-                                            </p>
-                                        </div>
-                                        <div class="px-2">
-                                            <h5 class="m-0 fw-normal">$ <span class="cart-item-price">1250</span></h5>
-                                        </div>
-                                        <div class="ps-2">
-                                            <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn shadow-none"><i class="ri-close-fill fs-16"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
-                                    <div class="d-flex align-items-center">
-                                        <img src="assets2/images/products/img-5.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
-                                        <div class="flex-grow-1">
-                                            <h6 class="mt-0 mb-1 fs-14">
-                                                <a href="apps-ecommerce-product-details.html" class="text-reset">Stillbird Helmet</a>
-                                            </h6>
-                                            <p class="mb-0 fs-12 text-muted">
-                                                Quantity: <span>2 x $495</span>
-                                            </p>
-                                        </div>
-                                        <div class="px-2">
-                                            <h5 class="m-0 fw-normal">$<span class="cart-item-price">990</span></h5>
-                                        </div>
-                                        <div class="ps-2">
-                                            <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn shadow-none"><i class="ri-close-fill fs-16"></i></button>
-                                        </div>
-                                    </div>
+                                    <h5 class="mb-3">Carrito vacio</h5>
+                                    {{-- <a href="apps-ecommerce-products.html" class="btn btn-success w-md mb-3">Shop Now</a> --}}
                                 </div>
                             </div>
                         </div>
@@ -416,16 +313,16 @@
                             <div class="d-flex justify-content-between align-items-center pb-3">
                                 <h5 class="m-0 text-muted">Total:</h5>
                                 <div class="px-2">
-                                    <h5 class="m-0" id="cart-item-total">$1258.58</h5>
+                                    <h5 id="cart-item-total">$0.00</h5>
                                 </div>
                             </div>
-
                             <a href="apps-ecommerce-checkout.html" class="btn btn-success text-center w-100">
                                 Checkout
                             </a>
                         </div>
                     </div>
                 </div>
+
 
                 {{-- <div class="ms-1 header-item d-none d-sm-flex">
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none">
@@ -1810,51 +1707,52 @@
                                     <div class="row">
                                         @foreach ($products as $product)
                                         <div class="col-12 col-md-6 col-lg-4 product-item artwork crypto-card 3d-style" data-category="{{ $product->filtro_product }}">
-                                                <div class="card explore-box card-animate">
-                                                    <div class="bookmark-icon position-absolute top-0 end-0 p-2">
-                                                        <button type="button" class="btn btn-icon active" data-bs-toggle="button" aria-pressed="true"><i class="mdi mdi-cards-heart fs-16"></i></button>
+                                            <div class="card explore-box card-animate">
+                                                <div class="bookmark-icon position-absolute top-0 end-0 p-2">
+                                                    <button type="button" class="btn btn-icon active" data-bs-toggle="button" aria-pressed="true"><i class="mdi mdi-cards-heart fs-16"></i></button>
+                                                </div>
+                                                <div class="explore-place-bid-img">
+                                                    @if ($product->photo_product)
+                                                    <img src="{{ asset('storage/' . $product->photo_product) }}" alt="" class="card-img-top explore-img">
+                                                    @else
+                                                    <img src="{{ asset('assets/images/sin-foto.png') }}" alt="" class="card-img-top explore-img">
+                                                    @endif
+                                                    <div class="bg-overlay"></div>
+                                                    <div class="place-bid-btn d-flex justify-content-between">
+                                                        {{-- Agregar al carrito --}}
+
                                                     </div>
-                                                    <div class="explore-place-bid-img">
-                                                        @if ($product->photo_product)
-                                                            <img src="{{ asset('storage/' . $product->photo_product) }}" alt="" class="card-img-top explore-img">
-                                                        @else
-                                                            <img src="{{ asset('assets/images/sin-foto.png') }}" alt="" class="card-img-top explore-img">
-                                                        @endif
-                                                        <div class="bg-overlay"></div>
-                                                        <div class="place-bid-btn d-flex justify-content-between">
-                                                            {{-- <a href="#!" class="btn btn-info me-1"><i class="ri-eye-fill align-bottom me-1"></i>ver detalles</a> --}}
-                                                            {{-- <a href="#!" class="btn btn-warning"><i class="ri-shopping-cart-fill align-bottom me-1"></i></a> --}}
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 class="mb-1"><a href="apps-nft-item-details.html">{{ $product->name_product }}</a></h5>
+                                                </div>
+                                                <div class="card-footer border-top border-top-dashed">
+                                                    <div class="d-flex align-items-center">
+                                                        <select class="form-select mb-3 size-select" id="size-select-{{ $product->id_product }}" aria-label="Default select example">
+                                                            @foreach ($product->multipleProducts as $multipleProduct)
+                                                            <option value="{{ $multipleProduct->price_product_multiple }}">{{ $multipleProduct->size_product_multiple }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer border-top border-top-dashed">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex-grow-1 fs-14">
+                                                            <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i>
+                                                            <span id="price-display-{{ $product->id_product }}" class="fw-medium"></span>
                                                         </div>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        {{-- <p class="fw-medium mb-0 float-end"><i class="mdi mdi-heart text-danger align-middle"></i> 19.29k </p> --}}
-                                                        <h5 class="mb-1"><a href="apps-nft-item-details.html">{{ $product->name_product }}</a></h5>
-                                                        {{-- <p class="text-muted mb-0">{{ $product->size_product }}</p> --}}
-                                                    </div>
-                                                    <div class="card-footer border-top border-top-dashed">
-                                                        <div class="d-flex align-items-center">
-                                                            <select class="form-select mb-3 size-select" id="size-select-{{ $product->id_product }}" aria-label="Default select example">
-                                                                @foreach ($product->multipleProducts as $multipleProduct)
-                                                                    <option value="{{ $multipleProduct->price_product_multiple }}">{{ $multipleProduct->size_product_multiple }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card-footer border-top border-top-dashed">
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="flex-grow-1 fs-14">
-                                                                <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i>
-                                                                <span id="price-display-{{ $product->id_product }}" class="fw-medium"></span>
-                                                            </div>
-                                                            <h5 class="flex-shrink-0 fs-14 text-primary mb-0">
-                                                                <a href="#!" class="btn btn-danger"><i class="ri-shopping-cart-fill align-bottom me-1"></i></a>
-                                                            </h5>
-                                                        </div>
+                                                        <button type="button" class="btn btn-warning add-to-cart-btn"
+                                                            data-product-id="{{ $product->id_product }}"
+                                                            data-product-name="{{ $product->name_product }}">
+                                                            <i class="ri-shopping-cart-fill align-bottom me-1"></i>Agregar al carrito
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
                                         @endforeach
                                     </div>
+
                                 </div>
                             </section>
                         </div>
@@ -1980,6 +1878,87 @@
     </button>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Función para agregar productos al carrito
+            $('.add-to-cart-btn').on('click', function(event) {
+                event.preventDefault();
+
+                const productId = $(this).data('product-id');
+                const productName = $(this).data('product-name');
+                const selectedSize = $('#size-select-' + productId).val();
+                const selectedPrice = $('#price-display-' + productId).text();
+
+                // Construir el elemento del carrito
+                const cartItemHtml = `
+                    <div class="d-flex align-items-center mt-2 dropdown-item-cart">
+                        <img src="{{ asset('assets2/images/products/img-1.png') }}" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
+                        <div class="flex-grow-1">
+                            <h6 class="mt-0 mb-1 fs-14">
+                                <a href="apps-ecommerce-product-details.html" class="text-reset">${productName}</a>
+                            </h6>
+                            <p class="mb-0 fs-12 text-muted">
+                                Quantity: <span class="cart-item-quantity">1</span><br> <!-- Puedes cambiar esto según tu lógica -->
+                                Tamaño: <span>${selectedSize}</span><br>
+                                Precio unitario: <span>${selectedPrice}</span>
+                            </p>
+                        </div>
+                        <div class="px-2">
+                            <h5 class="m-0 fw-normal">$<span class="cart-item-price">${selectedPrice}</span></h5>
+                        </div>
+                        <div class="ps-2">
+                            <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn shadow-none"><i class="ri-close-fill fs-16"></i></button>
+                        </div>
+                    </div>
+                    <hr>
+                `;
+
+                // Agregar el elemento al carrito
+                $('#cart-items-list').append(cartItemHtml);
+
+                // Actualizar el número de ítems en el carrito
+                const itemCount = $('.dropdown-menu-cart .dropdown-item-cart').length;
+                $('.cartitem-badge').text(itemCount);
+                $('#empty-cart').hide(); // Ocultar el mensaje de carrito vacío si es necesario
+
+                // Calcular y actualizar el total del carrito
+                updateCartTotal();
+            });
+
+            // Función para actualizar el total del carrito
+            function updateCartTotal() {
+                let total = 0;
+
+                $('.dropdown-menu-cart .dropdown-item-cart').each(function() {
+                    const price = parseFloat($(this).find('.fw-normal').text().replace('$', ''));
+                    total += price;
+                });
+
+                $('#cart-item-total').text('$' + total.toFixed(2));
+                $('#cart-item-total-count').html(`<span class="cartitem-badge">${$('.dropdown-menu-cart .dropdown-item-cart').length}</span> items`);
+            }
+
+            // Manejar la eliminación de elementos del carrito
+            $('.dropdown-menu-cart').on('click', '.remove-item-btn', function(event) {
+                event.preventDefault();
+                $(this).closest('.dropdown-item-cart').remove();
+
+                // Actualizar el número de ítems en el carrito
+                const itemCount = $('.dropdown-menu-cart .dropdown-item-cart').length;
+                $('.cartitem-badge').text(itemCount);
+
+                // Actualizar el total del carrito
+                updateCartTotal();
+
+                // Mostrar el mensaje de carrito vacío si no hay elementos
+                if (itemCount === 0) {
+                    $('#empty-cart').show();
+                }
+            });
+        });
+    </script>
+
     <script>
         $(document).ready(function() {
             $('.filter-btns button').on('click', function() {
