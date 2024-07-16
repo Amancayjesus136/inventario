@@ -317,7 +317,7 @@
                                 </div>
                             </div>
                             <a href="apps-ecommerce-checkout.html" class="btn btn-success text-center w-100">
-                                Checkout
+                                Enviar al WhatsApp
                             </a>
                         </div>
                     </div>
@@ -1881,25 +1881,24 @@
 
     <script>
         $(document).ready(function() {
-            // Función para agregar productos al carrito
             $('.add-to-cart-btn').on('click', function(event) {
                 event.preventDefault();
 
                 const productId = $(this).data('product-id');
                 const productName = $(this).data('product-name');
-                const selectedSize = $('#size-select-' + productId).val();
+                const selectedSize = $('#size-select-' + productId + ' option:selected').text();
                 const selectedPrice = $('#price-display-' + productId).text();
+                const productImage = $(this).closest('.crypto-card').find('.explore-img').attr('src');
 
-                // Construir el elemento del carrito
                 const cartItemHtml = `
                     <div class="d-flex align-items-center mt-2 dropdown-item-cart">
-                        <img src="{{ asset('assets2/images/products/img-1.png') }}" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
+                        <img src="${productImage}" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
                         <div class="flex-grow-1">
                             <h6 class="mt-0 mb-1 fs-14">
                                 <a href="apps-ecommerce-product-details.html" class="text-reset">${productName}</a>
                             </h6>
                             <p class="mb-0 fs-12 text-muted">
-                                Quantity: <span class="cart-item-quantity">1</span><br> <!-- Puedes cambiar esto según tu lógica -->
+                                Quantity: <span class="cart-item-quantity">1</span><br>
                                 Tamaño: <span>${selectedSize}</span><br>
                                 Precio unitario: <span>${selectedPrice}</span>
                             </p>
@@ -1911,22 +1910,18 @@
                             <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn shadow-none"><i class="ri-close-fill fs-16"></i></button>
                         </div>
                     </div>
-                    <hr>
                 `;
 
-                // Agregar el elemento al carrito
                 $('#cart-items-list').append(cartItemHtml);
 
-                // Actualizar el número de ítems en el carrito
                 const itemCount = $('.dropdown-menu-cart .dropdown-item-cart').length;
                 $('.cartitem-badge').text(itemCount);
-                $('#empty-cart').hide(); // Ocultar el mensaje de carrito vacío si es necesario
+                $('#empty-cart').hide();
+                saveCartState();
 
-                // Calcular y actualizar el total del carrito
                 updateCartTotal();
             });
 
-            // Función para actualizar el total del carrito
             function updateCartTotal() {
                 let total = 0;
 
@@ -1939,19 +1934,78 @@
                 $('#cart-item-total-count').html(`<span class="cartitem-badge">${$('.dropdown-menu-cart .dropdown-item-cart').length}</span> items`);
             }
 
-            // Manejar la eliminación de elementos del carrito
+            function saveCartState() {
+                const cartItems = [];
+                $('.dropdown-menu-cart .dropdown-item-cart').each(function() {
+                    const productId = $(this).find('.product-id').text();
+                    const productName = $(this).find('.fs-14 a').text();
+                    const selectedSize = $(this).find('.fs-12 span:nth-child(2)').text();
+                    const selectedPrice = $(this).find('.cart-item-price').text();
+                    const productImage = $(this).find('img').attr('src');
+
+                    const item = {
+                        productId: productId,
+                        productName: productName,
+                        selectedSize: selectedSize,
+                        selectedPrice: selectedPrice,
+                        productImage: productImage
+                    };
+
+                    cartItems.push(item);
+                });
+
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            }
+
+            function loadCartState() {
+                const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+                cartItems.forEach(function(item) {
+                    const cartItemHtml = `
+                        <div class="d-flex align-items-center mt-2 dropdown-item-cart">
+                            <img src="${item.productImage}" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
+                            <div class="flex-grow-1">
+                                <h6 class="mt-0 mb-1 fs-14">
+                                    <a href="apps-ecommerce-product-details.html" class="text-reset">${item.productName}</a>
+                                </h6>
+                                <p class="mb-0 fs-12 text-muted">
+                                    Cantidad: <span class="cart-item-quantity">1</span><br> <!-- Puedes cambiar esto según tu lógica -->
+                                    Tamaño: <span>${item.selectedSize}</span><br>
+                                    // Precio unitario: <span>${item.selectedPrice}</span>
+                                </p>
+                            </div>
+                            <div class="px-2">
+                                <h5 class="m-0 fw-normal">$<span class="cart-item-price">${item.selectedPrice}</span></h5>
+                            </div>
+                            <div class="ps-2">
+                                <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn shadow-none"><i class="ri-close-fill fs-16"></i></button>
+                            </div>
+                        </div>
+                    `;
+
+                    $('#cart-items-list').append(cartItemHtml);
+                });
+
+                const itemCount = cartItems.length;
+                $('.cartitem-badge').text(itemCount);
+                $('#empty-cart').toggle(itemCount === 0);
+
+                updateCartTotal();
+            }
+
+            loadCartState();
+
             $('.dropdown-menu-cart').on('click', '.remove-item-btn', function(event) {
                 event.preventDefault();
                 $(this).closest('.dropdown-item-cart').remove();
 
-                // Actualizar el número de ítems en el carrito
+                saveCartState();
+
                 const itemCount = $('.dropdown-menu-cart .dropdown-item-cart').length;
                 $('.cartitem-badge').text(itemCount);
 
-                // Actualizar el total del carrito
                 updateCartTotal();
 
-                // Mostrar el mensaje de carrito vacío si no hay elementos
                 if (itemCount === 0) {
                     $('#empty-cart').show();
                 }
