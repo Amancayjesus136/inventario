@@ -107,7 +107,7 @@
                                             <div class="flex-shrink-0 me-3">
                                                 <div class="avatar-sm bg-light rounded p-1">
                                                     @if ($category->photo_category)
-                                                        <img src="{{ asset('storage/' . $category->photo_category) }}" alt="" class="img-fluid d-block">
+                                                        <img src="{{ asset('public/' . $category->photo_category) }}" alt="" class="img-fluid d-block">
                                                     @else
                                                         <img src="{{ asset('assets/images/sin-foto.png') }}" alt="" class="img-fluid d-block">
                                                     @endif

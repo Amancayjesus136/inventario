@@ -42,38 +42,41 @@ class ProductionController extends Controller
     }
 
     public function categories_store(Request $request)
-    {
-        $data = $request->all();
-        $data['status_category'] = $data['status_category'] ?? 1;
+{
+    $data = $request->all();
+    $data['status_category'] = $data['status_category'] ?? 1;
 
-        $data['user_created_category'] = Auth::user()->name;
-        $data['user_updated_category'] = Auth::user()->name;
-        $data['date_created_category'] = now();
-        $data['date_updated_category'] = now();
+    $data['user_created_category'] = Auth::user()->name;
+    $data['user_updated_category'] = Auth::user()->name;
+    $data['date_created_category'] = now();
+    $data['date_updated_category'] = now();
 
-        $category = Category::create($data);
+    $category = Category::create($data);
 
-        if ($request->hasFile('photo_category')) {
-            $file = $request->file('photo_category');
+    if ($request->hasFile('photo_category')) {
+        $file = $request->file('photo_category');
 
-            $request->validate([
-                'photo_category' => 'required|image|max:2048'
-            ]);
+        $request->validate([
+            'photo_category' => 'required|image|max:2048'
+        ]);
 
-            $imagenPath = $file->store('public/imagenes');
+        $imagenPath = $file->store('public/imagenes');
 
-            $url = Storage::url($imagenPath);
+        $fileName = basename($imagenPath);
 
-            $category->photo_category = $url;
-            $category->save();
-        }
+        $relativeUrl = 'storage/public/imagenes/' . $fileName;
 
-        if ($category) {
-            return redirect()->route('categories.index')->with('success', 'Categoría creada correctamente');
-        } else {
-            return redirect()->back()->with('error', 'Hubo un error al crear la categoría');
-        }
+        $category->photo_category = $relativeUrl;
+        $category->save();
     }
+
+    if ($category) {
+        return redirect()->route('categories.index')->with('success', 'Categoría creada correctamente');
+    } else {
+        return redirect()->back()->with('error', 'Hubo un error al crear la categoría');
+    }
+}
+
 
 
     public function categories_show(string $id)
@@ -115,9 +118,22 @@ class ProductionController extends Controller
 
         if ($request->hasFile('photo_product')) {
             $file = $request->file('photo_product');
-            $fileName = $file->getClientOriginalName();
-            $fotoPath = $file->storeAs('assets/imagenes/product', $fileName, 'public');
-            $product->photo_product = $fotoPath;
+
+            $request->validate([
+                'photo_product' => 'required|image|max:2048'
+            ]);
+
+            // Guardar la imagen en storage/app/public/imagenes
+            $imagenPath = $file->store('public/imagenes');
+
+            // Obtener solo el nombre del archivo desde el path
+            $fileName = basename($imagenPath);
+
+            // Construir la URL relativa para guardar en la base de datos
+            $relativeUrl = 'storage/public/imagenes/' . $fileName;
+
+            // Guardar la URL relativa en el modelo Product
+            $product->photo_product = $relativeUrl;
             $product->save();
         }
 
@@ -151,6 +167,7 @@ class ProductionController extends Controller
             return redirect()->back()->with('error', 'Hubo un error al crear el producto');
         }
     }
+
 
     public function products_show(string $id)
     {

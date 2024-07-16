@@ -73,7 +73,7 @@
                 </div>
                 <div class="col-lg-auto">
                     <button class="btn btn-primary createTask" type="button" data-bs-toggle="modal" data-bs-target="#createTask">
-                        <i class="ri-add-fill align-bottom"></i> Add Tasks
+                        <i class="ri-add-fill align-bottom"></i> Buscar
                     </button>
                 </div>
             </div>
@@ -111,7 +111,7 @@
                                         <a href="#" data-bs-toggle="modal" data-bs-target="#verProduct{{ $product->id_product }}">
                                             <div class="avatar-sm bg-light rounded p-1">
                                                 @if ($product->photo_product)
-                                                    <img src="{{ asset('storage/' . $product->photo_product) }}" alt="" class="img-fluid d-block">
+                                                    <img src="{{ asset('public/' . $product->photo_product) }}" alt="" class="img-fluid d-block">
                                                 @else
                                                     <img src="{{ asset('assets/images/sin-foto.png') }}" alt="" class="img-fluid d-block">
                                                 @endif

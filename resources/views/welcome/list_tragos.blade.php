@@ -464,7 +464,7 @@
                                                     </div>
                                                     <div class="explore-place-bid-img">
                                                         @if ($product->photo_product)
-                                                            <img src="{{ asset('storage/' . $product->photo_product) }}" alt="" class="card-img-top explore-img">
+                                                            <img src="{{ asset('public/' . $product->photo_product) }}" alt="" class="card-img-top explore-img">
                                                         @else
                                                             <img src="{{ asset('assets/images/sin-foto.png') }}" alt="" class="card-img-top explore-img">
                                                         @endif
