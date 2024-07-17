@@ -48,35 +48,38 @@
         </div>
 
         <div class="p-3 bg-light rounded mb-4">
-            <div class="row g-2">
-                <div class="col-lg-auto">
-                    <select class="form-control" data-choices data-choices-search-false name="choices-select-sortlist" id="choices-select-sortlist">
-                        <option value="">Sort</option>
-                        <option value="By ID">By ID</option>
-                        <option value="By Name">By Name</option>
-                    </select>
-                </div>
-                <div class="col-lg-auto">
-                    <select class="form-control" data-choices data-choices-search-false name="choices-select-status" id="choices-select-status">
-                        <option value="">All Tasks</option>
-                        <option value="Completed">Completed</option>
-                        <option value="Inprogress">Inprogress</option>
-                        <option value="Pending">Pending</option>
-                        <option value="New">New</option>
-                    </select>
-                </div>
-                <div class="col-lg">
-                    <div class="search-box">
-                        <input type="text" id="searchTaskList" class="form-control search" placeholder="Search task name">
-                        <i class="ri-search-line search-icon"></i>
+            <form action="{{ route('facturas.busquedas') }}" method="GET">
+                <div class="row g-2">
+                    <div class="col-lg-auto">
+                        <input type="date" class="form-control" name="start_date" value="{{ request('start_date') }}">
+                    </div>
+                    <div class="col-lg-auto">
+                        <input type="date" class="form-control" name="end_date" value="{{ request('end_date') }}">
+                    </div>
+                    <div class="col-lg">
+                        <input type="text" class="form-control" name="nombres_clientes" placeholder="Buscar por nombre del cliente" value="{{ request('nombres_clientes') }}">
+                    </div>
+                    <div class="col-lg-auto">
+                        <select class="form-control" name="metodo_pago">
+                            <option value="">Todos los métodos de pago</option>
+                            <option value="Yape" {{ request('metodo_pago') == 'Yape' ? 'selected' : '' }}>Yape</option>
+                            <option value="Plin" {{ request('metodo_pago') == 'Plin' ? 'selected' : '' }}>Plin</option>
+                            <option value="Efectivo" {{ request('metodo_pago') == 'Efectivo' ? 'selected' : '' }}>Efectivo</option>
+                            <option value="Transferencia" {{ request('metodo_pago') == 'Transferencia' ? 'selected' : '' }}>Transferencia</option>
+                        </select>
+                    </div>
+                    {{-- <div class="col-lg-auto">
+                        <select class="form-control" name="status_factura">
+                            <option value="">Todos los estados</option>
+                            <option value="1" {{ request('status_factura') == '1' ? 'selected' : '' }}>Pagado</option>
+                            <option value="0" {{ request('status_factura') == '0' ? 'selected' : '' }}>Pendiente</option>
+                        </select>
+                    </div> --}}
+                    <div class="col-lg-auto">
+                        <button type="submit" class="btn btn-primary">Buscar <i class="ri-search-line"></i></button>
                     </div>
                 </div>
-                <div class="col-lg-auto">
-                    <button class="btn btn-primary createTask" type="button" data-bs-toggle="modal" data-bs-target="#createTask">
-                        <i class="ri-add-fill align-bottom"></i> Add Tasks
-                    </button>
-                </div>
-            </div>
+            </form>
         </div>
 
         <div class="todo-content position-relative px-4 mx-n4" id="todo-content">
@@ -90,14 +93,13 @@
                                 <th scope="col">Fecha registrado</th>
                                 <th scope="col">T. de productos</th>
                                 <th scope="col">Metodo de pago</th>
-                                <th scope="col">Monto a pagar</th>
-                                <th scope="col">Estado</th>
+                                <th scope="col">Total</th>
+                                {{-- <th scope="col">Estado</th> --}}
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
 
                         <tbody id="task-list">
-
                             @if ($facturas->isEmpty())
                                 <tr>
                                     <td colspan="12" class="text-center">No hay facturas registradas</td>
@@ -105,7 +107,6 @@
                             @else
                                 @foreach ($facturas as $factura)
                                     <tr>
-
                                         <td><b>{{ $factura->name_mesa }}</b></td>
                                         <td>
                                             @if ($factura->nombres_clientes)
@@ -117,11 +118,7 @@
                                             @endif
                                         </td>
                                         <td>{{ \Carbon\Carbon::parse($factura->created_at)->locale('es')->isoFormat('MMMM D \d\e YYYY, h:mm A') }}</td>
-
-                                        <td>
-                                            {{ $factura->relations->count() }} unidades
-                                        </td>
-
+                                        <td>{{ $factura->relations->count() }} unidades</td>
                                         <td>
                                             @switch($factura->metodo_pago)
                                                 @case('Yape')
@@ -140,12 +137,8 @@
                                                     {{ $factura->metodo_pago }}
                                             @endswitch
                                         </td>
-
-                                        <td>
-                                            S/. {{ $factura->relations->sum('price_product_factura') }}
-                                        </td>
-
-                                        <td>
+                                        <td>S/. {{ $factura->relations->sum('price_product_factura') }}</td>
+                                        {{-- <td>
                                             @if ($factura->status_factura == 1)
                                                 <span class="badge bg-success text-uppercase">Pagado</span>
                                             @elseif ($factura->status_factura)
@@ -153,16 +146,14 @@
                                             @else
                                                 <span class="badge bg-warning text-uppercase">Error de activación</span>
                                             @endif
-                                        </td>
-
+                                        </td> --}}
                                         <td>
                                             <div class="hstack gap-2">
-                                                <a href="#" class="btn btn-sm btn-soft-primary edit-list"><i class="ri-eye-fill align-bottom"></i></a>
+                                                <a href="#" class="btn btn-sm btn-soft-primary edit-list"><i class="ri-eye-fill align-bottom"></i> Ver factura </a>
                                                 <button class="btn btn-sm btn-soft-info edit-list" data-bs-toggle="modal" data-bs-target="#createTask" data-edit-id="#"><i class="ri-pencil-fill align-bottom"></i></button>
                                             </div>
                                         </td>
                                     </tr>
-
                                 @endforeach
                             @endif
                         </tbody>

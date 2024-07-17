@@ -1,6 +1,24 @@
 @extends('layouts.admin-sidebar')
 @section('content')
 
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/dayjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/locale/es.min.js"></script>
+
+@php
+    $user = auth()->user();
+    $hora = now()->hour;
+    $saludo = '';
+
+    if ($hora >= 5 && $hora < 12) {
+        $saludo = 'Buenos días';
+    } elseif ($hora >= 12 && $hora < 24) {
+        $saludo = 'Buenas tardes';
+    } else {
+        $saludo = 'Buenas madrugadas';
+    }
+@endphp
+
 <div class="main-content">
 
     <div class="page-content">
@@ -14,23 +32,20 @@
                             <div class="col-12">
                                 <div class="d-flex align-items-lg-center flex-lg-row flex-column">
                                     <div class="flex-grow-1">
-                                        <h4 class="fs-16 mb-1">Good Morning, Anna!</h4>
-                                        <p class="text-muted mb-0">Here's what's happening with your store today.</p>
+                                        <h4 class="fs-16 mb-1">{{ $saludo }}, {{ Auth::user()->name }}!</h4>
+                                        <p class="text-muted mb-0">Esto es lo que tienes en tu cuenta el día de hoy.</p>
                                     </div>
                                     <div class="mt-3 mt-lg-0">
                                         <form action="javascript:void(0);">
                                             <div class="row g-3 mb-0 align-items-center">
                                                 <div class="col-sm-auto">
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control border-0 dash-filter-picker shadow flatpickr-input" data-provider="flatpickr" data-range-date="true" data-date-format="d M, Y" data-deafult-date="01 Jan 2022 to 31 Jan 2022" readonly="readonly">
-                                                        <div class="input-group-text bg-primary border-primary text-white">
-                                                            <i class="ri-calendar-2-line"></i>
-                                                        </div>
+                                                        <input id="hora-actual" type="text" class="form-control border-0 dash-filter-picker shadow">
                                                     </div>
                                                 </div>
                                                 <!--end col-->
                                                 <div class="col-auto">
-                                                    <button type="button" class="btn btn-soft-success"><i class="ri-add-circle-line align-middle me-1"></i> Add Product</button>
+                                                    <button type="button" class="btn btn-soft-success"><i class="ri-add-circle-line align-middle me-1"></i> Hacer reporte general</button>
                                                 </div>
                                                 <!--end col-->
                                                 <div class="col-auto">
@@ -54,18 +69,13 @@
                                     <div class="card-body">
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1 overflow-hidden">
-                                                <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> Total Earnings</p>
-                                            </div>
-                                            <div class="flex-shrink-0">
-                                                <h5 class="text-success fs-14 mb-0">
-                                                    <i class="ri-arrow-right-up-line fs-13 align-middle"></i> +16.24 %
-                                                </h5>
+                                                <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> Total facturaciones</p>
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-end justify-content-between mt-4">
                                             <div>
-                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="559.25">559.25</span>k </h4>
-                                                <a href="" class="text-decoration-underline">View net earnings</a>
+                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4">S/. <span>0</span> </h4>
+                                                <a href="#" class="text-decoration-underline">Ver detalles</a>
                                             </div>
                                             <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-success-subtle rounded fs-3">
@@ -83,18 +93,13 @@
                                     <div class="card-body">
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1 overflow-hidden">
-                                             <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Orders</p>
-                                            </div>
-                                            <div class="flex-shrink-0">
-                                                <h5 class="text-danger fs-14 mb-0">
-                                                    <i class="ri-arrow-right-down-line fs-13 align-middle"></i> -3.57 %
-                                                </h5>
+                                             <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Ordenes delivery</p>
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-end justify-content-between mt-4">
                                             <div>
-                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="36894">36,894</span></h4>
-                                                <a href="" class="text-decoration-underline">View all orders</a>
+                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span>0</span></h4>
+                                                <a href="#" class="text-decoration-underline">Ver detalles</a>
                                             </div>
                                             <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-info-subtle rounded fs-3">
@@ -112,22 +117,17 @@
                                     <div class="card-body">
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1 overflow-hidden">
-                                                <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Customers</p>
-                                            </div>
-                                            <div class="flex-shrink-0">
-                                                <h5 class="text-success fs-14 mb-0">
-                                                    <i class="ri-arrow-right-up-line fs-13 align-middle"></i> +29.08 %
-                                                </h5>
+                                                <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Clientes registrados</p>
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-end justify-content-between mt-4">
                                             <div>
-                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value" data-target="183.35">183.35</span>M </h4>
-                                                <a href="" class="text-decoration-underline">See details</a>
+                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span>0</span> </h4>
+                                                <a href="#" class="text-decoration-underline">Ver detalles</a>
                                             </div>
                                             <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-warning-subtle rounded fs-3">
-                                                    <i class="bx bx-user-circle text-warning"></i>
+                                                    <i class="bx bx-user-circle text-white"></i>
                                                 </span>
                                             </div>
                                         </div>
@@ -141,22 +141,22 @@
                                     <div class="card-body">
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1 overflow-hidden">
-                                                <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> My Balance</p>
+                                                <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> Mi Inversión</p>
                                             </div>
-                                            <div class="flex-shrink-0">
+                                            {{-- <div class="flex-shrink-0">
                                                 <h5 class="text-muted fs-14 mb-0">
                                                     +0.00 %
                                                 </h5>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         <div class="d-flex align-items-end justify-content-between mt-4">
                                             <div>
-                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="165.89">165.89</span>k </h4>
-                                                <a href="" class="text-decoration-underline">Withdraw money</a>
+                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4">S/. <span>0</span></h4>
+                                                <a href="#" class="text-decoration-underline">Ver detalles</a>
                                             </div>
                                             <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-primary-subtle rounded fs-3">
-                                                    <i class="bx bx-wallet text-primary"></i>
+                                                    <i class="bx bx-wallet text-success"></i>
                                                 </span>
                                             </div>
                                         </div>
@@ -169,21 +169,12 @@
                             <div class="col-xl-6">
                                 <div class="card">
                                     <div class="card-header align-items-center d-flex">
-                                        <h4 class="card-title mb-0 flex-grow-1">Productos</h4>
+                                        <h4 class="card-title mb-0 flex-grow-1">Productos en la carta</h4>
                                         <div class="flex-shrink-0">
                                             <div class="dropdown card-header-dropdown">
-                                                <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <span class="fw-semibold text-uppercase fs-12">Sort by:
-                                                    </span><span class="text-muted">Today<i class="mdi mdi-chevron-down ms-1"></i></span>
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" href="#">Today</a>
-                                                    <a class="dropdown-item" href="#">Yesterday</a>
-                                                    <a class="dropdown-item" href="#">Last 7 Days</a>
-                                                    <a class="dropdown-item" href="#">Last 30 Days</a>
-                                                    <a class="dropdown-item" href="#">This Month</a>
-                                                    <a class="dropdown-item" href="#">Last Month</a>
-                                                </div>
+                                                <button type="button" class="btn btn-soft-info btn-sm">
+                                                    <i class="ri-file-list-3-line align-middle"></i> Generar reporte
+                                                </button>
                                             </div>
                                         </div>
                                     </div><!-- end card header -->
@@ -192,37 +183,39 @@
                                         <div class="table-responsive table-card">
                                             <table class="table table-hover table-centered align-middle table-nowrap mb-0">
                                                 <tbody>
-                                                    @foreach ($products as $product)
+                                                    @if($facturas->isEmpty())
                                                         <tr>
-                                                            <td>
-                                                                <div class="d-flex align-items-center">
-                                                                    <div class="avatar-sm bg-light rounded p-1 me-2">
-                                                                        <img src="{{ asset('public/' . $product->photo_product) }}" alt="" class="img-fluid d-block">
-                                                                    </div>
-                                                                    <div>
-                                                                        <h5 class="fs-14 my-1"><a href="apps-ecommerce-product-details.html" class="text-reset">Branded T-Shirts</a></h5>
-                                                                        <span class="text-muted">24 Apr 2021</span>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                            <td>
-                                                                <h5 class="fs-14 my-1 fw-normal">$29.00</h5>
-                                                                <span class="text-muted">Price</span>
-                                                            </td>
-                                                            <td>
-                                                                <h5 class="fs-14 my-1 fw-normal">62</h5>
-                                                                <span class="text-muted">Orders</span>
-                                                            </td>
-                                                            <td>
-                                                                <h5 class="fs-14 my-1 fw-normal">510</h5>
-                                                                <span class="text-muted">Stock</span>
-                                                            </td>
-                                                            <td>
-                                                                <h5 class="fs-14 my-1 fw-normal">$1,798</h5>
-                                                                <span class="text-muted">Amount</span>
-                                                            </td>
+                                                            <td colspan="12" class="text-center">Productos sin registrar</td>
                                                         </tr>
+                                                    @else
+                                                    @foreach ($products as $product)
+                                                        @foreach ($product->multipleProducts as $multipleProduct)
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="avatar-sm bg-light rounded p-1 me-2">
+                                                                            <img src="{{ asset('public/' . $product->photo_product) }}" alt="" class="img-fluid d-block">
+                                                                        </div>
+                                                                        <div>
+                                                                            <h5 class="fs-14 my-1"><a href="apps-ecommerce-product-details.html" class="text-reset">{{ $product->name_product }}</a></h5>
+                                                                            <span class="text-muted">
+                                                                                {{ $product->category->name_category }}
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal">{{ $multipleProduct->size_product_multiple }}</h5>
+                                                                    <span class="text-muted">Tamaño</span>
+                                                                </td>
+                                                                <td>
+                                                                    <h5 class="fs-14 my-1 fw-normal">S/. {{ $multipleProduct->price_product_multiple }}</h5>
+                                                                    <span class="text-muted">Precio</span>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
                                                     @endforeach
+                                                    @endif
                                                 </tbody>
                                             </table>
                                         </div>
@@ -238,187 +231,63 @@
                             <div class="col-xl-6">
                                 <div class="card card-height-100">
                                     <div class="card-header align-items-center d-flex">
-                                        <h4 class="card-title mb-0 flex-grow-1">Facturas</h4>
-                                        {{-- <div class="flex-shrink-0">
-                                            <div class="dropdown card-header-dropdown">
-                                                <a class="text-reset dropdown-btn" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <span class="text-muted">Report<i class="mdi mdi-chevron-down ms-1"></i></span>
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" href="#">Download Report</a>
-                                                    <a class="dropdown-item" href="#">Export</a>
-                                                    <a class="dropdown-item" href="#">Import</a>
-                                                </div>
-                                            </div>
-                                        </div> --}}
-                                    </div><!-- end card header -->
+                                        <h4 class="card-title mb-0 flex-grow-1">Facturas totales</h4>
+                                        <button type="button" class="btn btn-soft-info btn-sm">
+                                            <i class="ri-file-list-3-line align-middle"></i> Generar reporte
+                                        </button>
+                                    </div>
 
                                     <div class="card-body">
                                         <div class="table-responsive table-card">
                                             <table class="table table-centered table-hover align-middle table-nowrap mb-0">
                                                 <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 me-2">
-                                                                    <img src="assets/images/companies/img-1.png" alt="" class="avatar-sm p-2">
-                                                                </div>
-                                                                <div>
-                                                                    <h5 class="fs-14 my-1 fw-medium">
-                                                                        <a href="apps-ecommerce-seller-details.html" class="text-reset">iTest Factory</a>
-                                                                    </h5>
-                                                                    <span class="text-muted">Oliver Tyler</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <span class="text-muted">Bags and Wallets</span>
-                                                        </td>
-                                                        <td>
-                                                            <p class="mb-0">8547</p>
-                                                            <span class="text-muted">Stock</span>
-                                                        </td>
-                                                        <td>
-                                                            <span class="text-muted">$541200</span>
-                                                        </td>
-                                                        <td>
-                                                            <h5 class="fs-14 mb-0">32%<i class="ri-bar-chart-fill text-success fs-16 align-middle ms-2"></i></h5>
-                                                        </td>
-                                                    </tr><!-- end -->
-                                                    <tr>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 me-2">
-                                                                    <img src="assets/images/companies/img-2.png" alt="" class="avatar-sm p-2">
-                                                                </div>
-                                                                <div class="flex-grow-1">
-                                                                    <h5 class="fs-14 my-1 fw-medium"><a href="apps-ecommerce-seller-details.html" class="text-reset">Digitech Galaxy</a></h5>
-                                                                    <span class="text-muted">John Roberts</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <span class="text-muted">Watches</span>
-                                                        </td>
-                                                        <td>
-                                                            <p class="mb-0">895</p>
-                                                            <span class="text-muted">Stock</span>
-                                                        </td>
-                                                        <td>
-                                                            <span class="text-muted">$75030</span>
-                                                        </td>
-                                                        <td>
-                                                            <h5 class="fs-14 mb-0">79%<i class="ri-bar-chart-fill text-success fs-16 align-middle ms-2"></i></h5>
-                                                        </td>
-                                                    </tr><!-- end -->
-                                                    <tr>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 me-2">
-                                                                    <img src="assets/images/companies/img-3.png" alt="" class="avatar-sm p-2">
-                                                                </div>
-                                                                <div class="flex-gow-1">
-                                                                    <h5 class="fs-14 my-1 fw-medium"><a href="apps-ecommerce-seller-details.html" class="text-reset">Nesta Technologies</a></h5>
-                                                                    <span class="text-muted">Harley Fuller</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <span class="text-muted">Bike Accessories</span>
-                                                        </td>
-                                                        <td>
-                                                            <p class="mb-0">3470</p>
-                                                            <span class="text-muted">Stock</span>
-                                                        </td>
-                                                        <td>
-                                                            <span class="text-muted">$45600</span>
-                                                        </td>
-                                                        <td>
-                                                            <h5 class="fs-14 mb-0">90%<i class="ri-bar-chart-fill text-success fs-16 align-middle ms-2"></i></h5>
-                                                        </td>
-                                                    </tr><!-- end -->
-                                                    <tr>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 me-2">
-                                                                    <img src="assets/images/companies/img-8.png" alt="" class="avatar-sm p-2">
-                                                                </div>
-                                                                <div class="flex-grow-1">
-                                                                    <h5 class="fs-14 my-1 fw-medium"><a href="apps-ecommerce-seller-details.html" class="text-reset">Zoetic Fashion</a></h5>
-                                                                    <span class="text-muted">James Bowen</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <span class="text-muted">Clothes</span>
-                                                        </td>
-                                                        <td>
-                                                            <p class="mb-0">5488</p>
-                                                            <span class="text-muted">Stock</span>
-                                                        </td>
-                                                        <td>
-                                                            <span class="text-muted">$29456</span>
-                                                        </td>
-                                                        <td>
-                                                            <h5 class="fs-14 mb-0">40%<i class="ri-bar-chart-fill text-success fs-16 align-middle ms-2"></i></h5>
-                                                        </td>
-                                                    </tr><!-- end -->
-                                                    <tr>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 me-2">
-                                                                    <img src="assets/images/companies/img-5.png" alt="" class="avatar-sm p-2">
-                                                                </div>
-                                                                <div class="flex-grow-1">
-                                                                    <h5 class="fs-14 my-1 fw-medium">
-                                                                        <a href="apps-ecommerce-seller-details.html" class="text-reset">Meta4Systems</a>
-                                                                    </h5>
-                                                                    <span class="text-muted">Zoe Dennis</span>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <span class="text-muted">Furniture</span>
-                                                        </td>
-                                                        <td>
-                                                            <p class="mb-0">4100</p>
-                                                            <span class="text-muted">Stock</span>
-                                                        </td>
-                                                        <td>
-                                                            <span class="text-muted">$11260</span>
-                                                        </td>
-                                                        <td>
-                                                            <h5 class="fs-14 mb-0">57%<i class="ri-bar-chart-fill text-success fs-16 align-middle ms-2"></i></h5>
-                                                        </td>
-                                                    </tr><!-- end -->
+                                                    @if($facturas->isEmpty())
+                                                        <tr>
+                                                            <td colspan="12" class="text-center">Facturas sin registrar</td>
+                                                        </tr>
+                                                    @else
+                                                    @foreach ($facturas as $factura)
+                                                        @foreach ($factura->relations as $relation)
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div>
+                                                                            <h5 class="fs-14 my-1 fw-medium">
+                                                                                <a href="#" class="text-reset">
+                                                                                    @if($factura->nombres_clientes)
+                                                                                        <span class="text-center badge bg-info">{{ $factura->nombres_clientes }}</span>
+                                                                                    @else
+                                                                                        <span class="badge bg-danger">Sin nombre</span>
+                                                                                    @endif
+                                                                                </a>
+                                                                            </h5>
+                                                                            <span class="text-muted"><b>{{ $factura->name_mesa }}</b></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="text-muted">{{ \Carbon\Carbon::parse($factura->created_at)->locale('es')->isoFormat('MMMM D \d\e YYYY, h:mm A') }}</span>
+                                                                </td>
+                                                                <td>
+                                                                    <p class="mb-0">{{ $factura->metodo_pago }}</p>
+                                                                    <span class="text-muted">M. de pago</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="text-muted">{{ $factura->relations->count() }} unidades</span>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    @endforeach
+                                                    @endif
                                                 </tbody>
-                                            </table><!-- end table -->
+                                            </table>
                                         </div>
 
                                         <div class="align-items-center mt-4 pt-2 justify-content-between row text-center text-sm-start">
                                             <div class="col-sm">
                                                 <div class="text-muted">
-                                                    Showing <span class="fw-semibold">5</span> of <span class="fw-semibold">25</span> Results
+                                                    {{ $facturas->links() }}
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-auto  mt-3 mt-sm-0">
-                                                <ul class="pagination pagination-separated pagination-sm mb-0 justify-content-center">
-                                                    <li class="page-item disabled">
-                                                        <a href="#" class="page-link">←</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a href="#" class="page-link">1</a>
-                                                    </li>
-                                                    <li class="page-item active">
-                                                        <a href="#" class="page-link">2</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a href="#" class="page-link">3</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a href="#" class="page-link">→</a>
-                                                    </li>
-                                                </ul>
                                             </div>
                                         </div>
 
@@ -434,7 +303,7 @@
                                         <h4 class="card-title mb-0 flex-grow-1">Clientes</h4>
                                         <div class="flex-shrink-0">
                                             <button type="button" class="btn btn-soft-info btn-sm">
-                                                <i class="ri-file-list-3-line align-middle"></i> Generate Report
+                                                <i class="ri-file-list-3-line align-middle"></i> Generar reporte
                                             </button>
                                         </div>
                                     </div><!-- end card header -->
@@ -697,5 +566,32 @@
     <!-- End Page-content -->
 
 </div>
+
+<script>
+    const horaActualInput = document.getElementById('hora-actual');
+
+    function obtenerHoraActual() {
+        const ahora = new Date();
+        let horas = ahora.getHours();
+        let minutos = ahora.getMinutes();
+        let segundos = ahora.getSeconds();
+        const ampm = horas >= 12 ? 'PM' : 'AM';
+        horas = horas % 12;
+        horas = horas ? horas : 12;
+        minutos = minutos < 10 ? '0' + minutos : minutos;
+        segundos = segundos < 10 ? '0' + segundos : segundos;
+        const horaFormateada = horas + ':' + minutos + ':' + segundos + ' ' + ampm;
+        return horaFormateada;
+    }
+
+    function actualizarHora() {
+        const horaActual = obtenerHoraActual();
+        horaActualInput.value = horaActual;
+    }
+
+    actualizarHora();
+
+    setInterval(actualizarHora, 1000);
+</script>
 
 @endsection

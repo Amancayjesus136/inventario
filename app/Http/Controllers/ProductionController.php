@@ -191,33 +191,58 @@ class ProductionController extends Controller
     }
 
     public function facturas_store(Request $request)
-{
-    $data = $request->all();
-    $data['status_factura'] = $data['status_factura'] ?? 1;
-    $user_name = Auth::user()->name;
-    $data['user_created_product'] = $user_name;
-    $data['user_updated_product'] = $user_name;
+    {
+        $data = $request->all();
+        $data['status_factura'] = $data['status_factura'] ?? 1;
+        $user_name = Auth::user()->name;
+        $data['user_created_product'] = $user_name;
+        $data['user_updated_product'] = $user_name;
 
-    $now = \Carbon\Carbon::now('America/Lima');
-    $data['date_created_product'] = $now;
-    $data['date_updated_product'] = $now;
-    $data['fecha_factura'] = $now;
+        $now = \Carbon\Carbon::now('America/Lima');
+        $data['date_created_product'] = $now;
+        $data['date_updated_product'] = $now;
+        $data['fecha_factura'] = $now;
 
-    $factura = Factura::create($data);
+        $factura = Factura::create($data);
 
-    foreach ($request->name_product_factura as $index => $name_product) {
-        FacturaRelation::create([
-            'name_product_factura' => $name_product,
-            'size_product_factura' => $request->size_product_factura[$index],
-            'price_product_factura' => $request->price_product_factura[$index],
-            'igv_incluido' => $request->igv_incluido[$index],
-            'total_factura' => $request->total_factura,
-            'id_factura' => $factura->id_factura,
-        ]);
+        foreach ($request->name_product_factura as $index => $name_product) {
+            FacturaRelation::create([
+                'name_product_factura' => $name_product,
+                'size_product_factura' => $request->size_product_factura[$index],
+                'price_product_factura' => $request->price_product_factura[$index],
+                'igv_incluido' => $request->igv_incluido[$index],
+                'total_factura' => $request->total_factura,
+                'id_factura' => $factura->id_factura,
+            ]);
+        }
+
+        return redirect()->route('facturas.index')->with('success', 'Factura creada correctamente');
     }
 
-    return redirect()->route('facturas.index')->with('success', 'Factura creada correctamente');
-}
+    public function facturas_busqueda(Request $request)
+    {
+        $productos = Product::all();
+        $query = Factura::query();
 
+        if ($request->filled('start_date') && $request->filled('end_date')) {
+            $query->whereBetween('fecha_factura', [$request->start_date, $request->end_date]);
+        }
+
+        if ($request->filled('nombres_clientes')) {
+            $query->where('nombres_clientes', 'like', '%' . $request->nombres_clientes . '%');
+        }
+
+        if ($request->filled('metodo_pago')) {
+            $query->where('metodo_pago', $request->metodo_pago);
+        }
+
+        if ($request->filled('status_factura')) {
+            $query->where('status_factura', $request->status_factura);
+        }
+
+        $facturas = $query->with('relations')->get();
+
+        return view('facturas.principal_facturas', compact('facturas', 'productos'));
+    }
 
 }

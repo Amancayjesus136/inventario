@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Factura;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,7 +16,8 @@ class DashboardController extends Controller
     {
         $products = Product::paginate(5);
         $users = User::paginate(5);
-        return view('dashboard', compact('products', 'users'));
+        $facturas = Factura::paginate(5);
+        return view('dashboard', compact('products', 'users', 'facturas'));
     }
 
     public function dashboard_administrador(){
