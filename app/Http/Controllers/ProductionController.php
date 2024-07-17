@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Factura;
+use App\Models\FacturaEvento;
+use App\Models\FacturaRelation;
 use App\Models\MultipleProduct;
 use App\Models\Notificacion;
 use App\Models\Product;
@@ -21,12 +24,10 @@ class ProductionController extends Controller
      *-------------------------------------*/
     public function createSymlink(): JsonResponse
     {
-        // Eliminar symlink si existe
         if (file_exists(public_path('storage'))) {
             File::delete(public_path('storage'));
         }
 
-        // Crear symlink
         Artisan::call('storage:link');
 
         return response()->json(['message' => 'Symlink created successfully.']);
@@ -42,42 +43,40 @@ class ProductionController extends Controller
     }
 
     public function categories_store(Request $request)
-{
-    $data = $request->all();
-    $data['status_category'] = $data['status_category'] ?? 1;
+    {
+        $data = $request->all();
+        $data['status_category'] = $data['status_category'] ?? 1;
 
-    $data['user_created_category'] = Auth::user()->name;
-    $data['user_updated_category'] = Auth::user()->name;
-    $data['date_created_category'] = now();
-    $data['date_updated_category'] = now();
+        $data['user_created_category'] = Auth::user()->name;
+        $data['user_updated_category'] = Auth::user()->name;
+        $data['date_created_category'] = now();
+        $data['date_updated_category'] = now();
 
-    $category = Category::create($data);
+        $category = Category::create($data);
 
-    if ($request->hasFile('photo_category')) {
-        $file = $request->file('photo_category');
+        if ($request->hasFile('photo_category')) {
+            $file = $request->file('photo_category');
 
-        $request->validate([
-            'photo_category' => 'required|image|max:2048'
-        ]);
+            $request->validate([
+                'photo_category' => 'required|image|max:2048'
+            ]);
 
-        $imagenPath = $file->store('public/imagenes');
+            $imagenPath = $file->store('public/imagenes');
 
-        $fileName = basename($imagenPath);
+            $fileName = basename($imagenPath);
 
-        $relativeUrl = 'storage/public/imagenes/' . $fileName;
+            $relativeUrl = 'storage/public/imagenes/' . $fileName;
 
-        $category->photo_category = $relativeUrl;
-        $category->save();
+            $category->photo_category = $relativeUrl;
+            $category->save();
+        }
+
+        if ($category) {
+            return redirect()->route('categories.index')->with('success', 'Categoría creada correctamente');
+        } else {
+            return redirect()->back()->with('error', 'Hubo un error al crear la categoría');
+        }
     }
-
-    if ($category) {
-        return redirect()->route('categories.index')->with('success', 'Categoría creada correctamente');
-    } else {
-        return redirect()->back()->with('error', 'Hubo un error al crear la categoría');
-    }
-}
-
-
 
     public function categories_show(string $id)
     {
@@ -123,16 +122,10 @@ class ProductionController extends Controller
                 'photo_product' => 'required|image|max:2048'
             ]);
 
-            // Guardar la imagen en storage/app/public/imagenes
             $imagenPath = $file->store('public/imagenes');
-
-            // Obtener solo el nombre del archivo desde el path
             $fileName = basename($imagenPath);
-
-            // Construir la URL relativa para guardar en la base de datos
             $relativeUrl = 'storage/public/imagenes/' . $fileName;
 
-            // Guardar la URL relativa en el modelo Product
             $product->photo_product = $relativeUrl;
             $product->save();
         }
@@ -183,4 +176,50 @@ class ProductionController extends Controller
     {
         //
     }
+
+     /*------------------------------------*
+     *     Facturas                        *
+     *------------------------------------*/
+
+    public function facturas_index()
+    {
+        $facturas = Factura::all();
+        $productos = Product::all();
+        $sizes = MultipleProduct::select('size_product_multiple')->distinct()->get();
+        $prices = MultipleProduct::select('price_product_multiple')->distinct()->get();
+        return view('facturas.principal_facturas', compact('facturas', 'sizes', 'productos', 'prices'));
+    }
+
+    public function facturas_store(Request $request)
+    {
+        $data = $request->all();
+
+        $data['status_factura'] = $data['status_factura'] ?? 1;
+        $user_name = Auth::user()->name;
+        $data['user_created_product'] = $user_name;
+        $data['user_updated_product'] = $user_name;
+
+        $now = now();
+        $data['date_created_product'] = $now;
+        $data['date_updated_product'] = $now;
+        $data['fecha_factura'] = $now;
+
+        $factura = Factura::create($data);
+
+        $relationsData = [];
+        foreach ($request->name_product_factura as $index => $productName) {
+            $relationsData[] = [
+                'name_product_factura' => $productName,
+                'size_product_factura' => $request->size_product_factura[$index],
+                'price_product_factura' => $request->price_product_factura[$index],
+                'igv_incluido' => $request->igv_incluido[$index] ?? 0.18,
+                'id_factura' => $factura->id_factura,
+            ];
+        }
+
+        FacturaRelation::insert($relationsData);
+
+        return redirect()->route('facturas.index')->with('success', 'Factura creada correctamente');
+    }
+
 }

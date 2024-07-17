@@ -651,11 +651,20 @@
                             </li>
                         </ul>
 
+
+
                         <li class="menu-title"><span>Gestión de productos</span></li>
                         <li class="nav-item">
+                            <li class="nav-item">
+                                <a class="nav-link menu-link" href="{{ route('facturas.index') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                                    <i class="ri-survey-line"></i> <span data-key="t-dashboard">Facturas</span>
+                                </a>
+                            </li>
+
                             <a class="nav-link menu-link" href="#sidebarProductos" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProductos">
                                 <i class="ri-shopping-bag-line"></i> <span>Productos</span>
                             </a>
+
                             <div class="collapse menu-dropdown" id="sidebarProductos">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
@@ -668,7 +677,7 @@
                             </div>
                         </li>
 
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarProveedores" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProveedores">
                                 <i class="ri-truck-line"></i> <span>Proveedores</span>
                             </a>
@@ -685,9 +694,9 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> --}}
 
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarCompras" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCompras">
                                 <i class="ri-shopping-cart-line"></i> <span>Compras</span>
                             </a>
@@ -710,9 +719,9 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> --}}
 
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarReportes" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarReportes">
                                 <i class="ri-file-list-3-line"></i> <span>Reportes</span>
                             </a>
@@ -732,7 +741,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> --}}
 
                         <li class="menu-title"><span>Gestión de clientes</span></li>
                         <li class="nav-item">

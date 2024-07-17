@@ -49,6 +49,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 Route::get('/dashboardCliente', [DashboardController::class, 'dashboard_administrador'])->name('dashboardCliente');
 
 /*
@@ -62,6 +63,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/facturas/list', [ProductionController::class, 'facturas_index'])->name('facturas.index');
+Route::post('/facturas/store', [ProductionController::class, 'facturas_store'])->name('facturas.store');
+
 
 /*
 |--------------------------------------------------------------------------
