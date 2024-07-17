@@ -2,7 +2,7 @@
     <div class="file-manager-sidebar">
         <div class="p-4 d-flex flex-column h-100">
             <div class="mb-3">
-                <button class="btn btn-success w-100" data-bs-target="#modalRegistrar" data-bs-toggle="modal"><i class="ri-add-line align-bottom"></i> Agregar deuda</button>
+                <button class="btn btn-success w-100" data-bs-target="#modalRegistrar" data-bs-toggle="modal"><i class="ri-add-line align-bottom"></i> Agregar factura</button>
             </div>
 
             <div class="px-4 mx-n4" data-simplebar style="height: calc(100vh - 468px);">
@@ -85,8 +85,12 @@
                     <table class="table align-middle position-relative table-nowrap">
                         <thead class="table-active">
                             <tr>
-                                <th scope="col">Nombre categoria</th>
-                                <th scope="col">Referencia</th>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre de cliente</th>
+                                <th scope="col">Fecha registrado</th>
+                                <th scope="col">T. de productos</th>
+                                <th scope="col">Metodo de pago</th>
+                                <th scope="col">Monto a pagar</th>
                                 <th scope="col">Estado</th>
                                 <th scope="col">Acciones</th>
                             </tr>
@@ -102,13 +106,50 @@
                                 @foreach ($facturas as $factura)
                                     <tr>
 
-                                        <td>{{ $factura->name_category }}</td>
+                                        <td><b>{{ $factura->name_mesa }}</b></td>
+                                        <td>
+                                            @if ($factura->nombres_clientes)
+                                                <span class="badge bg-info text-uppercase">{{ $factura->nombres_clientes }}</span>
+                                            @elseif (empty($factura->nombres_clientes))
+                                                <span class="badge bg-danger text-uppercase">Sin nombres del cliente</span>
+                                            @else
+                                                <span class="badge bg-warning text-uppercase">Error de activación</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ \Carbon\Carbon::parse($factura->created_at)->locale('es')->isoFormat('MMMM D \d\e YYYY, h:mm A') }}</td>
 
                                         <td>
-                                            @if ($factura->status_category == 1)
-                                                <span class="badge bg-success text-uppercase">Activado</span>
-                                            @elseif ($factura->status_category)
-                                                <span class="badge bg-danger text-uppercase">Desactivado</span>
+                                            {{ $factura->relations->count() }} unidades
+                                        </td>
+
+                                        <td>
+                                            @switch($factura->metodo_pago)
+                                                @case('Yape')
+                                                    <span class="badge bg-primary text-uppercase">Yape</span>
+                                                    @break
+                                                @case('Plin')
+                                                    <span class="badge bg-secondary text-uppercase">Plin</span>
+                                                    @break
+                                                @case('Efectivo')
+                                                    <span class="badge bg-success text-uppercase">Efectivo</span>
+                                                    @break
+                                                @case('Transferencia')
+                                                    <span class="badge bg-warning text-uppercase">Transferencia</span>
+                                                    @break
+                                                @default
+                                                    {{ $factura->metodo_pago }}
+                                            @endswitch
+                                        </td>
+
+                                        <td>
+                                            S/. {{ $factura->relations->sum('price_product_factura') }}
+                                        </td>
+
+                                        <td>
+                                            @if ($factura->status_factura == 1)
+                                                <span class="badge bg-success text-uppercase">Pagado</span>
+                                            @elseif ($factura->status_factura)
+                                                <span class="badge bg-danger text-uppercase">Pendiente</span>
                                             @else
                                                 <span class="badge bg-warning text-uppercase">Error de activación</span>
                                             @endif
@@ -116,7 +157,7 @@
 
                                         <td>
                                             <div class="hstack gap-2">
-                                                <a href="#" class="btn btn-sm btn-soft-success edit-list"><i class="ri-eye-fill align-bottom"></i></a>
+                                                <a href="#" class="btn btn-sm btn-soft-primary edit-list"><i class="ri-eye-fill align-bottom"></i></a>
                                                 <button class="btn btn-sm btn-soft-info edit-list" data-bs-toggle="modal" data-bs-target="#createTask" data-edit-id="#"><i class="ri-pencil-fill align-bottom"></i></button>
                                             </div>
                                         </td>
@@ -137,11 +178,10 @@
     <div class="modal-dialog modal-lg modal-dialog-centered   ">
       <div class="modal-content">
         <div class="modal-header p-3 bg-soft-primary">
-          <h5 class="modal-title" id="exampleModalLabel">Registrar categorias</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Registrar factutas</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-
             <form action="{{ route('facturas.store') }}" method="POST" class="tablelist-form needs-validation" alt="user-profile-image" enctype="multipart/form-data" autocomplete="off" novalidate>
                 @csrf
 
@@ -161,9 +201,26 @@
                         </select>
                     </div>
 
-                    <div class="col-lg-8">
+                    <div class="col-lg-5">
                         <label for="customer_name" class="form-label">Nombre del cliente<span class="text-danger">(opcional)</span></label>
                         <input type="text" name="nombres_clientes" class="form-control" />
+                    </div>
+
+                    <div class="col-lg-3">
+                        <label for="customer_name" class="form-label">Metodo de pago<span class="text-danger">*</span></label>
+                        <select name="metodo_pago" class="form-control" required>
+                            <option value="">Seleccione un metodo</option>
+                            <option value="Yape">Yape</option>
+                            <option value="Plin">Plin</option>
+                            <option value="Efectivo">Efectivo</option>
+                            <option value="Transferencia">Transferencia</option>
+                        </select>
+                    </div>
+
+                    <hr>
+
+                    <div class="mb-3 d-flex justify-content-end mt-2">
+                        <a href="#" class="btn btn-info add-product">Agregar consumos +</a>
                     </div>
                 </div>
 
@@ -179,9 +236,18 @@
                             </select>
                         </div>
 
-                        <div class="col-lg-2">
+                        <div class="col-lg-3">
                             <label for="size" class="form-label">Tamaño<span class="text-danger">*</span></label>
-                            <input type="text" name="size_product_factura[]" class="form-control size-select" required />
+                            <select name="size_product_factura[]" class="form-control" required>
+                                <option value="">Seleccione el tamaño</option>
+                                <option value="Mediano">Mediano</option>
+                                <option value="Familiar">Familiar</option>
+                                <option value="1 L">1 L</option>
+                                <option value="600 ml">600 ml</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Chicha 1L">Chicha 1L</option>
+                                <option value="Chicha 500 ml">Chicha 500 ml</option>
+                            </select>
                         </div>
 
                         <div class="col-lg-2">
@@ -195,82 +261,57 @@
                             <input type="hidden" name="igv_incluido[]" value="0.18" />
                         </div>
 
-                        <div class="col-lg-2" style="margin-top: 42px">
-                            <a href="#" class="btn btn-info add-product">Agregar +</a>
-                            <a href="#" class="btn btn-danger remove-product" style="display: none;">Eliminar</a>
+                        <div class="col-lg-1" style="margin-top: 42px">
+                            <a href="#" class="btn btn-danger remove-product"><i class="ri-delete-bin-fill"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <div class="hstack gap-2 justify-content-end">
+                <input type="hidden" name="total_factura" id="total_factura" value="0" />
+
+                <div class="hstack gap-2 justify-content-end" style="margin-top: 50px">
                     <button type="button" class="btn btn-ghost-primary" data-bs-dismiss="modal"><i class="ri-close-line align-bottom"></i>Cerrar</button>
                     <button type="submit" class="btn btn-primary" id="addNewProject">Guardar</button>
                 </div>
             </form>
 
             <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    const productContainer = document.getElementById('product-container');
+            document.addEventListener('DOMContentLoaded', function() {
+                const productContainer = document.getElementById('product-container');
 
-                    const productsData = @json($productos);
+                function addProductSet() {
+                    const lastProductSet = productContainer.lastElementChild;
+                    const newProductSet = lastProductSet.cloneNode(true);
 
-                    productContainer.addEventListener('change', function(event) {
-                        if (event.target.classList.contains('product-select')) {
-                            const selectedProductId = event.target.value;
-                            const productSet = event.target.closest('.product-set');
-                            const sizeSelect = productSet.querySelector('.size-select');
-                            const priceInput = productSet.querySelector('.price-input');
-
-                            sizeSelect.innerHTML = '';
-                            priceInput.value = '';
-
-                            const selectedProduct = productsData.find(product => product.id == selectedProductId);
-                            if (selectedProduct) {
-                                selectedProduct.multiple_products.forEach(size => {
-                                    const option = document.createElement('option');
-                                    option.value = size.size_product_multiple;
-                                    option.textContent = size.size_product_multiple;
-                                    option.dataset.price = size.price;
-                                    sizeSelect.appendChild(option);
-                                });
-                            }
-                        }
-
-                        if (event.target.classList.contains('size-select')) {
-                            const selectedSize = event.target.value;
-                            const priceInput = event.target.closest('.product-set').querySelector('.price-input');
-                            const selectedOption = event.target.querySelector(`option[value="${selectedSize}"]`);
-                            if (selectedOption) {
-                                const price = selectedOption.dataset.price;
-                                priceInput.value = price ? price : '';
-                            }
+                    const inputs = newProductSet.querySelectorAll('input, select');
+                    inputs.forEach(input => {
+                        if (input.type === 'text' || input.type === 'number') {
+                            input.value = '';
+                        } else if (input.type === 'hidden') {
+                            input.value = '0.18';
                         }
                     });
 
-                    document.querySelector('.add-product').addEventListener('click', function(event) {
-                        event.preventDefault();
-                        const productSet = document.querySelector('.product-set');
-                        const newProductSet = productSet.cloneNode(true);
+                    newProductSet.querySelector('input[type="text"]').value = '18%';
 
-                        newProductSet.querySelector('.product-select').value = '';
-                        newProductSet.querySelector('.size-select').value = '';
-                        newProductSet.querySelector('.price-input').value = '';
+                    productContainer.appendChild(newProductSet);
+                }
 
-                        newProductSet.querySelector('.size-select').innerHTML = '<option value="">Seleccione un tamaño</option>';
-
-                        newProductSet.querySelector('.add-product').style.display = 'none';
-                        newProductSet.querySelector('.remove-product').style.display = 'inline-block';
-                        productContainer.appendChild(newProductSet);
-                    });
-
-                    productContainer.addEventListener('click', function(event) {
-                        if (event.target.classList.contains('remove-product')) {
-                            event.preventDefault();
-                            event.target.closest('.product-set').remove();
-                        }
-                    });
+                document.querySelector('.add-product').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    addProductSet();
                 });
 
+                productContainer.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('remove-product')) {
+                        e.preventDefault();
+                        const productSet = e.target.closest('.product-set');
+                        if (productSet) {
+                            productContainer.removeChild(productSet);
+                        }
+                    }
+                });
+            });
             </script>
 
         </div>

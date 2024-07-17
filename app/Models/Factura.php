@@ -15,8 +15,8 @@ class Factura extends Model
     protected $fillable = [
         'name_mesa',
         'nombres_clientes',
+        'metodo_pago',
         'fecha_factura',
-        'total_factura',
         'user_created_product',
         'user_updated_product',
         'date_created_product',
@@ -28,4 +28,5 @@ class Factura extends Model
     {
         return $this->hasMany(FacturaRelation::class, 'id_factura');
     }
+
 }

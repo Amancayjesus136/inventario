@@ -17,6 +17,7 @@ class FacturaRelation extends Model
         'size_product_factura',
         'price_product_factura',
         'igv_incluido',
+        'total_factura',
         'id_factura',
     ];
 
