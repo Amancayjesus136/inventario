@@ -50,6 +50,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+Route::get('/exportProductToExcel', [DashboardController::class, 'exportProductToExcel'])->name('exportProductToExcel');
+Route::get('/exportFacturaToExcel', [DashboardController::class, 'exportFacturaToExcel'])->name('exportFacturaToExcel');
+Route::get('/exportToExcel', [DashboardController::class, 'exportToExcel'])->name('exportToExcel');
+
+
 Route::get('/dashboardCliente', [DashboardController::class, 'dashboard_administrador'])->name('dashboardCliente');
 
 /*

@@ -45,7 +45,7 @@
                                                 </div>
                                                 <!--end col-->
                                                 <div class="col-auto">
-                                                    <button type="button" class="btn btn-soft-success"><i class="ri-add-circle-line align-middle me-1"></i> Hacer reporte general</button>
+                                                    <button type="button" class="btn btn-soft-success"><i class="ri-add-circle-line align-middle me-1"></i> <a href="{{ route('exportToExcel') }}"> Hacer reporte general</a></button>
                                                 </div>
                                                 <!--end col-->
                                                 <div class="col-auto">
@@ -173,7 +173,7 @@
                                         <div class="flex-shrink-0">
                                             <div class="dropdown card-header-dropdown">
                                                 <button type="button" class="btn btn-soft-info btn-sm">
-                                                    <i class="ri-file-list-3-line align-middle"></i> Generar reporte
+                                                    <i class="ri-file-list-3-line align-middle"></i> <a href="{{ route('exportProductToExcel')}}">Generar reporte</a>
                                                 </button>
                                             </div>
                                         </div>
@@ -233,7 +233,7 @@
                                     <div class="card-header align-items-center d-flex">
                                         <h4 class="card-title mb-0 flex-grow-1">Facturas totales</h4>
                                         <button type="button" class="btn btn-soft-info btn-sm">
-                                            <i class="ri-file-list-3-line align-middle"></i> Generar reporte
+                                            <i class="ri-file-list-3-line align-middle"></i> <a href="{{ route('exportFacturaToExcel') }}"> Generar reporte</a>
                                         </button>
                                     </div>
 
