@@ -17,6 +17,20 @@
     <link href="{{ asset('assets2/css/app.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets2/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
 
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+          var calendarEl = document.getElementById('calendar');
+          var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth'
+          });
+          calendar.render();
+        });
+
+      </script>
+
 </head>
 
 <body>
@@ -435,338 +449,45 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-7">
                                     <div class="text-center mb-5">
-                                        <h1 class="mb-3 ff-secondary fw-semibold text-capitalize lh-base">Find Your <span class="text-primary">Career</span> You Deserve it</h1>
-                                        <p class="text-muted">Post a job to tell us about your project. We'll quickly match you with the right freelancers.</p>
+                                        <h1 class="mb-3 ff-secondary fw-semibold text-capitalize lh-base">Nuestra <span class="text-primary">dirección</span> del local</h1>
+                                        <p class="text-muted"><a href="https://www.google.com/maps/place/12%C2%B014'05.0%22S+76%C2%B056'05.0%22W/@-12.234785,-76.9372615,16.95z/data=!4m4!3m3!8m2!3d-12.234721!4d-76.934726!5m1!1e4?entry=ttu">Ampliación Oasis, 200 Millas con pastor sevilla, Grupo 1 Mz C lote 03</a></p>
                                     </div>
                                 </div>
                                 <!-- end col -->
                             </div>
                             <!-- end row -->
 
+                            <style>
+                                #map {
+                                    height: 440px; /* Altura del mapa */
+                                    width: 100%; /* Ancho del mapa */
+                                }
+                            </style>
+
+
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <div class="card shadow-lg">
-                                        <div class="card-body">
-                                            <div class="d-flex">
-                                                <div class="avatar-sm">
-                                                    <div class="avatar-title bg-warning-subtle rounded">
-                                                        <img src="assets/images/companies/img-3.png" alt="" class="avatar-xxs">
-                                                    </div>
-                                                </div>
-                                                <div class="ms-3 flex-grow-1">
-                                                    <a href="#!">
-                                                        <h5>UI/UX designer</h5>
-                                                    </a>
-                                                    <ul class="list-inline text-muted mb-3">
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-building-line align-bottom me-1"></i> Nesta Technologies
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-map-pin-2-line align-bottom me-1"></i> USA
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-money-dollar-circle-line align-bottom me-1"></i> $23k - 35k
-                                                        </li>
-                                                    </ul>
-                                                    <div class="hstack gap-2">
-                                                        <span class="badge bg-success-subtle text-success">Design</span>
-                                                        <span class="badge bg-danger-subtle text-danger">UI/UX</span>
-                                                        <span class="badge bg-primary-subtle text-primary">Adobe XD</span>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle" data-bs-toggle="button">
-                                                        <span class="icon-on"><i class="ri-bookmark-line"></i></span>
-                                                        <span class="icon-off"><i class="ri-bookmark-fill"></i></span>
-                                                    </button>
-                                                </div>
+                                    <div class="col-lg-12">
+                                        <div class="card shadow-lg">
+                                            <div class="card-body">
+                                                <!-- Aquí colocas el iframe -->
+                                                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d4001.879985143073!2d-76.93724780961539!3d-12.234773315116326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMTLCsDE0JzA1LjAiUyA3NsKwNTYnMDUuMCJX!5e0!3m2!1ses!2spe!4v1721303298580!5m2!1ses!2spe" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+
                                 <div class="col-lg-6">
-                                    <div class="card shadow-lg">
-                                        <div class="card-body">
-                                            <div class="d-flex">
-                                                <div class="avatar-sm">
-                                                    <div class="avatar-title bg-primary-subtle rounded">
-                                                        <img src="assets/images/companies/img-2.png" alt="" class="avatar-xxs">
-                                                    </div>
-                                                </div>
-                                                <div class="ms-3 flex-grow-1">
-                                                    <a href="#!">
-                                                        <h5>Product Sales Specialist</h5>
-                                                    </a>
-                                                    <ul class="list-inline text-muted mb-3">
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-building-line align-bottom me-1"></i> Digitech Galaxy
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-map-pin-2-line align-bottom me-1"></i> Spain
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-money-dollar-circle-line align-bottom me-1"></i> $10k - 15k
-                                                        </li>
-                                                    </ul>
-                                                    <div class="hstack gap-2">
-                                                        <span class="badge bg-primary-subtle text-primary">Sales</span>
-                                                        <span class="badge bg-secondary-subtle text-secondary">Product</span>
-                                                        <span class="badge bg-info-subtle text-info">Business</span>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle active" data-bs-toggle="button">
-                                                        <span class="icon-on"><i class="ri-bookmark-line"></i></span>
-                                                        <span class="icon-off"><i class="ri-bookmark-fill"></i></span>
-                                                    </button>
-                                                </div>
+                                    <div class="col-lg-12">
+                                        <div class="card shadow-lg">
+                                            <div class="card-body">
+                                                <div id='calendar'></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="card shadow-lg">
-                                        <div class="card-body">
-                                            <div class="d-flex">
-                                                <div class="avatar-sm">
-                                                    <div class="avatar-title bg-danger-subtle rounded">
-                                                        <img src="assets/images/companies/img-4.png" alt="" class="avatar-xxs">
-                                                    </div>
-                                                </div>
-                                                <div class="ms-3 flex-grow-1">
-                                                    <a href="#!">
-                                                        <h5>Marketing Director</h5>
-                                                    </a>
-                                                    <ul class="list-inline text-muted mb-3">
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-building-line align-bottom me-1"></i> Meta4Systems
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-map-pin-2-line align-bottom me-1"></i> Sweden
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-money-dollar-circle-line align-bottom me-1"></i> $20k - 25k
-                                                        </li>
-                                                    </ul>
-                                                    <div class="hstack gap-2">
-                                                        <span class="badge bg-warning-subtle text-warning">Marketing</span>
-                                                        <span class="badge bg-info-subtle text-info">Bussiness</span>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle active" data-bs-toggle="button">
-                                                        <span class="icon-on"><i class="ri-bookmark-line"></i></span>
-                                                        <span class="icon-off"><i class="ri-bookmark-fill"></i></span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="card shadow-lg">
-                                        <div class="card-body">
-                                            <div class="d-flex">
-                                                <div class="avatar-sm">
-                                                    <div class="avatar-title bg-success-subtle rounded">
-                                                        <img src="assets/images/companies/img-9.png" alt="" class="avatar-xxs">
-                                                    </div>
-                                                </div>
-                                                <div class="ms-3 flex-grow-1">
-                                                    <a href="#!">
-                                                        <h5>Product Designer</h5>
-                                                    </a>
-                                                    <ul class="list-inline text-muted mb-3">
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-building-line align-bottom me-1"></i> Themesbrand
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-map-pin-2-line align-bottom me-1"></i> USA
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-money-dollar-circle-line align-bottom me-1"></i> $40k+
-                                                        </li>
-                                                    </ul>
-                                                    <div class="hstack gap-2">
-                                                        <span class="badge bg-success-subtle text-success">Design</span>
-                                                        <span class="badge bg-danger-subtle text-danger">UI/UX</span>
-                                                        <span class="badge bg-primary-subtle text-primary">Adobe XD</span>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle" data-bs-toggle="button">
-                                                        <span class="icon-on"><i class="ri-bookmark-line"></i></span>
-                                                        <span class="icon-off"><i class="ri-bookmark-fill"></i></span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="card shadow-lg">
-                                        <div class="card-body">
-                                            <div class="d-flex">
-                                                <div class="avatar-sm">
-                                                    <div class="avatar-title bg-info-subtle rounded">
-                                                        <img src="assets/images/companies/img-1.png" alt="" class="avatar-xxs">
-                                                    </div>
-                                                </div>
-                                                <div class="ms-3 flex-grow-1">
-                                                    <a href="#!">
-                                                        <h5>Project Manager</h5>
-                                                    </a>
-                                                    <ul class="list-inline text-muted mb-3">
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-building-line align-bottom me-1"></i> Syntyce Solutions
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-map-pin-2-line align-bottom me-1"></i> Germany
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-money-dollar-circle-line align-bottom me-1"></i> $18k - 26k
-                                                        </li>
-                                                    </ul>
-                                                    <div class="hstack gap-2">
-                                                        <span class="badge bg-danger-subtle text-danger">HR</span>
-                                                        <span class="badge bg-success-subtle text-success">Manager</span>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle" data-bs-toggle="button">
-                                                        <span class="icon-on"><i class="ri-bookmark-line"></i></span>
-                                                        <span class="icon-off"><i class="ri-bookmark-fill"></i></span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="card shadow-lg">
-                                        <div class="card-body">
-                                            <div class="d-flex">
-                                                <div class="avatar-sm">
-                                                    <div class="avatar-title bg-success-subtle rounded">
-                                                        <img src="assets/images/companies/img-7.png" alt="" class="avatar-xxs">
-                                                    </div>
-                                                </div>
-                                                <div class="ms-3 flex-grow-1">
-                                                    <a href="#!">
-                                                        <h5>Business Associate</h5>
-                                                    </a>
-                                                    <ul class="list-inline text-muted mb-3">
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-building-line align-bottom me-1"></i> Nesta Technologies
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-map-pin-2-line align-bottom me-1"></i> USA
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-money-dollar-circle-line align-bottom me-1"></i> $23k - 35k
-                                                        </li>
-                                                    </ul>
-                                                    <div class="hstack gap-2">
-                                                        <span class="badge bg-success-subtle text-success">Design</span>
-                                                        <span class="badge bg-danger-subtle text-danger">UI/UX</span>
-                                                        <span class="badge bg-primary-subtle text-primary">Adobe XD</span>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle active" data-bs-toggle="button">
-                                                        <span class="icon-on"><i class="ri-bookmark-line"></i></span>
-                                                        <span class="icon-off"><i class="ri-bookmark-fill"></i></span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="card shadow-lg">
-                                        <div class="card-body">
-                                            <div class="d-flex">
-                                                <div class="avatar-sm">
-                                                    <div class="avatar-title bg-info-subtle rounded">
-                                                        <img src="assets/images/companies/img-8.png" alt="" class="avatar-xxs">
-                                                    </div>
-                                                </div>
-                                                <div class="ms-3 flex-grow-1">
-                                                    <a href="#!">
-                                                        <h5>Recruiting Coordinator</h5>
-                                                    </a>
-                                                    <ul class="list-inline text-muted mb-3">
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-building-line align-bottom me-1"></i> Zoetic Fashion
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-map-pin-2-line align-bottom me-1"></i> Namibia
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-money-dollar-circle-line align-bottom me-1"></i> $12k - 15k
-                                                        </li>
-                                                    </ul>
-                                                    <div class="hstack gap-2">
-                                                        <span class="badge bg-success-subtle text-success">Full Time</span>
-                                                        <span class="badge bg-info-subtle text-info">Remote</span>
-                                                        <span class="badge bg-primary-subtle text-primary">Fashion</span>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle active" data-bs-toggle="button">
-                                                        <span class="icon-on"><i class="ri-bookmark-line"></i></span>
-                                                        <span class="icon-off"><i class="ri-bookmark-fill"></i></span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="card shadow-lg">
-                                        <div class="card-body">
-                                            <div class="d-flex">
-                                                <div class="avatar-sm">
-                                                    <div class="avatar-title bg-warning-subtle rounded">
-                                                        <img src="assets/images/companies/img-5.png" alt="" class="avatar-xxs">
-                                                    </div>
-                                                </div>
-                                                <div class="ms-3 flex-grow-1">
-                                                    <a href="#!">
-                                                        <h5>Customs officer</h5>
-                                                    </a>
-                                                    <ul class="list-inline text-muted mb-3">
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-building-line align-bottom me-1"></i> Nesta Technologies
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-map-pin-2-line align-bottom me-1"></i> USA
-                                                        </li>
-                                                        <li class="list-inline-item">
-                                                            <i class="ri-money-dollar-circle-line align-bottom me-1"></i> $41k - 45k
-                                                        </li>
-                                                    </ul>
-                                                    <div class="hstack gap-2">
-                                                        <span class="badge bg-success-subtle text-success">Design</span>
-                                                        <span class="badge bg-danger-subtle text-danger">UI/UX</span>
-                                                        <span class="badge bg-primary-subtle text-primary">Adobe XD</span>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle" data-bs-toggle="button">
-                                                        <span class="icon-on"><i class="ri-bookmark-line"></i></span>
-                                                        <span class="icon-off"><i class="ri-bookmark-fill"></i></span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="text-center mt-4">
-                                        <a href="#!" class="btn btn-ghost-primary">View More Jobs <i class="ri-arrow-right-line align-bottom"></i></a>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </section>
@@ -885,6 +606,31 @@
             </div>
         </footer>
 
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtSAR45TFgZjOs4nBFFZnII-6mMHLfSYI&callback=initMap" async defer></script>
+
+        <script>
+            function initMap() {
+                // Coordenadas de tu ubicación
+                const myLocation = { lat: -12.234722, lng: -76.934722 }; // 12°14'05.0"S 76°56'05.0"W
+
+                // Opciones del mapa
+                const mapOptions = {
+                    center: myLocation,
+                    zoom: 15, // Nivel de zoom inicial
+                };
+
+                // Crear el mapa dentro del contenedor con id "map"
+                const map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+                // Marcador en tu ubicación
+                const marker = new google.maps.Marker({
+                    position: myLocation,
+                    map: map,
+                    title: "Mi Ubicación"
+                });
+            }
+        </script>
+
     <!-- JAVASCRIPT -->
     <script src="{{ asset('assets2/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets2/libs/simplebar/simplebar.min.js') }}"></script>
@@ -905,6 +651,15 @@
 
     <!-- Dashboard init -->
     <script src="{{ asset('assets2/js/pages/dashboard-ecommerce.init.js') }}"></script>
+
+    <!-- App js -->
+    <script src="{{ asset('assets2/js/app.js') }}"></script>
+
+    <script src="{{ asset('assets2/libs/gmaps/gmaps.min.js') }}"></script>
+    <script src="{{ asset('assets2/libs/prismjs/prism.js') }}"></script>
+
+    <!-- gmaps init -->
+    <script src="{{ asset('assets2/js/pages/gmaps.init.js') }}"></script>
 
     <!-- App js -->
     <script src="{{ asset('assets2/js/app.js') }}"></script>
