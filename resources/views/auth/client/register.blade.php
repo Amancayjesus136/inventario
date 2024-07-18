@@ -58,22 +58,22 @@
                 </div>
 
                 <div class="mt-4 text-center">
-                    <div class="signin-other-title">
+                    {{-- <div class="signin-other-title">
                         <h5 class="fs-13 mb-4 title">Inicia sesión con</h5>
-                    </div>
+                    </div> --}}
 
-                    <div>
+                    {{-- <div>
                         <button type="button" class="btn btn-primary btn-icon waves-effect waves-light"><i class="ri-facebook-fill fs-16"></i></button>
                         <button type="button" class="btn btn-danger btn-icon waves-effect waves-light"><i class="ri-google-fill fs-16"></i></button>
                         <button type="button" class="btn btn-dark btn-icon waves-effect waves-light"><i class="ri-github-fill fs-16"></i></button>
                         <button type="button" class="btn btn-info btn-icon waves-effect waves-light"><i class="ri-twitter-fill fs-16"></i></button>
-                    </div>
+                    </div> --}}
                 </div>
             </form>
         </div>
 
         <div class="mt-5 text-center">
-            <p class="mb-0">¿Ya tienes una cuenta? <a href="{{ route('login') }}" class="fw-semibold text-primary text-decoration-underline">Inicia sesión</a></p>
+            <p class="mb-0">¿Ya tienes una cuenta? <a href="{{ route('login.usuario') }}" class="fw-semibold text-primary text-decoration-underline">Inicia sesión</a></p>
         </div>
     </div>
 </div>

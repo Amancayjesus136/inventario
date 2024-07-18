@@ -20,11 +20,14 @@ class DashboardController extends Controller
     {
         $products = Product::paginate(5);
         $users = User::where('status_user', 2)->get();
+        $usersTotal = User::where('status_user', 2)->count();
         // $facturas = Factura::paginate(5);
         $facturas = Factura::orderBy('created_at', 'desc')->paginate(5);
         $totalIngresos =FacturaRelation::sum('price_product_factura');
         $totalOrdenes = JsonData::count();
-        return view('dashboard', compact('products', 'users', 'facturas', 'totalIngresos', 'totalOrdenes'));
+        $totalPriceAll = JsonData::calculateTotalPriceAll();
+        // return response()->json(['totalPriceAll' => $totalPriceAll]);
+        return view('dashboard', compact('products', 'users', 'facturas', 'totalIngresos', 'totalOrdenes', 'usersTotal', 'totalPriceAll'));
     }
 
     public function dashboard_administrador(){

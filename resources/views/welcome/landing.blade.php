@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Dashboard | Velzon - Admin & Dashboard Template</title>
+    <title>Rincon Pizzero | Bienvenid@s</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
@@ -51,7 +51,7 @@
                             <img src="assets2/images/logo-sm.png" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="assets2/images/logo-light.png" alt="" height="17">
+                            <img src="assets2/images/logo-light.png" alt="" height="67">
                         </span>
                     </a>
                 </div>
@@ -434,7 +434,7 @@
                             <div class="row justify-content-between align-items-center">
                                 <div class="col-lg-6">
                                     <div>
-                                        <h1 class="display-6 fw-semibold text-capitalize mb-3 lh-base">Regístrate y aprovecha promociones exclusivas</h1>
+                                        <h1 class="display-6 fw-semibold text-capitalize mb-3 lh-base">Bienvenid@ <span class="text-primary">al Rincon Pizzero!</span></h1>
                                         <p class="lead text-muted lh-base mb-4">Crea una cuenta para recibir ofertas especiales. Al realizar compras iniciando sesión, disfrutarás de precios con descuentos por preferencia al ser nuestro cliente.</p>
                                         <form action="#" class="job-panel-filter">
                                             <div class="row g-md-0 g-2">

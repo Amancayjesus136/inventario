@@ -93,17 +93,22 @@
                                     <div class="card-body">
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1 overflow-hidden">
-                                             <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Ordenes delivery</p>
+                                                <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> Total Delivery</p>
                                             </div>
+                                            {{-- <div class="flex-shrink-0">
+                                                <h5 class="text-muted fs-14 mb-0">
+                                                    +0.00 %
+                                                </h5>
+                                            </div> --}}
                                         </div>
                                         <div class="d-flex align-items-end justify-content-between mt-4">
                                             <div>
-                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span>{{ $totalOrdenes ?? 0}}</span></h4>
+                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4">S/. {{ $totalPriceAll ?? 0}} <span></span></h4>
                                                 <a href="{{ route('ordenes.index') }}" class="text-decoration-underline">Ver detalles</a>
                                             </div>
                                             <div class="avatar-sm flex-shrink-0">
-                                                <span class="avatar-title bg-info-subtle rounded fs-3">
-                                                    <i class="bx bx-shopping-bag text-info"></i>
+                                                <span class="avatar-title bg-primary-subtle rounded fs-3">
+                                                    <i class="bx bx-cart text-warning"></i>
                                                 </span>
                                             </div>
                                         </div>
@@ -122,7 +127,7 @@
                                         </div>
                                         <div class="d-flex align-items-end justify-content-between mt-4">
                                             <div>
-                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span>0</span> </h4>
+                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span>{{ $usersTotal ?? 0}}</span> </h4>
                                                 <a href="#" class="text-decoration-underline">Ver detalles</a>
                                             </div>
                                             <div class="avatar-sm flex-shrink-0">
@@ -141,28 +146,24 @@
                                     <div class="card-body">
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1 overflow-hidden">
-                                                <p class="text-uppercase fw-medium text-muted text-truncate mb-0"> Mi Inversión</p>
+                                             <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Ordenes delivery</p>
                                             </div>
-                                            {{-- <div class="flex-shrink-0">
-                                                <h5 class="text-muted fs-14 mb-0">
-                                                    +0.00 %
-                                                </h5>
-                                            </div> --}}
                                         </div>
                                         <div class="d-flex align-items-end justify-content-between mt-4">
                                             <div>
-                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4">S/. 0 <span></span></h4>
-                                                <a href="#" class="text-decoration-underline">Ver detalles</a>
+                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span>{{ $totalOrdenes ?? 0}}</span></h4>
+                                                <a href="{{ route('ordenes.index') }}" class="text-decoration-underline">Ver detalles</a>
                                             </div>
                                             <div class="avatar-sm flex-shrink-0">
-                                                <span class="avatar-title bg-primary-subtle rounded fs-3">
-                                                    <i class="bx bx-wallet text-success"></i>
+                                                <span class="avatar-title bg-info-subtle rounded fs-3">
+                                                    <i class="bx bx-shopping-bag text-info"></i>
                                                 </span>
                                             </div>
                                         </div>
                                     </div><!-- end card body -->
                                 </div><!-- end card -->
                             </div><!-- end col -->
+
                         </div> <!-- end row-->
 
                         <div class="row">

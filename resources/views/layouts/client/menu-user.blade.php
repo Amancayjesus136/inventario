@@ -23,7 +23,7 @@
                             <img src="assets/images/logo-sm.png" alt="" height="22">
                         </span>
                         <span class="logo-lg">
-                            <img src="assets/images/logo-light.png" alt="" height="17">
+                            <img src="{{ asset('assets2/images/logo-light.png') }}" alt="" height="67">
                         </span>
                     </a>
                 </div>
@@ -400,11 +400,17 @@
                         <!-- item-->
                         <h6 class="dropdown-header">Bienvenido {{ Auth::user()->name }}!</h6>
                         <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Perfil</span></a>
-                        <a class="dropdown-item" href="apps-chat.html"><i class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Mensajes</span></a>
-                        <a class="dropdown-item" href="apps-tasks-kanban.html"><i class="mdi mdi-calendar-check-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Tablero de tareas</span></a>
+                        <a class="dropdown-item" href="apps-chat.html">
+                            <i class="mdi mdi-sale text-muted fs-16 align-middle me-1"></i>
+                            <span class="align-middle">Promociones</span>
+                        </a>
+                        <a class="dropdown-item" href="apps-purchases.html">
+                            <i class="mdi mdi-cart-outline text-muted fs-16 align-middle me-1"></i>
+                            <span class="align-middle">Historial de compras</span>
+                        </a>
+
                         <a class="dropdown-item" href="pages-faqs.html"><i class="mdi mdi-lifebuoy text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Ayuda</span></a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Facturas : <b>$0</b></span></a>
                         <a class="dropdown-item" href="pages-profile-settings.html"><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Configuración</span></a>
                         <a class="dropdown-item" href="#"><i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Bloquear pantalla</span></a>
                         <form method="POST" action="{{ route('logout') }}">

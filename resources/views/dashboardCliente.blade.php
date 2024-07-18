@@ -121,71 +121,40 @@
                     </div>
                     <!-- end row -->
 
-                    <div class="row g-3">
-                        <div class="col-12 col-md-6">
-                            <div class="card">
-                                <div class="card-body p-0">
-                                    <div class="alert alert-warning border-0 rounded-0 m-0 d-flex align-items-center" role="alert">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle text-warning me-2 icon-sm"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                                        <div class="flex-grow-1 text-truncate">
-                                            Your free trial expired in <b>17</b> days.
-                                        </div>
-                                        <div class="flex-shrink-0">
-                                            <a href="pages-pricing.html" class="text-reset text-decoration-underline"><b>Upgrade</b></a>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="card explore-box card-animate border">
+                                <div class="card-body">
+                                    <div class="explore-place-bid-img overflow-hidden rounded">
+                                        <img src="assets/images/nft/img-05.jpg" alt="" class="explore-img w-100">
+                                        <div class="bg-overlay"></div>
+                                        <div class="place-bid-btn">
+                                            <a href="#!" class="btn btn-success"><i class="ri-auction-fill align-bottom me-1"></i> Place Bid</a>
                                         </div>
                                     </div>
-
-                                    <div class="row align-items-end">
-                                        <div class="col-sm-8">
-                                            <div class="p-3">
-                                                <p class="fs-16 lh-base">Upgrade your plan from a <span class="fw-semibold">Free trial</span>, to ‘Premium Plan’ <i class="mdi mdi-arrow-right"></i></p>
-                                                <div class="mt-3">
-                                                    <a href="pages-pricing.html" class="btn btn-success">Upgrade Account!</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="px-3">
-                                                <img src="assets/images/user-illustarator-2.png" class="img-fluid" alt="">
-                                            </div>
-                                        </div>
+                                    <div class="mt-3">
+                                        <h6 class="fs-16 mb-0"><a href="apps-nft-item-details.html">Patterns arts &amp; culture</a></h6>
                                     </div>
-                                </div> <!-- end card-body-->
+                                </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6">
-                            <div class="card">
-                                <div class="card-body p-0">
-                                    <div class="alert alert-warning border-0 rounded-0 m-0 d-flex align-items-center" role="alert">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle text-warning me-2 icon-sm"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                                        <div class="flex-grow-1 text-truncate">
-                                            Your free trial expired in <b>17</b> days.
-                                        </div>
-                                        <div class="flex-shrink-0">
-                                            <a href="pages-pricing.html" class="text-reset text-decoration-underline"><b>Upgrade</b></a>
+                        <div class="col-lg-6">
+                            <div class="card explore-box card-animate border">
+                                <div class="card-body">
+                                    <div class="explore-place-bid-img overflow-hidden rounded">
+                                        <img src="assets/images/nft/img-05.jpg" alt="" class="explore-img w-100">
+                                        <div class="bg-overlay"></div>
+                                        <div class="place-bid-btn">
+                                            <a href="#!" class="btn btn-success"><i class="ri-auction-fill align-bottom me-1"></i> Place Bid</a>
                                         </div>
                                     </div>
-
-                                    <div class="row align-items-end">
-                                        <div class="col-sm-8">
-                                            <div class="p-3">
-                                                <p class="fs-16 lh-base">Upgrade your plan from a <span class="fw-semibold">Free trial</span>, to ‘Premium Plan’ <i class="mdi mdi-arrow-right"></i></p>
-                                                <div class="mt-3">
-                                                    <a href="pages-pricing.html" class="btn btn-success">Upgrade Account!</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="px-3">
-                                                <img src="assets/images/user-illustarator-2.png" class="img-fluid" alt="">
-                                            </div>
-                                        </div>
+                                    <div class="mt-3">
+                                        <h6 class="fs-16 mb-0"><a href="apps-nft-item-details.html">Patterns arts &amp; culture</a></h6>
                                     </div>
-                                </div> <!-- end card-body-->
+                                </div>
                             </div>
                         </div>
                     </div>
-
 
                     <!-- end row -->
                 </div>
