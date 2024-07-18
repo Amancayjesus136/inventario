@@ -19,7 +19,6 @@ return new class extends Migration
             $table->decimal('igv_incluido', 10,2);
             $table->string('size_product_factura');
             $table->string('total_factura');
-            $table->integer('status_factura');
             $table->timestamps();
         });
     }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('photo_product');
             $table->integer('category_product');
             $table->string('filtro_product');
-            $table->text('description_product');
+            $table->text('description_product')->nullable();
             $table->string('user_created_product');
             $table->string('user_updated_product');
             $table->date('date_created_product');

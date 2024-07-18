@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('json_data', function (Blueprint $table) {
-            $table->id();
-            $table->json('json_data');
-            $table->integer('status_orden');
+        Schema::create('contacts', function (Blueprint $table) {
+            $table->id('id_contact');
+            $table->string('nombres_contact');
+            $table->string('apellidos_contact');
+            $table->string('motivo_contact');
+            $table->text('mensaje_contact');
+            $table->integer('status_contact');
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('json_data');
+        Schema::dropIfExists('contacts');
     }
 };
