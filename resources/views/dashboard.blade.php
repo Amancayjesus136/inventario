@@ -75,7 +75,7 @@
                                         <div class="d-flex align-items-end justify-content-between mt-4">
                                             <div>
                                                 <h4 class="fs-22 fw-semibold ff-secondary mb-4">S/. <span>{{ $totalIngresos ?? 0 }}</span> </h4>
-                                                <a href="#" class="text-decoration-underline">Ver detalles</a>
+                                                <a href="{{ route('facturas.index') }}" class="text-decoration-underline">Ver detalles</a>
                                             </div>
                                             <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-success-subtle rounded fs-3">
@@ -98,8 +98,8 @@
                                         </div>
                                         <div class="d-flex align-items-end justify-content-between mt-4">
                                             <div>
-                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span>0</span></h4>
-                                                <a href="#" class="text-decoration-underline">Ver detalles</a>
+                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span>{{ $totalOrdenes ?? 0}}</span></h4>
+                                                <a href="{{ route('ordenes.index') }}" class="text-decoration-underline">Ver detalles</a>
                                             </div>
                                             <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-info-subtle rounded fs-3">

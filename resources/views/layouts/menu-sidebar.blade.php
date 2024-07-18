@@ -208,7 +208,7 @@
                                                 <img src="{{ asset('assets/images/users/avatar-2.jpg') }}" class="me-3 rounded-circle avatar-xs" alt="user-pic">
                                                 <div class="flex-1">
                                                     <a href="#!" class="stretched-link">
-                                                        <h6 class="mt-0 mb-1 fs-13 fw-semibold">Nueva Consulta</h6>
+                                                        <h6 class="mt-0 mb-1 fs-13 fw-semibold">Nueva notificación</h6>
                                                     </a>
                                                     <div class="fs-13 text-muted">
                                                         <p class="mb-1">{{ json_decode($notification->data)->message }}</p>
@@ -431,30 +431,30 @@
                             </div>
                         </li> --}}
 
-                        {{-- <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarCompras" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCompras">
                                 <i class="ri-shopping-cart-line"></i> <span>Compras</span>
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarCompras">
                                 <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
+                                    {{-- <li class="nav-item">
                                         <a href="#" class="nav-link"> Solicitud de compra </a>
-                                    </li>
+                                    </li> --}}
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link"> Ordenes de compra </a>
+                                        <a href="{{ route('ordenes.index') }}" class="nav-link"> Ordenes de compra </a>
                                     </li>
-                                    <li class="nav-item">
+                                    {{-- <li class="nav-item">
                                         <a href="#" class="nav-link"> Recepción de compra </a>
-                                    </li>
+                                    </li> --}}
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link"> Devoluciones del cliente </a>
+                                        <a href="{{ route('ordenes.ordenes_desactivados') }}" class="nav-link"> Deliverys cancelados </a>
                                     </li>
-                                    <li class="nav-item">
+                                    {{-- <li class="nav-item">
                                         <a href="#" class="nav-link"> Reportes </a>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
-                        </li> --}}
+                        </li>
 
                         {{-- <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarReportes" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarReportes">

@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class JsonData extends Model
 {
     use HasFactory;
-    protected $fillable = ['json_data'];
+
+    protected $fillable = ['json_data', 'status_orden'];
 
     protected $casts = [
-        'json_data' => 'array', // Para trabajar con datos JSON como arrays
+        'json_data' => 'array',
+        'status_orden' => 'integer',
     ];
 }

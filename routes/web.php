@@ -86,11 +86,20 @@ Route::post('/categories/store', [ProductionController::class, 'categories_store
 
 /*
 |--------------------------------------------------------------------------
-| Categorias
+| Productos
 |--------------------------------------------------------------------------
 |
 */
 Route::get('/products/list', [ProductionController::class, 'products_index'])->name('products.index');
 Route::post('/products/store', [ProductionController::class, 'products_store'])->name('products.store');
+
+/*
+|--------------------------------------------------------------------------
+| Ordenes
+|--------------------------------------------------------------------------
+|
+*/
+Route::get('/ordenes/list', [ProductionController::class, 'ordenes_index'])->name('ordenes.index');
+Route::get('/ordenes/cancelados', [ProductionController::class, 'ordenes_desactivados'])->name('ordenes.ordenes_desactivados');
 
 require __DIR__.'/auth.php';

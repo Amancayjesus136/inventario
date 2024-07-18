@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Factura;
 use App\Models\FacturaEvento;
 use App\Models\FacturaRelation;
+use App\Models\JsonData;
 use App\Models\MultipleProduct;
 use App\Models\Notificacion;
 use App\Models\Product;
@@ -242,6 +243,22 @@ class ProductionController extends Controller
         $facturas = $query->with('relations')->get();
 
         return view('facturas.principal_facturas', compact('facturas', 'productos'));
+    }
+
+     /*------------------------------------*
+     *     Facturas                        *
+     *------------------------------------*/
+
+    public function ordenes_index()
+    {
+        $jsonData = JsonData::all();
+        return view('ordenes.delivery', ['jsonData' => $jsonData]);
+    }
+
+    public function ordenes_desactivados()
+    {
+        $jsonData = JsonData::where('status_orden', 0)->get();
+        return view('ordenes.delivery_cancelados', ['jsonData' => $jsonData]);
     }
 
 }

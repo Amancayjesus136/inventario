@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Factura;
+use App\Models\JsonData;
 use App\Models\MultipleProduct;
 use App\Models\Product;
 use App\Models\User;
@@ -20,7 +21,8 @@ class DashboardController extends Controller
         $facturas = Factura::paginate(5);
         $facturas = Factura::orderBy('created_at', 'desc')->paginate(5);
         $totalIngresos = MultipleProduct::sum('price_product_multiple');
-        return view('dashboard', compact('products', 'users', 'facturas', 'totalIngresos'));
+        $totalOrdenes = JsonData::count();
+        return view('dashboard', compact('products', 'users', 'facturas', 'totalIngresos', 'totalOrdenes'));
     }
 
     public function dashboard_administrador(){

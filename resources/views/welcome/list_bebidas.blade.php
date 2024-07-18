@@ -790,11 +790,15 @@
             $('.dropdown-menu-cart .dropdown-item-cart').each(function() {
                 const productName = $(this).find('.fs-14 a').text().trim();
                 const selectedPrice = $(this).find('.cart-item-price').text().trim();
-
                 const selectedSize = findSizeByPrice(productName, selectedPrice);
 
-                const itemText = `🍕 *Producto:* ${productName}\n 💲 *Precio:* ${selectedPrice}\n\n`;
-                cartItems.push(itemText);
+                const item = {
+                    productName: productName,
+                    selectedPrice: selectedPrice,
+                    selectedSize: selectedSize
+                };
+
+                cartItems.push(item);
             });
 
             if (cartItems.length === 0) {
@@ -802,16 +806,28 @@
                 return;
             }
 
-            const introMessage = "Estoy interesado en los siguientes productos:\n\n";
-            const productsMessage = cartItems.join("");
+            $.ajax({
+                url: '/api/cart',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ cartItems: cartItems }),
+                success: function(response) {
+                    const introMessage = "Estoy interesado en los siguientes productos:\n\n";
+                    const productsMessage = cartItems.map(item => `🍕 *Producto:* ${item.productName}\n 💲 *Precio:* ${item.selectedPrice}\n\n`).join("");
 
-            const fullMessage = encodeURIComponent(introMessage + productsMessage);
+                    const fullMessage = encodeURIComponent(introMessage + productsMessage);
+                    const whatsappLink = `https://api.whatsapp.com/send?phone=+51958096704&text=${fullMessage}`;
+                    window.open(whatsappLink, '_blank');
 
-            const whatsappLink = `https://api.whatsapp.com/send?phone=+51958096704&text=${fullMessage}`;
-            window.open(whatsappLink, '_blank');
+                    resetCart();
 
-            resetCart();
+                },
+                error: function(error) {
+                    alert('Error al enviar los productos al API.');
+                }
+            });
         }
+
 
         function findSizeByPrice(productName, selectedPrice) {
             let selectedSize = '';
