@@ -20,7 +20,9 @@
 
     @include('layouts.client.menu-user')
     @yield('content2')
-    @include('layouts.client.footer-user')
+    {{-- @include('layouts.client.footer-user') --}}
+
+
 
     <!-- JAVASCRIPT -->
     <script src="{{ asset('assets2/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

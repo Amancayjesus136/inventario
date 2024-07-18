@@ -359,7 +359,7 @@
                         <ul class="navbar-nav" id="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link menu-link" href="#" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                                    <i class="bx bx-map"></i> <span data-key="t-dashboard">Dirección del local</span>
+                                    <i class="bx bx-map"></i> <span data-key="t-dashboard">Dirección y horarios</span>
                                 </a>
                             </li>
                         </ul>
@@ -371,13 +371,10 @@
                             <div class="collapse menu-dropdown" id="sidebarDashboards">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link" data-key="t-analytics"> Contactos </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link" data-key="t-crm"> Horarios </a>
-                                    </li>
-                                    <li class="nav-item">
                                         <a href="#" class="nav-link" data-key="t-crypto"> Sobre nosotros </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link" data-key="t-analytics"> Contactos </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#" class="nav-link" data-key="t-projects"> Terminos y condiciones </a>

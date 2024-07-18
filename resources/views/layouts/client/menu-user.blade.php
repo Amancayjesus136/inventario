@@ -141,74 +141,19 @@
                     </div>
                 </div>
 
-                <div class="dropdown ms-1 topbar-head-dropdown header-item">
-                    <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img id="header-lang-img" src="{{ asset('assets/images/flags/us.svg') }}" alt="Header Language" height="20" class="rounded">
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end">
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item language py-2" data-lang="en" title="English">
-                            <img src="{{ asset('assets/images/flags/us.svg') }}" alt="user-image" class="me-2 rounded" height="18">
-                            <span class="align-middle">English</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp" title="Spanish">
-                            <img src="{{ asset('assets/images/flags/spain.svg') }}" alt="user-image" class="me-2 rounded" height="18">
-                            <span class="align-middle">Española</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr" title="German">
-                            <img src="{{ asset('assets/images/flags/germany.svg') }}" alt="user-image" class="me-2 rounded" height="18"> <span class="align-middle">Deutsche</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it" title="Italian">
-                            <img src="{{ asset('assets/images/flags/italy.svg') }}" alt="user-image" class="me-2 rounded" height="18">
-                            <span class="align-middle">Italiana</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru" title="Russian">
-                            <img src="{{ asset('assets/images/flags/russia.svg') }}" alt="user-image" class="me-2 rounded" height="18">
-                            <span class="align-middle">русский</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ch" title="Chinese">
-                            <img src="{{ asset('assets/images/flags/china.svg') }}" alt="user-image" class="me-2 rounded" height="18">
-                            <span class="align-middle">中国人</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="fr" title="French">
-                            <img src="{{ asset('assets/images/flags/french.svg') }}" alt="user-image" class="me-2 rounded" height="18">
-                            <span class="align-middle">français</span>
-                        </a>
-
-                        <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ar" title="Arabic">
-                            <img src="{{ asset('assets/images/flags/ae.svg') }}" alt="user-image" class="me-2 rounded" height="18">
-                            <span class="align-middle">Arabic</span>
-                        </a>
-                    </div>
-                </div>
-
                 <div class="dropdown topbar-head-dropdown ms-1 header-item">
-                    <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class='bx bx-category-alt fs-22'></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-lg p-0 dropdown-menu-end">
                         <div class="p-3 border-top-0 border-start-0 border-end-0 border-dashed border">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h6 class="m-0 fw-semibold fs-15"> Web Apps </h6>
+                                    <h6 class="m-0 fw-semibold fs-15"> Redes Sociales </h6>
                                 </div>
                                 <div class="col-auto">
-                                    <a href="#!" class="btn btn-sm btn-soft-info"> View All Apps
-                                        <i class="ri-arrow-right-s-line align-middle"></i></a>
+                                    {{-- <a href="#!" class="btn btn-sm btn-soft-info shadow-none"> View All Apps
+                                        <i class="ri-arrow-right-s-line align-middle"></i></a> --}}
                                 </div>
                             </div>
                         </div>
@@ -217,41 +162,42 @@
                             <div class="row g-0">
                                 <div class="col">
                                     <a class="dropdown-icon-item" href="#!">
-                                        <img src="assets/images/brands/github.png" alt="Github">
-                                        <span>GitHub</span>
+                                        <img src="{{ asset('assets2/images/brands/fb.png') }}" alt="Github">
+                                        <span>Facebook</span>
                                     </a>
                                 </div>
                                 <div class="col">
                                     <a class="dropdown-icon-item" href="#!">
-                                        <img src="assets/images/brands/bitbucket.png" alt="bitbucket">
-                                        <span>Bitbucket</span>
+                                        <img src="{{ asset('assets2/images/brands/ig.png') }}" alt="bitbucket">
+                                        <span>Instagram</span>
                                     </a>
                                 </div>
                                 <div class="col">
                                     <a class="dropdown-icon-item" href="#!">
-                                        <img src="assets/images/brands/dribbble.png" alt="dribbble">
-                                        <span>Dribbble</span>
+                                        <img src="{{ asset('assets2/images/brands/tik.png') }}" alt="dribbble">
+                                        <span>Tik Tok</span>
                                     </a>
                                 </div>
                             </div>
 
                             <div class="row g-0">
                                 <div class="col">
-                                    <a class="dropdown-icon-item" href="#!">
-                                        <img src="assets/images/brands/dropbox.png" alt="dropbox">
-                                        <span>Dropbox</span>
+                                    <a class="dropdown-icon-item" href="https://wa.me/+51933924456">
+                                        <img src="{{ asset('assets2/images/brands/wsp2.png') }}" alt="dropbox">
+                                        <span>WhatsApp</span>
                                     </a>
                                 </div>
                                 <div class="col">
-                                    <a class="dropdown-icon-item" href="#!">
-                                        <img src="assets/images/brands/mail_chimp.png" alt="mail_chimp">
-                                        <span>Mail Chimp</span>
+                                    <a class="dropdown-icon-item" href="mailto:amancayjesus136@gmail.com">
+                                        <img src="{{ asset('assets2/images/brands/gmail.png') }}" alt="mail_chimp">
+                                        <span>Gmail</span>
                                     </a>
                                 </div>
+
                                 <div class="col">
                                     <a class="dropdown-icon-item" href="#!">
-                                        <img src="assets/images/brands/slack.png" alt="slack">
-                                        <span>Slack</span>
+                                        {{-- <img src="assets2/images/brands/slack.png" alt="slack">
+                                        <span>Slack</span> --}}
                                     </a>
                                 </div>
                             </div>
@@ -260,134 +206,31 @@
                 </div>
 
                 <div class="dropdown topbar-head-dropdown ms-1 header-item">
-                    <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" id="page-header-cart-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle shadow-none" id="page-header-cart-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
                         <i class='bx bx-shopping-bag fs-22'></i>
-                        <span class="position-absolute topbar-badge cartitem-badge fs-10 translate-middle badge rounded-pill bg-info">5</span>
+                        <span id="cart-item-count" class="position-absolute topbar-badge cartitem-badge fs-10 translate-middle badge rounded-pill bg-info">0</span>
                     </button>
                     <div class="dropdown-menu dropdown-menu-xl dropdown-menu-end p-0 dropdown-menu-cart" aria-labelledby="page-header-cart-dropdown">
                         <div class="p-3 border-top-0 border-start-0 border-end-0 border-dashed border">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h6 class="m-0 fs-16 fw-semibold"> My Cart</h6>
+                                    <h6 class="m-0 fs-16 fw-semibold"> Mi carrito</h6>
                                 </div>
                                 <div class="col-auto">
-                                    <span class="badge badge-soft-warning fs-13"><span class="cartitem-badge">7</span>
-                                        items</span>
+                                    <span id="cart-item-total-count" class="badge bg-warning-subtle text-warning fs-13"><span class="cartitem-badge">0</span> items</span>
                                 </div>
                             </div>
                         </div>
                         <div data-simplebar style="max-height: 300px;">
-                            <div class="p-2">
+                            <div id="cart-items-list" class="p-2">
                                 <div class="text-center empty-cart" id="empty-cart">
                                     <div class="avatar-md mx-auto my-3">
-                                        <div class="avatar-title bg-soft-info text-info fs-36 rounded-circle">
+                                        <div class="avatar-title bg-info-subtle text-info fs-36 rounded-circle">
                                             <i class='bx bx-cart'></i>
                                         </div>
                                     </div>
-                                    <h5 class="mb-3">Your Cart is Empty!</h5>
-                                    <a href="apps-ecommerce-products.html" class="btn btn-success w-md mb-3">Shop Now</a>
-                                </div>
-                                <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
-                                    <div class="d-flex align-items-center">
-                                        <img src="assets/images/products/img-1.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
-                                        <div class="flex-1">
-                                            <h6 class="mt-0 mb-1 fs-14">
-                                                <a href="apps-ecommerce-product-details.html" class="text-reset">Branded
-                                                    T-Shirts</a>
-                                            </h6>
-                                            <p class="mb-0 fs-12 text-muted">
-                                                Quantity: <span>10 x $32</span>
-                                            </p>
-                                        </div>
-                                        <div class="px-2">
-                                            <h5 class="m-0 fw-normal">$<span class="cart-item-price">320</span></h5>
-                                        </div>
-                                        <div class="ps-2">
-                                            <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn"><i class="ri-close-fill fs-16"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
-                                    <div class="d-flex align-items-center">
-                                        <img src="assets/images/products/img-2.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
-                                        <div class="flex-1">
-                                            <h6 class="mt-0 mb-1 fs-14">
-                                                <a href="apps-ecommerce-product-details.html" class="text-reset">Bentwood Chair</a>
-                                            </h6>
-                                            <p class="mb-0 fs-12 text-muted">
-                                                Quantity: <span>5 x $18</span>
-                                            </p>
-                                        </div>
-                                        <div class="px-2">
-                                            <h5 class="m-0 fw-normal">$<span class="cart-item-price">89</span></h5>
-                                        </div>
-                                        <div class="ps-2">
-                                            <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn"><i class="ri-close-fill fs-16"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
-                                    <div class="d-flex align-items-center">
-                                        <img src="assets/images/products/img-3.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
-                                        <div class="flex-1">
-                                            <h6 class="mt-0 mb-1 fs-14">
-                                                <a href="apps-ecommerce-product-details.html" class="text-reset">
-                                                    Borosil Paper Cup</a>
-                                            </h6>
-                                            <p class="mb-0 fs-12 text-muted">
-                                                Quantity: <span>3 x $250</span>
-                                            </p>
-                                        </div>
-                                        <div class="px-2">
-                                            <h5 class="m-0 fw-normal">$<span class="cart-item-price">750</span></h5>
-                                        </div>
-                                        <div class="ps-2">
-                                            <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn"><i class="ri-close-fill fs-16"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
-                                    <div class="d-flex align-items-center">
-                                        <img src="assets/images/products/img-6.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
-                                        <div class="flex-1">
-                                            <h6 class="mt-0 mb-1 fs-14">
-                                                <a href="apps-ecommerce-product-details.html" class="text-reset">Gray
-                                                    Styled T-Shirt</a>
-                                            </h6>
-                                            <p class="mb-0 fs-12 text-muted">
-                                                Quantity: <span>1 x $1250</span>
-                                            </p>
-                                        </div>
-                                        <div class="px-2">
-                                            <h5 class="m-0 fw-normal">$ <span class="cart-item-price">1250</span></h5>
-                                        </div>
-                                        <div class="ps-2">
-                                            <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn"><i class="ri-close-fill fs-16"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
-                                    <div class="d-flex align-items-center">
-                                        <img src="assets/images/products/img-5.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
-                                        <div class="flex-1">
-                                            <h6 class="mt-0 mb-1 fs-14">
-                                                <a href="apps-ecommerce-product-details.html" class="text-reset">Stillbird Helmet</a>
-                                            </h6>
-                                            <p class="mb-0 fs-12 text-muted">
-                                                Quantity: <span>2 x $495</span>
-                                            </p>
-                                        </div>
-                                        <div class="px-2">
-                                            <h5 class="m-0 fw-normal">$<span class="cart-item-price">990</span></h5>
-                                        </div>
-                                        <div class="ps-2">
-                                            <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn"><i class="ri-close-fill fs-16"></i></button>
-                                        </div>
-                                    </div>
+                                    <h5 class="mb-3">Carrito vacio</h5>
+                                    {{-- <a href="apps-ecommerce-products.html" class="btn btn-success w-md mb-3">Shop Now</a> --}}
                                 </div>
                             </div>
                         </div>
@@ -395,13 +238,13 @@
                             <div class="d-flex justify-content-between align-items-center pb-3">
                                 <h5 class="m-0 text-muted">Total:</h5>
                                 <div class="px-2">
-                                    <h5 class="m-0" id="cart-item-total">$1258.58</h5>
+                                    <h5 id="cart-item-total">S/.0.00</h5>
                                 </div>
                             </div>
+                            <button onclick="sendWhatsAppMessage()" class="btn btn-success text-center w-100">
+                                <i class="ri-whatsapp-line"></i> Enviar al WhatsApp
+                            </button>
 
-                            <a href="apps-ecommerce-checkout.html" class="btn btn-success text-center w-100">
-                                Checkout
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -412,13 +255,7 @@
                     </button>
                 </div>
 
-                <div class="ms-1 header-item d-none d-sm-flex">
-                    <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle light-dark-mode">
-                        <i class='bx bx-moon fs-22'></i>
-                    </button>
-                </div>
-
-                <div class="dropdown topbar-head-dropdown ms-1 header-item" id="notificationDropdown">
+                {{-- <div class="dropdown topbar-head-dropdown ms-1 header-item" id="notificationDropdown">
                     @php
                         use App\Models\Notificacion;
                         $notifications = Notificacion::whereNull('read_at')->orderBy('created_at', 'desc')->get();
@@ -547,9 +384,7 @@
                         // Fetch notifications every 30 seconds
                         setInterval(fetchNotifications, 30000);
                     });
-                </script>
-
-
+                </script> --}}
 
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -643,136 +478,62 @@
                     </div>
                     <ul class="navbar-nav" id="navbar-nav">
                         <ul class="navbar-nav" id="navbar-nav">
-                            <li class="menu-title"><span>Menu</span></li>
+                            {{-- <li class="menu-title"><span data-key="t-menu">Menu</span></li> --}}
                             <li class="nav-item">
-                                <a class="nav-link menu-link" href="{{ route('login') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                                    <i class="bx bx-home"></i> <span data-key="t-dashboard">Dashboard</span>
+                                <a class="nav-link menu-link" href="{{ route('dashboardCliente') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                                    <i class="bx bx-home"></i> <span data-key="t-dashboard">Inicio</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav" id="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link menu-link" href="{{ route('details.category') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                                    <i class="bx bx-book-open"></i> <span data-key="t-dashboard">Carta</span>
                                 </a>
                             </li>
                         </ul>
 
-                        <li class="menu-title"><span>Gestión de productos</span></li>
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarProductos" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProductos">
-                                <i class="ri-shopping-bag-line"></i> <span>Productos</span>
-                            </a>
-                            <div class="collapse menu-dropdown" id="sidebarProductos">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="{{ route('categories.index') }}" class="nav-link"> Modulos </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Reportes </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarProveedores" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProveedores">
-                                <i class="ri-truck-line"></i> <span>Proveedores</span>
-                            </a>
-                            <div class="collapse menu-dropdown" id="sidebarProveedores">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Modulos </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Reportes </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Evaluación </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+                        <ul class="navbar-nav" id="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link menu-link" href="tel:+51933924456" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                                    <i class="bx bx-phone-call"></i> <span data-key="t-dashboard">Llámanos <b class="text-danger">+51 958096704</b></span>
+                                </a>
+                            </li>
+                        </ul>
 
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarCompras" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCompras">
-                                <i class="ri-shopping-cart-line"></i> <span>Compras</span>
-                            </a>
-                            <div class="collapse menu-dropdown" id="sidebarCompras">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Solicitud de compra </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Ordenes de compra </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Recepción de compra </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Devoluciones del cliente </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Reportes </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+                        <ul class="navbar-nav" id="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link menu-link" href="#" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                                    <i class="bx bx-map"></i> <span data-key="t-dashboard">Dirección y horarios</span>
+                                </a>
+                            </li>
+                        </ul>
 
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarReportes" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarReportes">
-                                <i class="ri-file-list-3-line"></i> <span>Reportes</span>
-                            </a>
-                            <div class="collapse menu-dropdown" id="sidebarReportes">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Inventario actual </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Ventas y compras </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Productos </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Análisis de costos </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li class="menu-title"><span>Gestión de clientes</span></li>
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarClientes" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarClientes">
-                                <i class="ri-user-3-line"></i> <span>Usuarios</span>
-                            </a>
-                            <div class="collapse menu-dropdown" id="sidebarClientes">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Historial de clientes </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Historial de empleados </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Subscripciones </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li class="menu-title"><span>Configuración</span></li>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                                <i class="ri-settings-3-line"></i> <span>General</span>
+                                <i class="mdi mdi-view-dashboard"></i> <span data-key="t-dashboards">Otros</span>
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarDashboards">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link"> Categorias </a>
+                                        <a href="#" class="nav-link" data-key="t-crypto"> Sobre nosotros </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link"> Logs </a>
+                                        <a href="#" class="nav-link" data-key="t-analytics"> Contactos </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link" data-key="t-projects"> Terminos y condiciones </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link" data-key="t-nft"> Terminos y condiciones de whatsapp</a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
+
                     </ul>
                 </div>
-                <!-- Sidebar -->
             </div>
 
             <div class="sidebar-background"></div>
@@ -780,3 +541,243 @@
         <!-- Left Sidebar End -->
         <!-- Vertical Overlay-->
         <div class="vertical-overlay"></div>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $('.add-to-cart-btn').on('click', function(event) {
+                    event.preventDefault();
+
+                    const productId = $(this).data('product-id');
+                    const productName = $(this).data('product-name');
+                    const selectedSize = $('#size-select-' + productId + ' option:selected').text();
+                    const selectedPrice = $('#price-display-' + productId).text();
+                    const productImage = $(this).closest('.crypto-card').find('.explore-img').attr('src');
+
+                    const cartItemHtml = `
+                        <div class="d-flex align-items-center mt-2 dropdown-item-cart">
+                            <img src="${productImage}" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
+                            <div class="flex-grow-1">
+                                <h6 class="mt-0 mb-1 fs-14">
+                                    <a href="apps-ecommerce-product-details.html" class="text-reset">${productName}</a>
+                                </h6>
+                                <p class="mb-0 fs-12 text-muted">
+                                    Tamaño: <span>${selectedSize}</span><br>
+                                </p>
+                            </div>
+                            <div class="px-2">
+                                <h5 class="m-0 fw-normal">$<span class="cart-item-price">${selectedPrice}</span></h5>
+                            </div>
+                            <div class="ps-2">
+                                <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn shadow-none"><i class="ri-close-fill fs-16"></i></button>
+                            </div>
+                        </div>
+                    `;
+
+                    $('#cart-items-list').append(cartItemHtml);
+
+                    const itemCount = $('.dropdown-menu-cart .dropdown-item-cart').length;
+                    $('.cartitem-badge').text(itemCount);
+                    $('#empty-cart').hide();
+                    saveCartState();
+
+                    updateCartTotal();
+                });
+
+                function updateCartTotal() {
+                    let total = 0;
+
+                    $('.dropdown-menu-cart .dropdown-item-cart').each(function() {
+                        const price = parseFloat($(this).find('.cart-item-price').text().replace('$', ''));
+                        total += price;
+                    });
+
+                    $('#cart-item-total').text('$' + total.toFixed(2));
+                    $('#cart-item-total-count').html(`<span class="cartitem-badge">${$('.dropdown-menu-cart .dropdown-item-cart').length}</span> items`);
+                }
+
+                function saveCartState() {
+                    const cartItems = [];
+                    $('.dropdown-menu-cart .dropdown-item-cart').each(function() {
+                        const productId = $(this).find('.product-id').text();
+                        const productName = $(this).find('.fs-14 a').text();
+                        const selectedSize = $(this).find('.fs-12 span').text();
+                        const selectedPrice = $(this).find('.cart-item-price').text();
+                        const productImage = $(this).find('img').attr('src');
+
+                        const item = {
+                            productId: productId,
+                            productName: productName,
+                            selectedSize: selectedSize,
+                            selectedPrice: selectedPrice,
+                            productImage: productImage
+                        };
+
+                        cartItems.push(item);
+                    });
+
+                    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                }
+
+                function loadCartState() {
+                    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+                    cartItems.forEach(function(item) {
+                        const cartItemHtml = `
+                            <div class="d-flex align-items-center mt-2 dropdown-item-cart">
+                                <img src="${item.productImage}" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
+                                <div class="flex-grow-1">
+                                    <h6 class="mt-0 mb-1 fs-14">
+                                        <a href="apps-ecommerce-product-details.html" class="text-reset">${item.productName}</a>
+                                    </h6>
+                                    <p class="mb-0 fs-12 text-muted">
+                                        Tamaño: <span>${item.selectedSize}</span><br>
+                                    </p>
+                                </div>
+                                <div class="px-2">
+                                    <h5 class="m-0 fw-normal">$<span class="cart-item-price">${item.selectedPrice}</span></h5>
+                                </div>
+                                <div class="ps-2">
+                                    <button type="button" class="btn btn-icon btn-sm btn-ghost-secondary remove-item-btn shadow-none"><i class="ri-close-fill fs-16"></i></button>
+                                </div>
+                            </div>
+                        `;
+
+                        $('#cart-items-list').append(cartItemHtml);
+                    });
+
+                    const itemCount = cartItems.length;
+                    $('.cartitem-badge').text(itemCount);
+                    $('#empty-cart').toggle(itemCount === 0);
+
+                    updateCartTotal();
+                }
+
+                loadCartState();
+
+                $('.dropdown-menu-cart').on('click', '.remove-item-btn', function(event) {
+                    event.preventDefault();
+                    $(this).closest('.dropdown-item-cart').remove();
+
+                    saveCartState();
+
+                    const itemCount = $('.dropdown-menu-cart .dropdown-item-cart').length;
+                    $('.cartitem-badge').text(itemCount);
+
+                    updateCartTotal();
+
+                    if (itemCount === 0) {
+                        $('#empty-cart').show();
+                    }
+                });
+            });
+
+            function sendWhatsAppMessage() {
+                const cartItems = [];
+                $('.dropdown-menu-cart .dropdown-item-cart').each(function() {
+                    const productName = $(this).find('.fs-14 a').text().trim();
+                    const selectedPrice = $(this).find('.cart-item-price').text().trim();
+                    const selectedSize = findSizeByPrice(productName, selectedPrice);
+
+                    const item = {
+                        productName: productName,
+                        selectedPrice: selectedPrice,
+                        selectedSize: selectedSize
+                    };
+
+                    cartItems.push(item);
+                });
+
+                if (cartItems.length === 0) {
+                    alert('No hay productos seleccionados para enviar.');
+                    return;
+                }
+
+                $.ajax({
+                    url: '/api/cart',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ cartItems: cartItems }),
+                    success: function(response) {
+                        const introMessage = "Estoy interesado en los siguientes productos:\n\n";
+                        const productsMessage = cartItems.map(item => `🍕 *Producto:* ${item.productName}\n 💲 *Precio:* ${item.selectedPrice}\n\n`).join("");
+
+                        const fullMessage = encodeURIComponent(introMessage + productsMessage);
+                        const whatsappLink = `https://api.whatsapp.com/send?phone=+51958096704&text=${fullMessage}`;
+                        window.open(whatsappLink, '_blank');
+
+                        resetCart();
+
+                    },
+                    error: function(error) {
+                        alert('Error al enviar los productos al API.');
+                    }
+                });
+            }
+
+
+            function findSizeByPrice(productName, selectedPrice) {
+                let selectedSize = '';
+
+                return selectedSize;
+            }
+
+            function resetCart() {
+                $('#cart-items-list').empty();
+                $('.cartitem-badge').text('0');
+                $('#cart-item-total').text('$0.00');
+                $('#empty-cart').show();
+
+                $('#whatsapp-button').prop('disabled', true);
+
+                localStorage.removeItem('cartItems');
+            }
+
+            function checkCartItems() {
+                let itemCount = parseInt(document.getElementById('cart-item-total').innerText);
+
+                $('#whatsapp-button').prop('disabled', itemCount === 0);
+            }
+
+            $(document).ready(function() {
+                checkCartItems();
+            });
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                $('.filter-btns button').on('click', function() {
+                    const filterValue = $(this).data('filter');
+
+                    if (filterValue === 'all') {
+                        $('.product-item').show();
+                    } else {
+                        $('.product-item').hide();
+
+                        $(`.product-item[data-category="${filterValue}"]`).show();
+                    }
+
+                    $('.filter-btns button').removeClass('active');
+                    $(this).addClass('active');
+                });
+            });
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const sizeSelects = document.querySelectorAll('.size-select');
+
+                sizeSelects.forEach(select => {
+                    const productId = select.id.split('-').pop();
+                    const priceDisplay = document.getElementById(`price-display-${productId}`);
+
+                    priceDisplay.innerText = select.options[select.selectedIndex].value;
+
+                    select.addEventListener('change', function() {
+                        priceDisplay.innerText = this.value;
+                    });
+                });
+            });
+        </script>

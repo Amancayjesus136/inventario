@@ -377,7 +377,7 @@
 
                         <ul class="navbar-nav" id="navbar-nav">
                             <li class="nav-item">
-                                <a class="nav-link menu-link" href="{{ route('welcome.direcion') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                                <a class="nav-link menu-link" href="#" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                                     <i class="bx bx-map"></i> <span data-key="t-dashboard">Dirección y horarios</span>
                                 </a>
                             </li>
@@ -429,260 +429,350 @@
         <div class="main-content">
             <div class="page-content">
                 <div class="container-fluid">
-                    <section class="section bg-light pb-0" id="hero">
-                        <div class="container">
-                            <div class="row justify-content-between align-items-center">
-                                <div class="col-lg-6">
-                                    <div>
-                                        <h1 class="display-6 fw-semibold text-capitalize mb-3 lh-base">Regístrate y aprovecha promociones exclusivas</h1>
-                                        <p class="lead text-muted lh-base mb-4">Crea una cuenta para recibir ofertas especiales. Al realizar compras iniciando sesión, disfrutarás de precios con descuentos por preferencia al ser nuestro cliente.</p>
-                                        <form action="#" class="job-panel-filter">
-                                            <div class="row g-md-0 g-2">
-                                                <div class="col-md-6">
-                                                    <div>
 
-                                                    </div>
-                                                </div>
-                                                <!--end col-->
-
-                                                <!--end col-->
-                                            </div>
-                                            <!--end row-->
-                                        </form>
-
-                                        <div class="hstack gap-2 justify-content-center">
-                                            <a href="{{ route('login.usuario') }}" class="btn btn-primary">¡Iniciar Sesión! <i class="ri-arrow-right-line align-middle ms-1"></i></a>
-                                            <a href="{{ route('register.usuario') }}" class="btn btn-danger">¡Crear Cuenta! <i class="ri-arrow-right-line align-middle ms-1"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--end col-->
-                                <div class="col-lg-4">
-                                    <div class="position-relative home-img text-center mt-5 mt-lg-0">
-                                        <div class="card p-3 rounded shadow-lg inquiry-box">
-                                            <div class="d-flex align-items-center">
-                                                <div class="avatar-sm flex-shrink-0 me-3">
-                                                    <div class="avatar-title bg-warning-subtle text-warning rounded fs-18">
-                                                        <i class="ri-mail-send-line"></i>
-                                                    </div>
-                                                </div>
-                                                <h5 class="fs-15 lh-base mb-0">
-                                                    <a href="mailto:amancayjesus136@gmail.com">Correo electrónico</a>
-                                                </h5>
-                                            </div>
-                                        </div>
-{{--
-                                        <div class="card p-3 rounded shadow-lg application-box">
-                                            <h5 class="fs-15 lh-base mb-3">Applications</h5>
-                                            <div class="avatar-group">
-                                                <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Brent Gonzalez">
-                                                    <div class="avatar-xs">
-                                                        <img src="assets/images/users/avatar-3.jpg" alt="" class="rounded-circle img-fluid">
-                                                    </div>
-                                                </a>
-                                                <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Ellen Smith">
-                                                    <div class="avatar-xs">
-                                                        <div class="avatar-title rounded-circle bg-danger">
-                                                            S
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Ellen Smith">
-                                                    <div class="avatar-xs">
-                                                        <img src="assets/images/users/avatar-10.jpg" alt="" class="rounded-circle img-fluid">
-                                                    </div>
-                                                </a>
-                                                <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top">
-                                                    <div class="avatar-xs">
-                                                        <div class="avatar-title rounded-circle bg-success">
-                                                            Z
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Brent Gonzalez">
-                                                    <div class="avatar-xs">
-                                                        <img src="assets/images/users/avatar-9.jpg" alt="" class="rounded-circle img-fluid">
-                                                    </div>
-                                                </a>
-                                                <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="More Appliances">
-                                                    <div class="avatar-xs">
-                                                        <div class="avatar-title fs-13 rounded-circle bg-light border-dashed border text-primary">
-                                                            2k+
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div> --}}
-
-                                        <style>
-                                            .user-img {
-                                                width: 100%;
-                                                height: auto; /* Mantiene la proporción de la imagen */
-                                                border-radius: 10px; /* Opcional: agrega esquinas redondeadas */
-                                                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Opcional: agrega una sombra */
-                                            }
-                                        </style>
-
-                                        <img src="https://cdn.pixabay.com/photo/2017/08/06/06/43/pizza-2589575_1280.jpg" alt="" class="user-img">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end row -->
-                        </div>
-                        <!-- end container -->
-                    </section>
-
-                    <section class="section" id="services">
+                    <section class="section" id="findJob">
                         <div class="container">
                             <div class="row justify-content-center">
-                                <div class="col-lg-8">
+                                <div class="col-lg-7">
                                     <div class="text-center mb-5">
-                                        <h1 class="mb-3 ff-secondary fw-semibold lh-base">Promociones</h1>
-                                        <p class="text-muted">To achieve this, it would be necessary to have uniform grammar, pronunciation and more common words. If several languages coalesce the grammar</p>
+                                        <h1 class="mb-3 ff-secondary fw-semibold text-capitalize lh-base">Find Your <span class="text-primary">Career</span> You Deserve it</h1>
+                                        <p class="text-muted">Post a job to tell us about your project. We'll quickly match you with the right freelancers.</p>
                                     </div>
                                 </div>
                                 <!-- end col -->
                             </div>
                             <!-- end row -->
 
-                            <div class="row g-3">
-                                <div class="col-12 col-md-6">
-                                    <div class="card">
-                                        <div class="card-body p-0">
-                                            <div class="alert alert-warning border-0 rounded-0 m-0 d-flex align-items-center" role="alert">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle text-warning me-2 icon-sm"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                                                <div class="flex-grow-1 text-truncate">
-                                                    Your free trial expired in <b>17</b> days.
-                                                </div>
-                                                <div class="flex-shrink-0">
-                                                    <a href="pages-pricing.html" class="text-reset text-decoration-underline"><b>Upgrade</b></a>
-                                                </div>
-                                            </div>
-
-                                            <div class="row align-items-end">
-                                                <div class="col-sm-8">
-                                                    <div class="p-3">
-                                                        <p class="fs-16 lh-base">Upgrade your plan from a <span class="fw-semibold">Free trial</span>, to ‘Premium Plan’ <i class="mdi mdi-arrow-right"></i></p>
-                                                        <div class="mt-3">
-                                                            <a href="pages-pricing.html" class="btn btn-success">Upgrade Account!</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="px-3">
-                                                        <img src="assets/images/user-illustarator-2.png" class="img-fluid" alt="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> <!-- end card-body-->
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="card">
-                                        <div class="card-body p-0">
-                                            <div class="alert alert-warning border-0 rounded-0 m-0 d-flex align-items-center" role="alert">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-triangle text-warning me-2 icon-sm"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                                                <div class="flex-grow-1 text-truncate">
-                                                    Your free trial expired in <b>17</b> days.
-                                                </div>
-                                                <div class="flex-shrink-0">
-                                                    <a href="pages-pricing.html" class="text-reset text-decoration-underline"><b>Upgrade</b></a>
-                                                </div>
-                                            </div>
-
-                                            <div class="row align-items-end">
-                                                <div class="col-sm-8">
-                                                    <div class="p-3">
-                                                        <p class="fs-16 lh-base">Upgrade your plan from a <span class="fw-semibold">Free trial</span>, to ‘Premium Plan’ <i class="mdi mdi-arrow-right"></i></p>
-                                                        <div class="mt-3">
-                                                            <a href="pages-pricing.html" class="btn btn-success">Upgrade Account!</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-4">
-                                                    <div class="px-3">
-                                                        <img src="assets/images/user-illustarator-2.png" class="img-fluid" alt="">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> <!-- end card-body-->
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!-- end row -->
-                        </div>
-                        <!-- end container -->
-                    </section>
-
-                    <section class="section bg-light" id="marketplace">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <div class="text-center mb-5">
-                                        <h2 class="mb-3 fw-semibold lh-base">Categorias</h2>
-                                        <p class="text-muted mb-4">Collection widgets specialize in displaying many elements of the same type, such as a collection of pictures from a collection of articles.</p>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="row">
-                                @foreach ($categories as $category)
-                                    <div class="col-lg-4 product-item artwork crypto-card 3d-style">
-                                        <div class="card explore-box card-animate">
-                                            <div class="bookmark-icon position-absolute top-0 end-0 p-2">
-                                                <button type="button" class="btn btn-icon active" data-bs-toggle="button" aria-pressed="true"><i class="mdi mdi-cards-heart fs-16"></i></button>
-                                            </div>
-                                            <div class="explore-place-bid-img">
-                                                @if ($category->photo_category)
-                                                    <img src="{{ asset('public/' . $category->photo_category) }}" alt="" class="card-img-top explore-img">
-                                                @else
-                                                    <img src="{{ asset('assets/images/sin-foto.png') }}" alt="" class="card-img-top explore-img">
-                                                @endif
-                                                <div class="bg-overlay"></div>
-                                                <div class="place-bid-btn d-flex justify-content-between">
-                                                    @php
-                                                        $routeName = '';
-                                                        switch ($category->name_category) {
-                                                            case 'Pizzas':
-                                                                $routeName = route('details.category');
-                                                                break;
-                                                            case 'Bebidas':
-                                                                $routeName = route('listado.bebidas');
-                                                                break;
-                                                            case 'Cocteles':
-                                                                $routeName = route('listado.cocteles');
-                                                                break;
-                                                            default:
-                                                                $routeName = route('details.category', ['category' => $category->id]);
-                                                                break;
-                                                        }
-                                                    @endphp
-                                                    <a href="{{ $routeName }}" class="btn btn-info me-1"><i class="ri-eye-fill align-bottom me-1"></i>Ver productos</a>
-                                                    {{-- <a href="#!" class="btn btn-warning"><i class="ri-shopping-cart-fill align-bottom me-1"></i></a> --}}
-                                                </div>
-                                            </div>
-                                            <div class="card-body">
-                                                {{-- <p class="fw-medium mb-0 float-end"><i class="mdi mdi-heart text-danger align-middle"></i> 19.29k </p> --}}
-                                                <h5 class="mb-1"><a href="{{ route('details.category', ['category' => $category->id]) }}">{{ $category->name_category }}</a></h5>
-                                                {{-- <p class="text-muted mb-0">Photography</p> --}}
-                                            </div>
-                                            {{-- <div class="card-footer border-top border-top-dashed">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex-grow-1 fs-14">
-                                                        <i class="ri-price-tag-3-fill text-warning align-bottom me-1"></i> Total de productos: <span class="fw-medium"></span>
+                                <div class="col-lg-6">
+                                    <div class="card shadow-lg">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="avatar-sm">
+                                                    <div class="avatar-title bg-warning-subtle rounded">
+                                                        <img src="assets/images/companies/img-3.png" alt="" class="avatar-xxs">
                                                     </div>
-                                                    <h5 class="flex-shrink-0 fs-14 text-primary mb-0">0</h5>
                                                 </div>
-                                            </div> --}}
+                                                <div class="ms-3 flex-grow-1">
+                                                    <a href="#!">
+                                                        <h5>UI/UX designer</h5>
+                                                    </a>
+                                                    <ul class="list-inline text-muted mb-3">
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-building-line align-bottom me-1"></i> Nesta Technologies
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-map-pin-2-line align-bottom me-1"></i> USA
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-money-dollar-circle-line align-bottom me-1"></i> $23k - 35k
+                                                        </li>
+                                                    </ul>
+                                                    <div class="hstack gap-2">
+                                                        <span class="badge bg-success-subtle text-success">Design</span>
+                                                        <span class="badge bg-danger-subtle text-danger">UI/UX</span>
+                                                        <span class="badge bg-primary-subtle text-primary">Adobe XD</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle" data-bs-toggle="button">
+                                                        <span class="icon-on"><i class="ri-bookmark-line"></i></span>
+                                                        <span class="icon-off"><i class="ri-bookmark-fill"></i></span>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                @endforeach
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="card shadow-lg">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="avatar-sm">
+                                                    <div class="avatar-title bg-primary-subtle rounded">
+                                                        <img src="assets/images/companies/img-2.png" alt="" class="avatar-xxs">
+                                                    </div>
+                                                </div>
+                                                <div class="ms-3 flex-grow-1">
+                                                    <a href="#!">
+                                                        <h5>Product Sales Specialist</h5>
+                                                    </a>
+                                                    <ul class="list-inline text-muted mb-3">
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-building-line align-bottom me-1"></i> Digitech Galaxy
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-map-pin-2-line align-bottom me-1"></i> Spain
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-money-dollar-circle-line align-bottom me-1"></i> $10k - 15k
+                                                        </li>
+                                                    </ul>
+                                                    <div class="hstack gap-2">
+                                                        <span class="badge bg-primary-subtle text-primary">Sales</span>
+                                                        <span class="badge bg-secondary-subtle text-secondary">Product</span>
+                                                        <span class="badge bg-info-subtle text-info">Business</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle active" data-bs-toggle="button">
+                                                        <span class="icon-on"><i class="ri-bookmark-line"></i></span>
+                                                        <span class="icon-off"><i class="ri-bookmark-fill"></i></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="card shadow-lg">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="avatar-sm">
+                                                    <div class="avatar-title bg-danger-subtle rounded">
+                                                        <img src="assets/images/companies/img-4.png" alt="" class="avatar-xxs">
+                                                    </div>
+                                                </div>
+                                                <div class="ms-3 flex-grow-1">
+                                                    <a href="#!">
+                                                        <h5>Marketing Director</h5>
+                                                    </a>
+                                                    <ul class="list-inline text-muted mb-3">
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-building-line align-bottom me-1"></i> Meta4Systems
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-map-pin-2-line align-bottom me-1"></i> Sweden
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-money-dollar-circle-line align-bottom me-1"></i> $20k - 25k
+                                                        </li>
+                                                    </ul>
+                                                    <div class="hstack gap-2">
+                                                        <span class="badge bg-warning-subtle text-warning">Marketing</span>
+                                                        <span class="badge bg-info-subtle text-info">Bussiness</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle active" data-bs-toggle="button">
+                                                        <span class="icon-on"><i class="ri-bookmark-line"></i></span>
+                                                        <span class="icon-off"><i class="ri-bookmark-fill"></i></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="card shadow-lg">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="avatar-sm">
+                                                    <div class="avatar-title bg-success-subtle rounded">
+                                                        <img src="assets/images/companies/img-9.png" alt="" class="avatar-xxs">
+                                                    </div>
+                                                </div>
+                                                <div class="ms-3 flex-grow-1">
+                                                    <a href="#!">
+                                                        <h5>Product Designer</h5>
+                                                    </a>
+                                                    <ul class="list-inline text-muted mb-3">
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-building-line align-bottom me-1"></i> Themesbrand
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-map-pin-2-line align-bottom me-1"></i> USA
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-money-dollar-circle-line align-bottom me-1"></i> $40k+
+                                                        </li>
+                                                    </ul>
+                                                    <div class="hstack gap-2">
+                                                        <span class="badge bg-success-subtle text-success">Design</span>
+                                                        <span class="badge bg-danger-subtle text-danger">UI/UX</span>
+                                                        <span class="badge bg-primary-subtle text-primary">Adobe XD</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle" data-bs-toggle="button">
+                                                        <span class="icon-on"><i class="ri-bookmark-line"></i></span>
+                                                        <span class="icon-off"><i class="ri-bookmark-fill"></i></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="card shadow-lg">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="avatar-sm">
+                                                    <div class="avatar-title bg-info-subtle rounded">
+                                                        <img src="assets/images/companies/img-1.png" alt="" class="avatar-xxs">
+                                                    </div>
+                                                </div>
+                                                <div class="ms-3 flex-grow-1">
+                                                    <a href="#!">
+                                                        <h5>Project Manager</h5>
+                                                    </a>
+                                                    <ul class="list-inline text-muted mb-3">
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-building-line align-bottom me-1"></i> Syntyce Solutions
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-map-pin-2-line align-bottom me-1"></i> Germany
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-money-dollar-circle-line align-bottom me-1"></i> $18k - 26k
+                                                        </li>
+                                                    </ul>
+                                                    <div class="hstack gap-2">
+                                                        <span class="badge bg-danger-subtle text-danger">HR</span>
+                                                        <span class="badge bg-success-subtle text-success">Manager</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle" data-bs-toggle="button">
+                                                        <span class="icon-on"><i class="ri-bookmark-line"></i></span>
+                                                        <span class="icon-off"><i class="ri-bookmark-fill"></i></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="card shadow-lg">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="avatar-sm">
+                                                    <div class="avatar-title bg-success-subtle rounded">
+                                                        <img src="assets/images/companies/img-7.png" alt="" class="avatar-xxs">
+                                                    </div>
+                                                </div>
+                                                <div class="ms-3 flex-grow-1">
+                                                    <a href="#!">
+                                                        <h5>Business Associate</h5>
+                                                    </a>
+                                                    <ul class="list-inline text-muted mb-3">
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-building-line align-bottom me-1"></i> Nesta Technologies
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-map-pin-2-line align-bottom me-1"></i> USA
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-money-dollar-circle-line align-bottom me-1"></i> $23k - 35k
+                                                        </li>
+                                                    </ul>
+                                                    <div class="hstack gap-2">
+                                                        <span class="badge bg-success-subtle text-success">Design</span>
+                                                        <span class="badge bg-danger-subtle text-danger">UI/UX</span>
+                                                        <span class="badge bg-primary-subtle text-primary">Adobe XD</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle active" data-bs-toggle="button">
+                                                        <span class="icon-on"><i class="ri-bookmark-line"></i></span>
+                                                        <span class="icon-off"><i class="ri-bookmark-fill"></i></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="card shadow-lg">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="avatar-sm">
+                                                    <div class="avatar-title bg-info-subtle rounded">
+                                                        <img src="assets/images/companies/img-8.png" alt="" class="avatar-xxs">
+                                                    </div>
+                                                </div>
+                                                <div class="ms-3 flex-grow-1">
+                                                    <a href="#!">
+                                                        <h5>Recruiting Coordinator</h5>
+                                                    </a>
+                                                    <ul class="list-inline text-muted mb-3">
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-building-line align-bottom me-1"></i> Zoetic Fashion
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-map-pin-2-line align-bottom me-1"></i> Namibia
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-money-dollar-circle-line align-bottom me-1"></i> $12k - 15k
+                                                        </li>
+                                                    </ul>
+                                                    <div class="hstack gap-2">
+                                                        <span class="badge bg-success-subtle text-success">Full Time</span>
+                                                        <span class="badge bg-info-subtle text-info">Remote</span>
+                                                        <span class="badge bg-primary-subtle text-primary">Fashion</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle active" data-bs-toggle="button">
+                                                        <span class="icon-on"><i class="ri-bookmark-line"></i></span>
+                                                        <span class="icon-off"><i class="ri-bookmark-fill"></i></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="card shadow-lg">
+                                        <div class="card-body">
+                                            <div class="d-flex">
+                                                <div class="avatar-sm">
+                                                    <div class="avatar-title bg-warning-subtle rounded">
+                                                        <img src="assets/images/companies/img-5.png" alt="" class="avatar-xxs">
+                                                    </div>
+                                                </div>
+                                                <div class="ms-3 flex-grow-1">
+                                                    <a href="#!">
+                                                        <h5>Customs officer</h5>
+                                                    </a>
+                                                    <ul class="list-inline text-muted mb-3">
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-building-line align-bottom me-1"></i> Nesta Technologies
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-map-pin-2-line align-bottom me-1"></i> USA
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            <i class="ri-money-dollar-circle-line align-bottom me-1"></i> $41k - 45k
+                                                        </li>
+                                                    </ul>
+                                                    <div class="hstack gap-2">
+                                                        <span class="badge bg-success-subtle text-success">Design</span>
+                                                        <span class="badge bg-danger-subtle text-danger">UI/UX</span>
+                                                        <span class="badge bg-primary-subtle text-primary">Adobe XD</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <button type="button" class="btn btn-ghost-primary btn-icon custom-toggle" data-bs-toggle="button">
+                                                        <span class="icon-on"><i class="ri-bookmark-line"></i></span>
+                                                        <span class="icon-off"><i class="ri-bookmark-fill"></i></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="text-center mt-4">
+                                        <a href="#!" class="btn btn-ghost-primary">View More Jobs <i class="ri-arrow-right-line align-bottom"></i></a>
+                                    </div>
+                                </div>
                             </div>
-
                         </div>
                     </section>
+
+
+
                 </div>
             </div>
         </div>
@@ -794,15 +884,6 @@
                 </div>
             </div>
         </footer>
-        </div>
-
-    </div>
-
-    <!--start back-to-top-->
-    <button onclick="topFunction()" class="btn btn-danger btn-icon" id="back-to-top">
-        <i class="ri-arrow-up-line"></i>
-    </button>
-    <!--end back-to-top-->
 
     <!-- JAVASCRIPT -->
     <script src="{{ asset('assets2/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

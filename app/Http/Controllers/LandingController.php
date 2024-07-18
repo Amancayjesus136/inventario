@@ -39,4 +39,9 @@ class LandingController extends Controller
         return view('welcome.list_tragos', compact('products', 'categories'));
     }
 
+    public function direccion()
+    {
+        return view('welcome.direccion');
+    }
+
 }

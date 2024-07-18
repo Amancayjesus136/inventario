@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Factura;
 use App\Models\FacturaRelation;
 use App\Models\JsonData;
@@ -27,7 +28,20 @@ class DashboardController extends Controller
     }
 
     public function dashboard_administrador(){
-        return view('dashboardCliente');
+        $categories = Category::all();
+        return view('dashboardCliente', compact('categories'));
+    }
+
+    public function dashboard_menu(){
+        $products = Product::all();
+        $categories = Category::all();
+        return view('welcome_client.menu', compact('products', 'categories'));
+    }
+
+    public function dashboard_menu_bebidas(){
+        $products = Product::all();
+        $categories = Category::all();
+        return view('welcome_client.menu', compact('products', 'categories'));
     }
 
     public function exportProductToExcel()

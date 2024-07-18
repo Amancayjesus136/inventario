@@ -25,6 +25,7 @@ Route::get('/create-symlink', [ProductionController::class, 'createSymlink']);
 Route::get('/detalles/categoria', [LandingController::class, 'details_category'])->name('details.category');
 Route::get('/listado/bebidas', [LandingController::class, 'details_bebidas'])->name('listado.bebidas');
 Route::get('/listado/cocteles', [LandingController::class, 'details_cocteles'])->name('listado.cocteles');
+Route::get('/direccion', [LandingController::class, 'direccion'])->name('welcome.direcion');
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,8 @@ Route::get('/exportToExcel', [DashboardController::class, 'exportToExcel'])->nam
 
 
 Route::get('/dashboardCliente', [DashboardController::class, 'dashboard_administrador'])->name('dashboardCliente');
+Route::get('/menu', [DashboardController::class, 'dashboard_menu'])->name('dashboard_menu');
+Route::get('/menu/bebidas', [DashboardController::class, 'dashboard_menu_bebidas'])->name('dashboard_menu_bebidas');
 
 /*
 |--------------------------------------------------------------------------
