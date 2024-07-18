@@ -2,33 +2,25 @@
     <div class="file-manager-sidebar">
         <div class="p-4 d-flex flex-column h-100">
             <div class="mb-3">
-                <button class="btn btn-success w-100" data-bs-target="#modalRegistrar" data-bs-toggle="modal"><i class="ri-add-line align-bottom"></i> Agregar factura</button>
+                <button class="btn btn-secondary w-100" data-bs-target="#modalRegistrar" data-bs-toggle="modal"><i class="ri-add-line align-bottom"></i> Agregar factura</button>
             </div>
 
             <div class="px-4 mx-n4" data-simplebar style="height: calc(100vh - 468px);">
                 <ul class="to-do-menu list-unstyled" id="projectlist-data">
                     <li>
-                        <a data-bs-toggle="collapse" href="#velzonAdmin" class="nav-link fs-13 active">Velzon Admin & Dashboard</a>
+                        <a data-bs-toggle="collapse" href="#velzonAdmin" class="nav-link fs-13 active">Documentos</a>
                         <div class="collapse show" id="velzonAdmin">
                             <ul class="mb-0 sub-menu list-unstyled ps-3 vstack gap-2 mb-2">
                                 <li>
-                                    <a href="#!"><i class="ri-stop-mini-fill align-middle fs-15 text-danger"></i> v1.4.0</a>
+                                    <a href="#" class="btn btn-success btn-sm"><i class="ri-file-excel-2-line fs-12"></i> Solo facturas</a>
                                 </li>
                                 <li>
-                                    <a href="#!"><i class="ri-stop-mini-fill align-middle fs-15 text-secondary"></i> v1.5.0</a>
-                                </li>
-                                <li>
-                                    <a href="#!"><i class="ri-stop-mini-fill align-middle fs-15 text-info"></i> v1.6.0</a>
-                                </li>
-                                <li>
-                                    <a href="#!"><i class="ri-stop-mini-fill align-middle fs-15 text-primary"></i> v1.7.0</a>
-                                </li>
-                                <li>
-                                    <a href="#!"><i class="ri-stop-mini-fill align-middle fs-15 text-warning"></i> v1.8.0</a>
+                                    <a href="#" class="btn btn-success btn-sm"><i class="ri-file-excel-2-line fs-12"></i> Facturas + clientes</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
+
                 </ul>
             </div>
 

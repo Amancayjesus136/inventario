@@ -74,7 +74,7 @@
                                         </div>
                                         <div class="d-flex align-items-end justify-content-between mt-4">
                                             <div>
-                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4">S/. <span>0</span> </h4>
+                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4">S/. <span>{{ $totalIngresos ?? 0 }}</span> </h4>
                                                 <a href="#" class="text-decoration-underline">Ver detalles</a>
                                             </div>
                                             <div class="avatar-sm flex-shrink-0">
@@ -151,7 +151,7 @@
                                         </div>
                                         <div class="d-flex align-items-end justify-content-between mt-4">
                                             <div>
-                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4">S/. <span>0</span></h4>
+                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4">S/. 0 <span></span></h4>
                                                 <a href="#" class="text-decoration-underline">Ver detalles</a>
                                             </div>
                                             <div class="avatar-sm flex-shrink-0">
@@ -231,10 +231,10 @@
                             <div class="col-xl-6">
                                 <div class="card card-height-100">
                                     <div class="card-header align-items-center d-flex">
-                                        <h4 class="card-title mb-0 flex-grow-1">Facturas totales</h4>
-                                        <button type="button" class="btn btn-soft-info btn-sm">
+                                        <h4 class="card-title mb-0 flex-grow-1">Facturas recientes</h4>
+                                        {{-- <button type="button" class="btn btn-soft-info btn-sm">
                                             <i class="ri-file-list-3-line align-middle"></i> <a href="{{ route('exportFacturaToExcel') }}"> Generar reporte</a>
-                                        </button>
+                                        </button> --}}
                                     </div>
 
                                     <div class="card-body">

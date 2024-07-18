@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Factura;
+use App\Models\MultipleProduct;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,7 +18,9 @@ class DashboardController extends Controller
         $products = Product::paginate(5);
         $users = User::paginate(5);
         $facturas = Factura::paginate(5);
-        return view('dashboard', compact('products', 'users', 'facturas'));
+        $facturas = Factura::orderBy('created_at', 'desc')->paginate(5);
+        $totalIngresos = MultipleProduct::sum('price_product_multiple');
+        return view('dashboard', compact('products', 'users', 'facturas', 'totalIngresos'));
     }
 
     public function dashboard_administrador(){

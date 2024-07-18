@@ -161,7 +161,6 @@ class ProductionController extends Controller
         }
     }
 
-
     public function products_show(string $id)
     {
         //
