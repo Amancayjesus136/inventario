@@ -34,6 +34,8 @@
                     @enderror
                 </div>
 
+                <input type="number" class="form-control" name="status_user" value="2" hidden>
+
                 <!-- Password -->
                 <div class="mb-3">
                     <label for="password" class="form-label">Contraseña</label>

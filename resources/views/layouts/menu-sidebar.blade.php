@@ -161,7 +161,7 @@
                     @endphp
                     <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle" id="page-header-notifications-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
                         <i class='bx bx-bell fs-22'></i>
-                        <span class="position-absolute topbar-badge fs-10 translate-middle badge rounded-pill bg-danger">
+                        <span id="badge-count" class="position-absolute topbar-badge fs-10 translate-middle badge rounded-pill bg-danger">
                             {{ $newNotificationCount }}
                             <span class="visually-hidden">unread messages</span>
                         </span>
@@ -174,14 +174,14 @@
                                         <h6 class="m-0 fs-16 fw-semibold text-white"> Notifications </h6>
                                     </div>
                                     <div class="col-auto dropdown-tabs">
-                                        <span class="badge badge-soft-light fs-13"> {{ $newNotificationCount }} Nuevos</span>
+                                        <span id="new-count" class="badge badge-soft-light fs-13"> {{ $newNotificationCount }} Nuevos</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="px-2 pt-2">
                                 <ul class="nav nav-tabs dropdown-tabs nav-tabs-custom" data-dropdown-tabs="true" id="notificationItemsTab" role="tablist">
                                     <li class="nav-item waves-effect waves-light">
-                                        <a class="nav-link active" data-bs-toggle="tab" href="#all-noti-tab" role="tab" aria-selected="true">
+                                        <a id="all-tab" class="nav-link active" data-bs-toggle="tab" href="#all-noti-tab" role="tab" aria-selected="true">
                                             All ({{ $newNotificationCount }})
                                         </a>
                                     </li>
@@ -231,7 +231,31 @@
                     </div>
                 </div>
 
+
                 <audio id="notificationSound" src="{{ asset('assets/sounds/notification.mp3') }}" preload="auto"></audio>
+
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script>
+                    $(document).ready(function() {
+                        $('#page-header-notifications-dropdown').on('click', function() {
+                            $.ajax({
+                                url: '{{ route("notifications.markAsRead") }}',
+                                method: 'POST',
+                                data: {
+                                    _token: '{{ csrf_token() }}'
+                                },
+                                success: function(response) {
+                                    if (response.success) {
+                                        // Actualizar los contadores en la interfaz de usuario
+                                        $('#badge-count').text(0);
+                                        $('#new-count').text('0 Nuevos');
+                                        $('#all-tab').html('All (0)');
+                                    }
+                                }
+                            });
+                        });
+                    });
+                </script>
 
                 <script>
                     document.addEventListener('DOMContentLoaded', function () {
@@ -283,8 +307,6 @@
                         setInterval(fetchNotifications, 30000);
                     });
                 </script>
-
-
 
                 <div class="dropdown ms-sm-3 header-item topbar-user">
                     <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

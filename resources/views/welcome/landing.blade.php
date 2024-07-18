@@ -455,7 +455,7 @@
 
                                         <div class="hstack gap-2 justify-content-center">
                                             <a href="{{ route('login.usuario') }}" class="btn btn-primary">¡Iniciar Sesión! <i class="ri-arrow-right-line align-middle ms-1"></i></a>
-                                            <a href="#" class="btn btn-danger">¡Crear Cuenta! <i class="ri-arrow-right-line align-middle ms-1"></i></a>
+                                            <a href="{{ route('register.usuario') }}" class="btn btn-danger">¡Crear Cuenta! <i class="ri-arrow-right-line align-middle ms-1"></i></a>
                                         </div>
                                     </div>
                                 </div>

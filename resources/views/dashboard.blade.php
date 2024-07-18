@@ -243,11 +243,10 @@
                                                 <tbody>
                                                     @if($facturas->isEmpty())
                                                         <tr>
-                                                            <td colspan="12" class="text-center">Facturas sin registrar</td>
+                                                            <td colspan="4" class="text-center">Facturas sin registrar</td>
                                                         </tr>
                                                     @else
-                                                    @foreach ($facturas as $factura)
-                                                        @foreach ($factura->relations as $relation)
+                                                        @foreach ($facturas as $factura)
                                                             <tr>
                                                                 <td>
                                                                     <div class="d-flex align-items-center">
@@ -276,24 +275,32 @@
                                                                     <span class="text-muted">{{ $factura->relations->count() }} unidades</span>
                                                                 </td>
                                                             </tr>
+                                                            @foreach ($factura->relations as $relation)
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td>{{ $relation->nombre_producto }}</td>
+                                                                    <td>{{ $relation->cantidad }}</td>
+                                                                </tr>
+                                                            @endforeach
                                                         @endforeach
-                                                    @endforeach
                                                     @endif
                                                 </tbody>
                                             </table>
+
                                         </div>
 
                                         <div class="align-items-center mt-4 pt-2 justify-content-between row text-center text-sm-start">
                                             <div class="col-sm">
                                                 <div class="text-muted">
-                                                    {{ $facturas->links() }}
+                                                    {{-- {{ $facturas->links() }} --}}
                                                 </div>
                                             </div>
                                         </div>
 
                                     </div> <!-- .card-body-->
                                 </div> <!-- .card-->
-                            </div> <!-- .col-->
+                            </div>
                         </div> <!-- end row-->
 
                         <div class="row">
@@ -313,46 +320,56 @@
                                             <table class="table table-borderless table-centered align-middle table-nowrap mb-0">
                                                 <thead class="text-muted table-light">
                                                     <tr>
-                                                        <th scope="col">Order ID</th>
-                                                        <th scope="col">Customer</th>
-                                                        <th scope="col">Product</th>
-                                                        <th scope="col">Amount</th>
-                                                        <th scope="col">Vendor</th>
-                                                        <th scope="col">Status</th>
-                                                        <th scope="col">Rating</th>
+                                                        <th scope="col">Codigo de cliente</th>
+                                                        <th scope="col">Nombre</th>
+                                                        <th scope="col">Estado</th>
+                                                        <th scope="col">Correo Electronico</th>
+                                                        <th scope="col">Verificacion de correo</th>
+                                                        <th scope="col">Rol</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <a href="apps-ecommerce-order-details.html" class="fw-medium link-primary">#VZ2112</a>
-                                                        </td>
-                                                        <td>
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0 me-2">
-                                                                    <img src="assets/images/users/avatar-1.jpg" alt="" class="avatar-xs rounded-circle">
+                                                    @foreach ($users as $user)
+                                                        <tr>
+                                                            <td>
+                                                                <a href="apps-ecommerce-order-details.html" class="fw-medium link-primary">#VZ2112</a>
+                                                            </td>
+                                                            <td>
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="flex-shrink-0 me-2">
+                                                                        <img src="assets/images/users/avatar-1.jpg" alt="" class="avatar-xs rounded-circle">
+                                                                    </div>
+                                                                    <div class="flex-grow-1">{{ $user->name }}</div>
                                                                 </div>
-                                                                <div class="flex-grow-1">Alex Smith</div>
-                                                            </div>
-                                                        </td>
-                                                        <td>Clothes</td>
-                                                        <td>
-                                                            <span class="text-success">$109.00</span>
-                                                        </td>
-                                                        <td>Zoetic Fashion</td>
-                                                        <td>
-                                                            <span class="badge bg-success-subtle text-success">Paid</span>
-                                                        </td>
-                                                        <td>
-                                                            <h5 class="fs-14 fw-medium mb-0">5.0<span class="text-muted fs-11 ms-1">(61 votes)</span></h5>
-                                                        </td>
-                                                    </tr><!-- end tr -->
+                                                            </td>
+                                                            <td>
+                                                                @if($user->status_user)
+                                                                    <span class="badge bg-info">Cliente registrado</span>
+                                                                @else
+                                                                    <span class="badge bg-danger">Error</span>
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                <span class="text-success">{{ $user->email }}</span>
+                                                            </td>
+                                                            <td>
+                                                                @if($user->email_verified_at == null || $user->email_verified_at == '0')
+                                                                    <span class="badge bg-danger">Sin verificación</span>
+                                                                @else
+                                                                    <span class="badge bg-success">Verificado</span>
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                <span class="badge bg-success-subtle text-success">Cliente</span>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach<!-- end tr -->
                                                 </tbody><!-- end tbody -->
                                             </table><!-- end table -->
                                         </div>
                                     </div>
                                     <div class="align-items-center mt-4 pt-2 justify-content-between row text-center text-sm-start">
-                                        {{ $users->links() }}
+                                        {{-- {{ $users->links() }} --}}
                                     </div>
                                 </div> <!-- .card-->
                             </div> <!-- .col-->

@@ -69,6 +69,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::post('/notifications/markAsRead', [ProductionController::class, 'markAsRead'])->name('notifications.markAsRead');
+
 Route::get('/facturas/list', [ProductionController::class, 'facturas_index'])->name('facturas.index');
 Route::post('/facturas/store', [ProductionController::class, 'facturas_store'])->name('facturas.store');
 Route::get('/facturas/busquedas', [ProductionController::class, 'facturas_busqueda'])->name('facturas.busquedas');

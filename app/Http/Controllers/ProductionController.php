@@ -34,6 +34,17 @@ class ProductionController extends Controller
         return response()->json(['message' => 'Symlink created successfully.']);
     }
 
+    /*------------------------------------*
+     *     Notifiacion                        *
+     *------------------------------------*/
+
+    public function markAsRead(Request $request)
+    {
+        Notificacion::whereNull('read_at')->update(['read_at' => now()]);
+
+        return response()->json(['success' => true]);
+    }
+
     /*-------------------------------------*
      * functions for the categories module *
      *-------------------------------------*/
@@ -246,7 +257,7 @@ class ProductionController extends Controller
     }
 
      /*------------------------------------*
-     *     Facturas                        *
+     *     Ordenes                        *
      *------------------------------------*/
 
     public function ordenes_index()

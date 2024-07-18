@@ -43,6 +43,8 @@
                             @enderror
                         </div>
 
+                        <input type="number" class="form-control" name="status_user" value="1" hidden>
+
                         <div class="mb-3">
                             <label for="password_confirmation" class="form-label">Confirmar Contraseña</label>
                             <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">

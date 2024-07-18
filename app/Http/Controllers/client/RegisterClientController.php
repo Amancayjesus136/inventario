@@ -41,6 +41,7 @@ class RegisterClientController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'status_user' => $request->status_user,
             'password' => Hash::make($request->password),
         ]);
 
@@ -51,7 +52,7 @@ class RegisterClientController extends Controller
         // Agregar la lógica de notificación
         Notificacion::create([
             'type' => 'Consulta',
-            'data' => json_encode(['message' => 'Nueva consulta registrada por ' . $user->name]),
+            'data' => json_encode(['message' => 'Tienes un nuevo cliente! dale la bienvenida a ' . $user->name]),
             'status' => 1,
             'created_at' => now(),
             'updated_at' => now()
