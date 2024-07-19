@@ -272,4 +272,13 @@ class ProductionController extends Controller
         return view('ordenes.delivery_cancelados', ['jsonData' => $jsonData]);
     }
 
+     /*------------------------------------*
+     *     contact                        *
+     *------------------------------------*/
+
+
+    /*------------------------------------*
+     *     Horarios                        *
+     *------------------------------------*/
+
 }

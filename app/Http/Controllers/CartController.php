@@ -20,7 +20,7 @@ class CartController extends Controller
 
         Notificacion::create([
             'type' => 'delivery',
-            'data' => json_encode(['message' => 'Un cliente solicitó un pedido al delivery']),
+            'data' => json_encode(['message' => 'Un cliente solicitó un pedido por delivery']),
             'status' => 1,
             'created_at' => now(),
             'updated_at' => now()
@@ -32,7 +32,6 @@ class CartController extends Controller
     public function index()
     {
         $cartItems = Cache::get('cartItems', []);
-
         return response()->json($cartItems, 200);
     }
 }

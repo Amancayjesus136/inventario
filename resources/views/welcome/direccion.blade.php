@@ -18,18 +18,75 @@
     <link href="{{ asset('assets2/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
 
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <script>
-
         document.addEventListener('DOMContentLoaded', function() {
-          var calendarEl = document.getElementById('calendar');
-          var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth'
-          });
-          calendar.render();
-        });
+            var calendarEl = document.getElementById('calendar');
 
-      </script>
+            var events = [
+                {
+                    daysOfWeek: [1],
+                    startTime: "",
+                    endTime: "",
+                    display: 'background',
+                    title: 'Cerrado',
+                    backgroundColor: 'rgba(255,0,0,0.5)',
+                    borderColor: 'rgba(255,0,0,0.5)'
+                },
+                {
+                    daysOfWeek: [2, 3, 4, 5, 6, 7],
+                    startTime: "17:00:00",
+                    endTime: "23:00:00",
+                    display: 'background',
+                    title: 'Abierto',
+                    backgroundColor: 'rgba(0,255,0,0.5)',
+                    borderColor: 'rgba(0,255,0,0.5)'
+                }
+            ];
+
+            function formatTime(time) {
+                var [hours, minutes] = time.split(':');
+                hours = parseInt(hours, 10);
+                var ampm = hours >= 12 ? 'PM' : 'AM';
+                hours = hours % 12;
+                hours = hours || 12;
+                minutes = minutes.length === 1 ? '0' + minutes : minutes;
+                return hours + ':' + minutes + ' ' + ampm;
+            }
+
+            function getDayName(date) {
+                var days = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+                return days[date.getDay()];
+            }
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: events,
+                dateClick: function(info) {
+                    var dayOfWeek = info.date.getDay();
+                    var eventDetails = events.find(event => event.daysOfWeek.includes(dayOfWeek));
+
+                    var title = eventDetails.title;
+                    var startTime = eventDetails.startTime || 'N/A';
+                    var endTime = eventDetails.endTime || 'N/A';
+
+                    startTime = startTime !== 'N/A' ? formatTime(startTime) : 'N/A';
+                    endTime = endTime !== 'N/A' ? formatTime(endTime) : 'N/A';
+
+                    document.getElementById('modalTitle').innerText = title;
+                    document.getElementById('modalDay').innerText = getDayName(info.date);
+                    document.getElementById('modalStartTime').innerText = startTime;
+                    document.getElementById('modalEndTime').innerText = endTime;
+
+                    var modal = new bootstrap.Modal(document.getElementById('myModal'));
+                    modal.show();
+                }
+            });
+
+            calendar.render();
+        });
+    </script>
 
 </head>
 
@@ -464,6 +521,29 @@
                                 }
                             </style>
 
+                            <div id="myModal" class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="myModalLabel">Modal Heading</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"> </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h5 class="fs-15">
+                                                <strong>Día Seleccionado:</strong> <span id="modalDay"></span>
+                                            </h5>
+                                            <p class="text-muted"><strong>Estado:</strong> <span class="text-success" id="modalTitle"></span></p>
+                                            <p class="text-muted"><strong>Hora de Inicio:</strong> <span id="modalStartTime"></span></p>
+                                            <p class="text-muted"><strong>Hora de Fin:</strong> <span id="modalEndTime"></span></p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save Changes</button>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div><!-- /.modal -->
+
 
                             <div class="row">
                                 <div class="col-lg-6">
@@ -487,6 +567,8 @@
                                         </div>
                                     </div>
                                 </div>
+
+
 
                             </div>
                         </div>
