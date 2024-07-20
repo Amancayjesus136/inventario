@@ -64,7 +64,7 @@ class ProductionController extends Controller
         // }
 
         $permisos = [];
-        $grupos = Permiso::orderBy('grupo', 'ASC')->orderBy('permiso', 'ASC')->get();
+        $grupos = Permiso::orderBy('grupo', 'DESC')->orderBy('permiso', 'ASC')->get();
         if ($grupos) {
             foreach ($grupos as $grupo) {
                 if (empty($permisos[$grupo->grupo])) {
@@ -150,7 +150,7 @@ class ProductionController extends Controller
 
             $fileName = basename($imagenPath);
 
-            $relativeUrl = 'storage/public/imagenes/' . $fileName;
+            $relativeUrl = 'storage/imagenes/' . $fileName;
 
             $category->photo_category = $relativeUrl;
             $category->save();

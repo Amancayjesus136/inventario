@@ -1,11 +1,14 @@
 @extends('layouts.admin-sidebar')
 @section('content')
 
-<div class="main-content">
+@php
+	$current_roles = App\Models\RoleUser::where('idUsuario', Auth::user()->id)->pluck('idRole')->all();
+    $permisos = App\Models\RolePermiso::whereIn('idRole', $current_roles)->pluck('idPermiso')->all();
+@endphp
 
+<div class="main-content">
     <div class="page-content">
         <div class="container-fluid">
-
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">

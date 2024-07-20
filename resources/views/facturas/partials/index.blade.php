@@ -2,7 +2,9 @@
     <div class="file-manager-sidebar">
         <div class="p-4 d-flex flex-column h-100">
             <div class="mb-3">
-                <button class="btn btn-secondary w-100" data-bs-target="#modalRegistrar" data-bs-toggle="modal"><i class="ri-add-line align-bottom"></i> Agregar factura</button>
+                @if (in_array(25, $permisos))
+                    <button class="btn btn-secondary w-100" data-bs-target="#modalRegistrar" data-bs-toggle="modal"><i class="ri-add-line align-bottom"></i> Agregar factura</button>
+                @endif
             </div>
 
             <div class="px-4 mx-n4" data-simplebar style="height: calc(100vh - 468px);">

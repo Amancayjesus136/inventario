@@ -1,3 +1,7 @@
+@php
+    $user = auth()->user();
+@endphp
+
 <body>
 
     <!-- Begin page -->
@@ -408,31 +412,31 @@
                             </li>
                         </ul>
 
-
-
-                        <li class="menu-title"><span>Gestión de productos</span></li>
-                        <li class="nav-item">
+                        @if ($user->hasAnyRole(['Administrador', 'Socio']))
+                            <li class="menu-title"><span>Gestión de productos</span></li>
                             <li class="nav-item">
-                                <a class="nav-link menu-link" href="{{ route('facturas.index') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                                    <i class="ri-survey-line"></i> <span data-key="t-dashboard">Facturas</span>
+                                <li class="nav-item">
+                                    <a class="nav-link menu-link" href="{{ route('facturas.index') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                                        <i class="ri-survey-line"></i> <span data-key="t-dashboard">Facturas</span>
+                                    </a>
+                                </li>
+
+                                <a class="nav-link menu-link" href="#sidebarProductos" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProductos">
+                                    <i class="ri-shopping-bag-line"></i> <span>Productos</span>
                                 </a>
+
+                                <div class="collapse menu-dropdown" id="sidebarProductos">
+                                    <ul class="nav nav-sm flex-column">
+                                        <li class="nav-item">
+                                            <a href="{{ route('products.index') }}" class="nav-link"> Modulos </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link"> Productos desactivados </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </li>
-
-                            <a class="nav-link menu-link" href="#sidebarProductos" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProductos">
-                                <i class="ri-shopping-bag-line"></i> <span>Productos</span>
-                            </a>
-
-                            <div class="collapse menu-dropdown" id="sidebarProductos">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="{{ route('products.index') }}" class="nav-link"> Modulos </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Productos desactivados </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+                        @endif
 
                         {{-- <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarProveedores" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProveedores">
@@ -453,106 +457,103 @@
                             </div>
                         </li> --}}
 
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarCompras" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCompras">
-                                <i class="ri-shopping-cart-line"></i> <span>Compras</span>
-                            </a>
-                            <div class="collapse menu-dropdown" id="sidebarCompras">
-                                <ul class="nav nav-sm flex-column">
-                                    {{-- <li class="nav-item">
-                                        <a href="#" class="nav-link"> Solicitud de compra </a>
-                                    </li> --}}
-                                    <li class="nav-item">
-                                        <a href="{{ route('ordenes.index') }}" class="nav-link"> Ordenes de compra </a>
-                                    </li>
-                                    {{-- <li class="nav-item">
-                                        <a href="#" class="nav-link"> Recepción de compra </a>
-                                    </li> --}}
-                                    <li class="nav-item">
-                                        <a href="{{ route('ordenes.ordenes_desactivados') }}" class="nav-link"> Deliverys cancelados </a>
-                                    </li>
-                                    {{-- <li class="nav-item">
-                                        <a href="#" class="nav-link"> Reportes </a>
-                                    </li> --}}
-                                </ul>
-                            </div>
-                        </li>
+                        @if ($user->hasAnyRole(['Administrador', 'Socio']))
+                            <li class="nav-item">
+                                <a class="nav-link menu-link" href="#sidebarCompras" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCompras">
+                                    <i class="ri-shopping-cart-line"></i> <span>Compras</span>
+                                </a>
+                                <div class="collapse menu-dropdown" id="sidebarCompras">
+                                    <ul class="nav nav-sm flex-column">
+                                        {{-- <li class="nav-item">
+                                            <a href="#" class="nav-link"> Solicitud de compra </a>
+                                        </li> --}}
+                                        <li class="nav-item">
+                                            <a href="{{ route('ordenes.index') }}" class="nav-link"> Ordenes de compra </a>
+                                        </li>
+                                        {{-- <li class="nav-item">
+                                            <a href="#" class="nav-link"> Recepción de compra </a>
+                                        </li> --}}
+                                        <li class="nav-item">
+                                            <a href="{{ route('ordenes.ordenes_desactivados') }}" class="nav-link"> Deliverys cancelados </a>
+                                        </li>
+                                        {{-- <li class="nav-item">
+                                            <a href="#" class="nav-link"> Reportes </a>
+                                        </li> --}}
+                                    </ul>
+                                </div>
+                            </li>
+                            {{-- <li class="nav-item">
+                                <a class="nav-link menu-link" href="#sidebarReportes" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarReportes">
+                                    <i class="ri-file-list-3-line"></i> <span>Reportes</span>
+                                </a>
+                                <div class="collapse menu-dropdown" id="sidebarReportes">
+                                    <ul class="nav nav-sm flex-column">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link"> Inventario actual </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link"> Ventas y compras </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link"> Productos </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link"> Análisis de costos </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li> --}}
+                        @endif
 
-                        {{-- <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarReportes" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarReportes">
-                                <i class="ri-file-list-3-line"></i> <span>Reportes</span>
-                            </a>
-                            <div class="collapse menu-dropdown" id="sidebarReportes">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Inventario actual </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Ventas y compras </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Productos </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Análisis de costos </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li> --}}
+                        @if ($user->hasAnyRole(['Administrador']))
+                            <li class="menu-title"><span>Gestión de clientes</span></li>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link" href="#sidebarClientes" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarClientes">
+                                    <i class="ri-user-3-line"></i> <span>Usuarios</span>
+                                </a>
+                                <div class="collapse menu-dropdown" id="sidebarClientes">
+                                    <ul class="nav nav-sm flex-column">
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link"> Historial de clientes </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link"> Historial de empleados </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link"> Subscripciones </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        @endif
 
-                        <li class="menu-title"><span>Gestión de clientes</span></li>
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarClientes" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarClientes">
-                                <i class="ri-user-3-line"></i> <span>Usuarios</span>
-                            </a>
-                            <div class="collapse menu-dropdown" id="sidebarClientes">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Historial de clientes </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Historial de empleados </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Subscripciones </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+                        @if ($user->hasAnyRole(['Administrador']))
+                            <li class="menu-title"><span>Configuración</span></li>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link" href="#sidebarConfig" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarConfig">
+                                    <i class="ri-settings-3-line"></i> <span>General</span>
+                                </a>
+                                <div class="collapse menu-dropdown" id="sidebarConfig">
+                                    <ul class="nav nav-sm flex-column">
+                                        <li class="nav-item">
+                                            <a href="{{ route('categories.index') }}" class="nav-link"> Categorias </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" class="nav-link"> Logs </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        @endif
 
-                        <li class="menu-title"><span>Configuración</span></li>
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarConfig" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarConfig">
-                                <i class="ri-settings-3-line"></i> <span>General</span>
-                            </a>
-                            <div class="collapse menu-dropdown" id="sidebarConfig">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="{{ route('categories.index') }}" class="nav-link"> Categorias </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Logs </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li class="menu-title"><span>Config. Roles y permisos</span></li>
-                        <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarRoles" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarRoles">
-                                <i class="ri-settings-3-line"></i> <span>Modulos</span>
-                            </a>
-                            <div class="collapse menu-dropdown" id="sidebarRoles">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="{{ route('perfiles.index') }}" class="nav-link"> Perfiles </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link"> Logs </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+                        @if ($user->hasAnyRole(['Administrador']))
+                            <li class="menu-title"><span>Config. Roles y permisos</span></li>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link" href="{{ route('perfiles.index') }}" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                                    <i class="ri-settings-3-line"></i> <span data-key="t-dashboard">Perfiles</span>
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
                 <!-- Sidebar -->
