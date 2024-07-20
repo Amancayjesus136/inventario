@@ -4,6 +4,18 @@
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/dayjs.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/locale/es.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+    .toast.success {
+        background-color: #007bff; /* Azul */
+        color: #fff;
+    }
+    .toast.success .toast-title {
+        color: #fff;
+    }
+</style>
+
 
 @php
     $user = auth()->user();
@@ -586,6 +598,20 @@
     <!-- End Page-content -->
 
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    toastr.options = {
+        "toastClass": "toast success" // Aplica la clase personalizada
+    };
+
+    @if (Session::has('success'))
+        toastr.success("{{ Session::get('success') }}");
+    @elseif (Session::has('error'))
+        toastr.error("{{ Session::get('error') }}");
+    @endif
+</script>
 
 <script>
     const horaActualInput = document.getElementById('hora-actual');

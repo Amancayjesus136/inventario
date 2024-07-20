@@ -48,23 +48,6 @@
             margin-bottom: 0;
         }
 
-        .toast {
-            max-width: 400px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .toast-success {
-            background-color: #28a745;
-            color: #ffffff;
-        }
-
-        .toast-error {
-            background-color: #dc3545;
-            color: #ffffff;
-        }
-
     </style>
 
     @include('layouts.menu-sidebar')
