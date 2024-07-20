@@ -53,6 +53,12 @@
                     <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                 </div>
 
+                <select name="role_id" id="role_id" class="form-control" required hidden>
+                    @foreach ($roles as $role)
+                        <option value="{{ $role->id_role }}" @if ($loop->last) selected @endif>{{ $role->role }}</option>
+                    @endforeach
+                </select>
+
                 <div class="mt-4">
                     <button class="btn btn-success w-100" type="submit">Registrarse</button>
                 </div>

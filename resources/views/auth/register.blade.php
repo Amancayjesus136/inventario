@@ -43,6 +43,12 @@
                             @enderror
                         </div>
 
+                        <select name="role_id" id="role_id" class="form-control" required hidden>
+                            @foreach ($roles as $role)
+                                <option value="{{ $role->id_role }}" @if ($loop->first) selected @endif>{{ $role->role }}</option>
+                            @endforeach
+                        </select>
+
                         <input type="number" class="form-control" name="status_user" value="1" hidden>
 
                         <div class="mb-3">
@@ -61,7 +67,7 @@
                             <button class="btn btn-success w-100" type="submit">Inscribirse</button>
                         </div>
 
-                        <div class="mt-4 text-center">
+                        {{-- <div class="mt-4 text-center">
                             <div class="signin-other-title">
                                 <h5 class="fs-13 mb-4 title">Registrarte con</h5>
                             </div>
@@ -71,7 +77,7 @@
                                 <button type="button" class="btn btn-dark btn-icon waves-effect waves-light"><i class="ri-github-fill fs-16"></i></button>
                                 <button type="button" class="btn btn-info btn-icon waves-effect waves-light"><i class="ri-twitter-fill fs-16"></i></button>
                             </div>
-                        </div>
+                        </div> --}}
                     </form>
                 </div>
             </div>

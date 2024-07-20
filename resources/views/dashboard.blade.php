@@ -361,7 +361,9 @@
                                                                 @endif
                                                             </td>
                                                             <td>
-                                                                <span class="badge bg-success-subtle text-success">Cliente</span>
+                                                                @foreach ($user->roles as $role)
+                                                                    <span class="badge bg-success-subtle text-success">{{ $role->role }}</span>
+                                                                @endforeach
                                                             </td>
                                                         </tr>
                                                     @endforeach<!-- end tr -->

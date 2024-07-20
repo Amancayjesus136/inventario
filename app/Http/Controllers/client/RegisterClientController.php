@@ -14,6 +14,8 @@ use Illuminate\Validation\Rules;
 use App\Models\Notificacion;
 use Illuminate\View\View;
 use App\Events\NewNotification;
+use App\Models\RoleUser;
+use Illuminate\Validation\ValidationException;
 
 class RegisterClientController extends Controller
 {
@@ -36,6 +38,7 @@ class RegisterClientController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'role_id' => ['required', 'exists:roles,id_role'],
         ]);
 
         $user = User::create([
@@ -45,11 +48,15 @@ class RegisterClientController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        RoleUser::create([
+            'idRole' => $request->input('role_id'),
+            'idUsuario' => $user->id,
+        ]);
+
         event(new Registered($user));
 
         Auth::login($user);
 
-        // Agregar la lógica de notificación
         Notificacion::create([
             'type' => 'Consulta',
             'data' => json_encode(['message' => 'Tienes un nuevo cliente! dale la bienvenida a ' . $user->name]),

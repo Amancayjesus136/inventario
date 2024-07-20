@@ -40,7 +40,7 @@
                             <button class="btn btn-success w-100" type="submit">Iniciar sesión</button>
                         </div>
 
-                        <div class="mt-4 text-center">
+                        {{-- <div class="mt-4 text-center">
                             <div class="signin-other-title">
                                 <h5 class="fs-13 mb-4 title">Inicia sesión con</h5>
                             </div>
@@ -50,7 +50,7 @@
                                 <button type="button" class="btn btn-dark btn-icon waves-effect waves-light"><i class="ri-github-fill fs-16"></i></button>
                                 <button type="button" class="btn btn-info btn-icon waves-effect waves-light"><i class="ri-twitter-fill fs-16"></i></button>
                             </div>
-                        </div>
+                        </div> --}}
                     </form>
                 </div>
             </div>
@@ -58,9 +58,9 @@
         </div>
         <!-- end card -->
 
-        <div class="mt-4 text-center">
+        {{-- <div class="mt-4 text-center">
             <p class="mb-0">¿No tienes una cuenta? <a href="{{ route('register') }}" class="fw-semibold text-primary text-decoration-underline"> Registrarse </a> </p>
-        </div>
+        </div> --}}
 
     </div>
 </div>

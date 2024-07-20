@@ -43,4 +43,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'roles_usuarios', 'idUsuario', 'idRole');
+    }
+
+    public function hasAnyRole(array $roles): bool
+    {
+        return $this->roles->pluck('role')->intersect($roles)->isNotEmpty();
+    }
 }
