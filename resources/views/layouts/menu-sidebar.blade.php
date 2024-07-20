@@ -522,13 +522,30 @@
 
                         <li class="menu-title"><span>Configuración</span></li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
+                            <a class="nav-link menu-link" href="#sidebarConfig" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarConfig">
                                 <i class="ri-settings-3-line"></i> <span>General</span>
                             </a>
-                            <div class="collapse menu-dropdown" id="sidebarDashboards">
+                            <div class="collapse menu-dropdown" id="sidebarConfig">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
                                         <a href="{{ route('categories.index') }}" class="nav-link"> Categorias </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link"> Logs </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="menu-title"><span>Config. Roles y permisos</span></li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarRoles" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarRoles">
+                                <i class="ri-settings-3-line"></i> <span>Modulos</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarRoles">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a href="{{ route('perfiles.index') }}" class="nav-link"> Perfiles </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#" class="nav-link"> Logs </a>

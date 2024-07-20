@@ -78,6 +78,19 @@ Route::get('/facturas/list', [ProductionController::class, 'facturas_index'])->n
 Route::post('/facturas/store', [ProductionController::class, 'facturas_store'])->name('facturas.store');
 Route::get('/facturas/busquedas', [ProductionController::class, 'facturas_busqueda'])->name('facturas.busquedas');
 
+/*
+|--------------------------------------------------------------------------
+| Ordenes
+|--------------------------------------------------------------------------
+|
+*/
+Route::get('/roles/perfiles', [ProductionController::class, 'perfiles_index'])->name('perfiles.index');
+Route::post('/perfiles/registrar', [ProductionController::class, 'perfiles_store'])->name('registrar.permisos');
+Route::put('/perfiles/{id_role}', [ProductionController::class, 'perfiles_update'])->name('actualizar.permisos');
+
+Route::get('/roles/permisos', [ProductionController::class, 'permisos'])->name('permisos.index');
+
+
 
 /*
 |--------------------------------------------------------------------------

@@ -9,8 +9,12 @@ use App\Models\FacturaRelation;
 use App\Models\JsonData;
 use App\Models\MultipleProduct;
 use App\Models\Notificacion;
+use App\Models\Permiso;
 use App\Models\Product;
 use App\Models\RelationProduct;
+use App\Models\Role;
+use App\Models\RolePermiso;
+use App\Models\RoleUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +39,7 @@ class ProductionController extends Controller
     }
 
     /*------------------------------------*
-     *     Notifiacion                        *
+     *     Notifiacion                    *
      *------------------------------------*/
 
     public function markAsRead(Request $request)
@@ -43,6 +47,75 @@ class ProductionController extends Controller
         Notificacion::whereNull('read_at')->update(['read_at' => now()]);
 
         return response()->json(['success' => true]);
+    }
+
+     /*------------------------------------*
+     *     Roles y permisos                *
+     *-------------------------------------*/
+
+     public function perfiles_index()
+    {
+        $current_roles = RoleUser::where('idUsuario', Auth::user()->id)->pluck('idRole')->all();
+
+        $perfiles = Role::paginate(10);
+
+        // if (!in_array(1, $current_roles)) {
+        //     $perfiles = $perfiles->where('id_role', '!=', 1);
+        // }
+
+        $permisos = [];
+        $grupos = Permiso::orderBy('grupo', 'ASC')->orderBy('permiso', 'ASC')->get();
+        if ($grupos) {
+            foreach ($grupos as $grupo) {
+                if (empty($permisos[$grupo->grupo])) {
+                    $permisos[$grupo->grupo] = [];
+                }
+
+                $permisos[$grupo->grupo][$grupo->idPermiso] = $grupo->permiso;
+            }
+        }
+
+        return view('roles.perfiles', compact('perfiles', 'permisos'));
+    }
+
+    public function perfiles_store(Request $request)
+    {
+        Role::create($request->all());
+        return redirect()->back()->with('success', 'Perfil registrado exitosamente');
+    }
+
+    public function perfiles_update(Request $request, $id_role)
+    {
+        $data = $request->all();
+
+        $perfil = Role::findOrFail($id_role);
+
+        $perfil->update($data);
+
+        if (isset($data['permisos']) && count($data['permisos']) > 0) {
+            RolePermiso::where('idRole', $perfil->id_role)->delete();
+
+            foreach ($data['permisos'] as $permiso_id) {
+                RolePermiso::create([
+                    'idPermiso' => $permiso_id,
+                    'idRole' => $perfil->id_role
+                ]);
+            }
+        }
+
+        return redirect()->back()->with('success', 'Perfil actualizado exitosamente');
+    }
+
+    public function permisos_index()
+    {
+        $permisos = Permiso::paginate(5);
+        return view('roles.permisos', compact('permisos'));
+    }
+
+    public function permisos_store(Request $request)
+    {
+        Permiso::create($request->all());
+        return redirect()->back()->with('success', 'Permiso registrado exitosamente');
     }
 
     /*-------------------------------------*
