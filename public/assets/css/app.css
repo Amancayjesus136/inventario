@@ -375,6 +375,7 @@ File: Main Css File
   top: 0;
   color: #878a99;
 }
+
 .app-search .search-widget-icon-close {
   left: 7px;
   right: auto !important;
@@ -2428,10 +2429,10 @@ File: Main Css File
 
 /*!
  * Waves v0.7.6
- * http://fian.my.id/Waves 
- * 
- * Copyright 2014-2018 Alfiana E. Sibuea and other contributors 
- * Released under the MIT license 
+ * http://fian.my.id/Waves
+ *
+ * Copyright 2014-2018 Alfiana E. Sibuea and other contributors
+ * Released under the MIT license
  * https://github.com/fians/Waves/blob/master/LICENSE */
 .waves-effect {
   position: relative;

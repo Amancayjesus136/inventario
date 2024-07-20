@@ -19,6 +19,35 @@
     <link href="{{ asset('assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
 
 </head>
+    <style>
+        .permiso {
+            border: 1px solid #dedede;
+            margin: 20px 0;
+            border-radius: 10px;
+            padding: 10px 15px 0;
+        }
+
+        .permiso h4 {
+            margin-top: -20px;
+            width: fit-content;
+            font-size: 12px;
+            padding: 5px 7px;
+            background: #dedede;
+            color: #333;
+            border-radius: 5px;
+        }
+
+        .permiso-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .permiso-item label {
+            margin-bottom: 0;
+        }
+    </style>
 
     @include('layouts.menu-sidebar')
     @yield('content')

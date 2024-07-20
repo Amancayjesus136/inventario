@@ -171,7 +171,7 @@
                     <div class="modal-dialog modal-lg modal-dialog-centered">
                         <div class="modal-content border-0">
                             <div class="modal-header bg-soft-info p-3">
-                                <h5 class="modal-title" id="exampleModalLabel">Add Profile</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Acceder Permisos</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="close-modal"></button>
                             </div>
                             <form action="{{ route('actualizar.permisos', $perfil->id_role) }}" method="post" class="tablelist-form needs-validation" autocomplete="off" novalidate>
@@ -208,16 +208,22 @@
                                                     @foreach ($permisos as $grupo => $permisos_lista)
                                                         <div class="permiso">
                                                             <h4>
-                                                                <input type="checkbox" class="marcar-todos" /> {{ $grupo }}
+                                                                <div class="form-check form-switch form-switch-info">
+                                                                    <input class="form-check-input marcar-todos" type="checkbox" role="switch" id="switch-grupo-{{ $loop->index }}">
+                                                                    <label class="form-check-label" for="switch-grupo-{{ $loop->index }}">{{ $grupo }}</label>
+                                                                </div>
                                                             </h4>
                                                             <div class="row mb-2">
                                                                 @foreach ($permisos_lista as $idpermiso => $permiso)
-                                                                    <label class="col-3">
-                                                                        <input type="checkbox" name="permisos[]" value="{{ $idpermiso }}"
-                                                                            @if (in_array($idpermiso, $permisos_checked)) checked @endif
-                                                                            class="permiso-check" />
-                                                                        {{ $permiso }}
-                                                                    </label>
+                                                                    <div class="col-12 permiso-item">
+                                                                        <label class="form-label">{{ $permiso }}</label>
+                                                                        <div class="form-check form-switch form-switch-info">
+                                                                            <input class="form-check-input permiso-check" type="checkbox" name="permisos[]" value="{{ $idpermiso }}"
+                                                                                @if (in_array($idpermiso, $permisos_checked)) checked @endif
+                                                                                id="switch-permiso-{{ $idpermiso }}">
+                                                                            <label class="form-check-label" for="switch-permiso-{{ $idpermiso }}"></label>
+                                                                        </div>
+                                                                    </div>
                                                                 @endforeach
                                                             </div>
                                                         </div>
@@ -225,12 +231,13 @@
                                                 @endif
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <div class="hstack gap-2 justify-content-end">
-                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-success" id="add-btn">Add Contact</button>
+                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-success" id="add-btn">Agregar permisos</button>
                                     </div>
                                 </div>
                             </form>
