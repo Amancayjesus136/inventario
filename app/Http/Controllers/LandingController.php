@@ -44,4 +44,9 @@ class LandingController extends Controller
         return view('welcome.direccion');
     }
 
+    public function sobre_mi()
+    {
+        return view('welcome.sobre');
+    }
+
 }
