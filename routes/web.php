@@ -123,6 +123,16 @@ Route::get('/ordenes/list', [ProductionController::class, 'ordenes_index'])->nam
 Route::get('/ordenes/cancelados', [ProductionController::class, 'ordenes_desactivados'])->name('ordenes.ordenes_desactivados');
 Route::patch('/json-data/update-status/{id}/{status}', [ProductionController::class, 'updateStatus'])->name('jsonData.updateStatus');
 
+/*
+|--------------------------------------------------------------------------
+| Clientes
+|--------------------------------------------------------------------------
+|
+*/
+Route::get('/clientes/list', [ProductionController::class, 'clientes_listado'])->name('clientes.clientes_listado');
+Route::get('/empleados/list', [ProductionController::class, 'empleados_listado'])->name('empleados.empleados_listado');
+
+
 
 
 require __DIR__.'/auth.php';

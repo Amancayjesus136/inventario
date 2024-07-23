@@ -12,6 +12,7 @@ use App\Models\Notificacion;
 use App\Models\Permiso;
 use App\Models\Product;
 use App\Models\RelationProduct;
+use App\Models\User;
 use App\Models\Role;
 use App\Models\RolePermiso;
 use App\Models\RoleUser;
@@ -384,12 +385,19 @@ class ProductionController extends Controller
 
 
      /*------------------------------------*
-     *     contact                        *
-     *------------------------------------*/
+     *     Clientes                        *
+     *-------------------------------------*/
 
+    public function clientes_listado()
+    {
+        $clientes = User::where('status_user', 0)->paginate(5);
+        return view('client.clientes', compact('clientes'));
+    }
 
-    /*------------------------------------*
-     *     Horarios                        *
-     *------------------------------------*/
+    public function empleados_listado()
+    {
+        $clientes = User::where('status_user', 1)->paginate(5);
+        return view('client.empleados', compact('clientes'));
+    }
 
 }

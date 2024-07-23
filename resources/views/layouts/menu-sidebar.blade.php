@@ -514,13 +514,10 @@
                                 <div class="collapse menu-dropdown" id="sidebarClientes">
                                     <ul class="nav nav-sm flex-column">
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link"> Historial de clientes </a>
+                                            <a href="{{  route('clientes.clientes_listado')  }}" class="nav-link"> Historial de clientes </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="#" class="nav-link"> Historial de empleados </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#" class="nav-link"> Subscripciones </a>
+                                            <a href="{{  route('empleados.empleados_listado')  }}" class="nav-link"> Historial de empleados </a>
                                         </li>
                                     </ul>
                                 </div>
