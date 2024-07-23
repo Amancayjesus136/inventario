@@ -21,13 +21,33 @@ class DashboardController extends Controller
         $products = Product::paginate(5);
         $users = User::where('status_user', 2)->get();
         $usersTotal = User::where('status_user', 2)->count();
-        // $facturas = Factura::paginate(5);
         $facturas = Factura::orderBy('created_at', 'desc')->paginate(5);
-        $totalIngresos =FacturaRelation::sum('price_product_factura');
+        $totalIngresos = FacturaRelation::sum('price_product_factura');
         $totalOrdenes = JsonData::count();
         $totalPriceAll = JsonData::calculateTotalPriceAll();
-        // return response()->json(['totalPriceAll' => $totalPriceAll]);
-        return view('dashboard', compact('products', 'users', 'facturas', 'totalIngresos', 'totalOrdenes', 'usersTotal', 'totalPriceAll'));
+
+        $incomeData = FacturaRelation::selectRaw('DATE_FORMAT(created_at, "%Y-%m") as month, SUM(price_product_factura) as total')
+            ->groupBy('month')
+            ->orderBy('month')
+            ->get();
+
+        $dataPoints = $incomeData->map(function($item) {
+            return [
+                'x' => date('Y-m', strtotime($item->month)) . '-01',
+                'y' => (float) $item->total
+            ];
+        });
+
+        return view('dashboard', [
+            'products' => $products,
+            'users' => $users,
+            'facturas' => $facturas,
+            'totalIngresos' => $totalIngresos,
+            'totalOrdenes' => $totalOrdenes,
+            'usersTotal' => $usersTotal,
+            'totalPriceAll' => $totalPriceAll,
+            'dataPoints' => $dataPoints
+        ]);
     }
 
     public function dashboard_administrador(){

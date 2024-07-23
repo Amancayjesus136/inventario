@@ -61,7 +61,7 @@
                                                 </div>
                                                 <!--end col-->
                                                 <div class="col-auto">
-                                                    <button type="button" class="btn btn-soft-info btn-icon waves-effect waves-light layout-rightside-btn"><i class="ri-pulse-line"></i></button>
+                                                    <button type="button" class="btn btn-soft-info btn-icon waves-effect waves-light layout-rightside-btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="ri-pulse-line"></i></button>
                                                 </div>
                                                 <!--end col-->
                                             </div>
@@ -342,6 +342,11 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @if ($users->isEmpty())
+                                                        <tr>
+                                                            <td colspan="12" class="text-center">No hay clientes registrados</td>
+                                                        </tr>
+                                                    @else
                                                     @foreach ($users as $user)
                                                         <tr>
                                                             <td>
@@ -378,9 +383,10 @@
                                                                 @endforeach
                                                             </td>
                                                         </tr>
-                                                    @endforeach<!-- end tr -->
-                                                </tbody><!-- end tbody -->
-                                            </table><!-- end table -->
+                                                    @endforeach
+                                                    @endif
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                     <div class="align-items-center mt-4 pt-2 justify-content-between row text-center text-sm-start">
@@ -394,6 +400,7 @@
 
                 </div> <!-- end col -->
 
+
             </div>
 
         </div>
@@ -401,6 +408,51 @@
     </div>
     <!-- End Page-content -->
 
+</div>
+
+<style>
+    .offcanvas, .offcanvas-lg, .offcanvas-md, .offcanvas-sm, .offcanvas-xl, .offcanvas-xxl {
+    --vz-offcanvas-zindex: 1045;
+    --vz-offcanvas-width: 780px;
+    --vz-offcanvas-height: 30vh;
+    --vz-offcanvas-padding-x: 1.25rem;
+    --vz-offcanvas-padding-y: 1.25rem;
+    --vz-offcanvas-bg: #fff;
+    --vz-offcanvas-border-width: 1px;
+    --vz-offcanvas-border-color: var(--vz-border-color);
+    --vz-offcanvas-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+</style>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 id="offcanvasRightLabel">Offcanvas Right</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+        <script type="text/javascript" src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+        <script type="text/javascript">
+            window.onload = function () {
+                var dataPoints = @json($dataPoints);
+
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    title: {
+                        text: "Ingresos Mensuales"
+                    },
+                    data: [
+                        {
+                            type: "line",
+                            dataPoints: dataPoints
+                        }
+                    ]
+                });
+
+                chart.render();
+            }
+        </script>
+    </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
