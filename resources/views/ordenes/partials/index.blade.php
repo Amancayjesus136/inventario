@@ -2,36 +2,8 @@
     <div class="file-manager-sidebar">
         <div class="p-4 d-flex flex-column h-100">
             <div class="mb-3">
-                <button class="btn btn-success w-100" data-bs-target="#modalRegistrar" data-bs-toggle="modal"><i class="ri-add-line align-bottom"></i> Agregar deuda</button>
+                {{-- <button class="btn btn-success w-100" data-bs-target="#modalRegistrar" data-bs-toggle="modal"><i class="ri-add-line align-bottom"></i> Agregar deuda</button> --}}
             </div>
-
-            <div class="px-4 mx-n4" data-simplebar style="height: calc(100vh - 468px);">
-                <ul class="to-do-menu list-unstyled" id="projectlist-data">
-                    <li>
-                        <a data-bs-toggle="collapse" href="#velzonAdmin" class="nav-link fs-13 active">Velzon Admin & Dashboard</a>
-                        <div class="collapse show" id="velzonAdmin">
-                            <ul class="mb-0 sub-menu list-unstyled ps-3 vstack gap-2 mb-2">
-                                <li>
-                                    <a href="#!"><i class="ri-stop-mini-fill align-middle fs-15 text-danger"></i> v1.4.0</a>
-                                </li>
-                                <li>
-                                    <a href="#!"><i class="ri-stop-mini-fill align-middle fs-15 text-secondary"></i> v1.5.0</a>
-                                </li>
-                                <li>
-                                    <a href="#!"><i class="ri-stop-mini-fill align-middle fs-15 text-info"></i> v1.6.0</a>
-                                </li>
-                                <li>
-                                    <a href="#!"><i class="ri-stop-mini-fill align-middle fs-15 text-primary"></i> v1.7.0</a>
-                                </li>
-                                <li>
-                                    <a href="#!"><i class="ri-stop-mini-fill align-middle fs-15 text-warning"></i> v1.8.0</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
 
             <div class="mt-auto text-center">
                 <img src="{{ asset('assets/images/task.png') }}" alt="Task" class="img-fluid" />
@@ -102,37 +74,44 @@
                                     $products = json_decode($data->json_data);
                                 @endphp
                                 @foreach ($products as $product)
-                                    <tr>
-                                        <td>{{ 'Cliente ' . $counter }}</td>
-                                        <td>{{ $product->productName }}</td>
-                                        <td>{{ $product->selectedPrice }}</td>
-                                        {{-- <td>{{ $product->selectedSize }}</td> --}}
-                                        <td>
-                                            @if ($data->status_orden == 1)
-                                                <span class="badge bg-warning text-uppercase">Pendiente</span>
-                                            @elseif ($data->status_orden == 2)
-                                                <span class="badge bg-success text-uppercase">Cancelado</span>
-                                                @elseif ($data->status_orden == 0)
-                                                <span class="badge bg-danger text-uppercase">Cancelado</span>
-                                            @else
-                                                <span class="badge bg-warning text-uppercase">Error de activación</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <div class="hstack gap-3 fs-15">
-                                                <a href="#" class="link-primary"><i class="ri-edit-2-fill"></i></a>
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#deleteProduct" class="link-danger"><i class="ri-delete-bin-5-line"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                    @if ($product->estado == 1) <!-- Mostrar solo productos con estado 1 -->
+                                        <tr>
+                                            <td>{{ 'Cliente ' . $counter }}</td>
+                                            <td>{{ $product->productName }}</td>
+                                            <td>{{ $product->selectedPrice }}</td>
+                                            <td>
+                                                @if ($product->estado == 1)
+                                                    <span class="badge bg-warning text-uppercase">Pendiente</span>
+                                                @elseif ($product->estado == 0)
+                                                    <span class="badge bg-success text-uppercase">Cancelado</span>
+                                                @else
+                                                    <span class="badge bg-danger text-uppercase">Error de estado</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <div class="hstack gap-3 fs-15">
+                                                    <a href="#" class="link-primary"><i class="ri-edit-2-fill"></i></a>
+                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#deleteProduct" class="link-danger"><i class="ri-delete-bin-5-line"></i></a>
+                                                    @if ($product->estado == 1)
+                                                        <form action="{{ route('jsonData.updateStatus', ['id' => $data->id, 'status' => 0]) }}" method="POST" style="display:inline;">
+                                                            @csrf
+                                                            @method('PATCH')
+                                                            <button type="submit" class="link-info border-0 bg-transparent"><i class="ri-refresh-line"></i></button>
+                                                        </form>
+                                                    @endif
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                                 @php
                                     $counter++;
                                 @endphp
                             @endforeach
                         </tbody>
-
                     </table>
+
+
 
                 </div>
             </div>

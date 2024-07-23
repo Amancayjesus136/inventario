@@ -9,11 +9,11 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Ordenes</h4>
+                        <h4 class="mb-sm-0">Ordenenes canceladas</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Ordenes</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Ordenenes canceladas</a></li>
                                 <li class="breadcrumb-item active">Listado</li>
                             </ol>
                         </div>

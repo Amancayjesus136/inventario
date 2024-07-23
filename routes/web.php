@@ -121,5 +121,8 @@ Route::post('/products/store', [ProductionController::class, 'products_store'])-
 */
 Route::get('/ordenes/list', [ProductionController::class, 'ordenes_index'])->name('ordenes.index');
 Route::get('/ordenes/cancelados', [ProductionController::class, 'ordenes_desactivados'])->name('ordenes.ordenes_desactivados');
+Route::patch('/json-data/update-status/{id}/{status}', [ProductionController::class, 'updateStatus'])->name('jsonData.updateStatus');
+
+
 
 require __DIR__.'/auth.php';

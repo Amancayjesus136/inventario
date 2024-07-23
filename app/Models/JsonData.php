@@ -25,7 +25,8 @@ class JsonData extends Model
 
         if (is_array($jsonData)) {
             foreach ($jsonData as $item) {
-                if (isset($item['selectedPrice'])) {
+                // Sumar solo si el estado es 0
+                if (isset($item['selectedPrice']) && isset($item['estado']) && $item['estado'] == 0) {
                     $totalPrice += (float) $item['selectedPrice'];
                 }
             }
@@ -46,3 +47,4 @@ class JsonData extends Model
         return $totalPrice;
     }
 }
+

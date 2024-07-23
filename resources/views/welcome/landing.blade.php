@@ -576,6 +576,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-lg-12 d-flex justify-content-center">
+                                    <a href="{{ route('details.category') }}" class="btn btn-danger">Ver todas las ofertas</a>
+                                </div>
                             </div>
 
                             <!-- end row -->
@@ -583,7 +586,7 @@
                         <!-- end container -->
                     </section>
 
-                    <section class="section bg-light" id="marketplace">
+                    {{-- <section class="section bg-light" id="marketplace">
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
@@ -638,7 +641,7 @@
                             </div>
 
                         </div>
-                    </section>
+                    </section> --}}
                 </div>
             </div>
         </div>

@@ -333,17 +333,55 @@ class ProductionController extends Controller
      *     Ordenes                        *
      *------------------------------------*/
 
-    public function ordenes_index()
-    {
-        $jsonData = JsonData::all();
-        return view('ordenes.delivery', ['jsonData' => $jsonData]);
-    }
+     public function ordenes_index()
+     {
+         // Obtener todos los registros con estado 1 dentro del JSON
+         $jsonData = JsonData::all()->filter(function ($data) {
+             $products = json_decode($data->json_data);
+             foreach ($products as $product) {
+                 if ($product->estado == 1) {
+                     return true;
+                 }
+             }
+             return false;
+         });
+
+         return view('ordenes.delivery', ['jsonData' => $jsonData]);
+     }
+
 
     public function ordenes_desactivados()
     {
-        $jsonData = JsonData::where('status_orden', 0)->get();
+        $jsonData = JsonData::all()->filter(function($item) {
+            $data = is_string($item->json_data) ? json_decode($item->json_data, true) : $item->json_data;
+            foreach ($data as $product) {
+                if ($product['estado'] == 0) {
+                    return true;
+                }
+            }
+            return false;
+        });
+
         return view('ordenes.delivery_cancelados', ['jsonData' => $jsonData]);
     }
+
+    public function updateStatus($id, $status)
+    {
+        $jsonData = JsonData::findOrFail($id);
+        $data = is_string($jsonData->json_data) ? json_decode($jsonData->json_data, true) : $jsonData->json_data;
+
+        foreach ($data as &$item) {
+            if ($item['estado'] != $status) {
+                $item['estado'] = $status;
+            }
+        }
+
+        $jsonData->json_data = json_encode($data);
+        $jsonData->save();
+
+        return redirect()->back()->with('success', 'Estado cambiado correctamente');
+    }
+
 
      /*------------------------------------*
      *     contact                        *

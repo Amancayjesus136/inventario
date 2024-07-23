@@ -764,7 +764,8 @@
                 const item = {
                     productName: productName,
                     selectedPrice: selectedPrice,
-                    selectedSize: selectedSize
+                    selectedSize: selectedSize,
+                    estado: 1 // Agregamos el campo "estado" con valor "1"
                 };
 
                 cartItems.push(item);
@@ -782,21 +783,21 @@
                 data: JSON.stringify({ cartItems: cartItems }),
                 success: function(response) {
                     const introMessage = "Estoy interesado en los siguientes productos:\n\n";
-                    const productsMessage = cartItems.map(item => `🍕 *Producto:* ${item.productName}\n 💲 *Precio:* ${item.selectedPrice}\n\n`).join("");
+                    const productsMessage = cartItems.map(item =>
+                        `🍕 *Producto:* ${item.productName}\n 💲 *Precio:* ${item.selectedPrice}\n 📏 *Tamaño:* ${item.selectedSize}\n 📦 *Estado:* ${item.estado}\n\n`
+                    ).join("");
 
                     const fullMessage = encodeURIComponent(introMessage + productsMessage);
                     const whatsappLink = `https://api.whatsapp.com/send?phone=+51958096704&text=${fullMessage}`;
                     window.open(whatsappLink, '_blank');
 
                     resetCart();
-
                 },
                 error: function(error) {
                     alert('Error al enviar los productos al API.');
                 }
             });
         }
-
 
         function findSizeByPrice(productName, selectedPrice) {
             let selectedSize = '';

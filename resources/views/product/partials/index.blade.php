@@ -2,36 +2,8 @@
     <div class="file-manager-sidebar">
         <div class="p-4 d-flex flex-column h-100">
             <div class="mb-3">
-                <button class="btn btn-success w-100" data-bs-target="#modalRegistrar" data-bs-toggle="modal"><i class="ri-add-line align-bottom"></i> Agregar deuda</button>
+                <button class="btn btn-success w-100" data-bs-target="#modalRegistrar" data-bs-toggle="modal"><i class="ri-add-line align-bottom"></i> Agregar producto</button>
             </div>
-
-            <div class="px-4 mx-n4" data-simplebar style="height: calc(100vh - 468px);">
-                <ul class="to-do-menu list-unstyled" id="projectlist-data">
-                    <li>
-                        <a data-bs-toggle="collapse" href="#velzonAdmin" class="nav-link fs-13 active">Velzon Admin & Dashboard</a>
-                        <div class="collapse show" id="velzonAdmin">
-                            <ul class="mb-0 sub-menu list-unstyled ps-3 vstack gap-2 mb-2">
-                                <li>
-                                    <a href="#!"><i class="ri-stop-mini-fill align-middle fs-15 text-danger"></i> v1.4.0</a>
-                                </li>
-                                <li>
-                                    <a href="#!"><i class="ri-stop-mini-fill align-middle fs-15 text-secondary"></i> v1.5.0</a>
-                                </li>
-                                <li>
-                                    <a href="#!"><i class="ri-stop-mini-fill align-middle fs-15 text-info"></i> v1.6.0</a>
-                                </li>
-                                <li>
-                                    <a href="#!"><i class="ri-stop-mini-fill align-middle fs-15 text-primary"></i> v1.7.0</a>
-                                </li>
-                                <li>
-                                    <a href="#!"><i class="ri-stop-mini-fill align-middle fs-15 text-warning"></i> v1.8.0</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
 
             <div class="mt-auto text-center">
                 <img src="{{ asset('assets/images/task.png') }}" alt="Task" class="img-fluid" />
@@ -102,41 +74,43 @@
                                 </tr>
                             @else
                                 @foreach ($products as $product)
-                                <tr>
-                                    <td>
-                                        <div class="flex-grow-1"><h5 class="fs-14 mb-1"><a href="apps-ecommerce-product-details.html" class="text-body">{{ $product->name_product}}</a></h5>
-                                        <p class="text-muted mb-0">Categoría : <span class="fw-medium">{{ $product->category->name_category }}</span></p></div>
-                                    </td>
-                                    <td>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#verProduct{{ $product->id_product }}">
-                                            <div class="avatar-sm bg-light rounded p-1">
-                                                @if ($product->photo_product)
-                                                    <img src="{{ asset('public/' . $product->photo_product) }}" alt="" class="img-fluid d-block">
+                                    @foreach ($product->multipleProducts as $multipleProduct)
+                                        <tr>
+                                            <td>
+                                                <div class="flex-grow-1"><h5 class="fs-14 mb-1"><a href="apps-ecommerce-product-details.html" class="text-body">{{ $product->name_product}}</a></h5>
+                                                <p class="text-muted mb-0">Categoría : <span class="fw-medium">{{ $product->category->name_category }}</span></p></div>
+                                            </td>
+                                            <td>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#verProduct{{ $product->id_product }}">
+                                                    <div class="avatar-sm bg-light rounded p-1">
+                                                        @if ($product->photo_product)
+                                                            <img src="{{ asset('public/' . $product->photo_product) }}" alt="" class="img-fluid d-block">
+                                                        @else
+                                                            <img src="{{ asset('assets/images/sin-foto.png') }}" alt="" class="img-fluid d-block">
+                                                        @endif
+                                                    </div>
+                                                </a>
+                                            </td>
+
+                                            <td>{{ \Carbon\Carbon::parse($product->created_at)->format('d M, Y') }}</td>
+
+                                            <td>{{ $multipleProduct->price_product_multiple }}</td>
+
+                                            <td>
+                                                @if($product->dicount_product)
+                                                    <span class="text-center">{{ $product->dicount_product }} %</span>
                                                 @else
-                                                    <img src="{{ asset('assets/images/sin-foto.png') }}" alt="" class="img-fluid d-block">
+                                                    <span class="badge bg-info">Sin descuento</span>
                                                 @endif
-                                            </div>
-                                        </a>
-                                    </td>
-
-                                    <td>{{ \Carbon\Carbon::parse($product->created_at)->format('d M, Y') }}</td>
-
-                                    <td>{{ $product->price_product}}</td>
-                                    <td>
-                                        @if($product->dicount_product)
-                                            <span class="text-center">{{ $product->dicount_product }} %</span>
-                                        @else
-                                            <span class="badge bg-info">Sin descuento</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <div class="hstack gap-3 fs-15">
-                                            <a href="#" class="link-primary"><i class="ri-edit-2-fill"></i></a>
-                                            <a href="#" data-bs-toggle="modal" data-bs-target="#deleteProduct{{ $product->id_product }}" class="link-danger"><i class="ri-delete-bin-5-line"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>s
-
+                                            </td>
+                                            <td>
+                                                <div class="hstack gap-3 fs-15">
+                                                    <a href="#" class="link-primary"><i class="ri-edit-2-fill"></i></a>
+                                                    <a href="#" data-bs-toggle="modal" data-bs-target="#deleteProduct{{ $product->id_product }}" class="link-danger"><i class="ri-delete-bin-5-line"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 @endforeach
                             @endif
                         </tbody>
