@@ -542,11 +542,11 @@
                     <div class="col-lg-4 mt-4">
                         <div>
                             <div>
-                                <img src="assets/images/logo-light.png" alt="logo light" height="17">
+                                <img src="assets2/images/logo-light.png" alt="logo light" height="60">
                             </div>
                             <div class="mt-4">
-                                <p>Premium Multipurpose Admin &amp; Dashboard Template</p>
-                                <p>You can build any type of web application like eCommerce, CRM, CMS, Project management apps, Admin Panels, etc using Velzon.</p>
+                                <p>El rincon Pizzero & Bienvenido</p>
+                                <p>Te damos la bienvenida a nuestras opciones donde encontraras menu, soporte, contacto, direcciones!</p>
                             </div>
                         </div>
                     </div>
@@ -554,34 +554,29 @@
                     <div class="col-lg-7 ms-lg-auto">
                         <div class="row">
                             <div class="col-sm-4 mt-4">
-                                <h5 class="text-white mb-0">Company</h5>
+                                <h5 class="text-white mb-0">Informacion</h5>
                                 <div class="text-muted mt-3">
                                     <ul class="list-unstyled ff-secondary footer-list">
-                                        <li><a href="pages-profile.html">About Us</a></li>
-                                        <li><a href="pages-gallery.html">Gallery</a></li>
-                                        <li><a href="apps-projects-overview.html">Projects</a></li>
-                                        <li><a href="pages-timeline.html">Timeline</a></li>
+                                        <li><a href="#">Direccion y horarios</a></li>
+                                        <li><a href="#">Numero de local</a></li>
+                                        <li><a href="#">Contactos</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-sm-4 mt-4">
-                                <h5 class="text-white mb-0">Apps Pages</h5>
+                                <h5 class="text-white mb-0">Carta</h5>
                                 <div class="text-muted mt-3">
                                     <ul class="list-unstyled ff-secondary footer-list">
-                                        <li><a href="pages-pricing.html">Calendar</a></li>
-                                        <li><a href="apps-mailbox.html">Mailbox</a></li>
-                                        <li><a href="apps-chat.html">Chat</a></li>
-                                        <li><a href="apps-crm-deals.html">Deals</a></li>
-                                        <li><a href="apps-tasks-kanban.html">Kanban Board</a></li>
+                                        <li><a href="#">Menu</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-sm-4 mt-4">
-                                <h5 class="text-white mb-0">Support</h5>
+                                <h5 class="text-white mb-0">Suport</h5>
                                 <div class="text-muted mt-3">
                                     <ul class="list-unstyled ff-secondary footer-list">
-                                        <li><a href="pages-faqs.html">FAQ</a></li>
-                                        <li><a href="pages-faqs.html">Contact</a></li>
+                                        <li><a href="pages-faqs.html">Terminos y condiciones</a></li>
+                                        <li><a href="pages-faqs.html">Terminos y condiciones del WhatsApp</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -595,7 +590,7 @@
 
                         <div>
                             <p class="copy-rights mb-0">
-                                <script> document.write(new Date().getFullYear()) </script>2024 © Velzon - Themesbrand
+                                <script> document.write(new Date().getFullYear()) </script> © Ricon Pizzero - Bienvenida
                             </p>
                         </div>
                     </div>
@@ -612,14 +607,14 @@
                                 <li class="list-inline-item">
                                     <a href="javascript: void(0);" class="avatar-xs d-block">
                                         <div class="avatar-title rounded-circle">
-                                            <i class="ri-github-fill"></i>
+                                            <i class="ri-instagram-fill"></i>
                                         </div>
                                     </a>
                                 </li>
                                 <li class="list-inline-item">
                                     <a href="javascript: void(0);" class="avatar-xs d-block">
                                         <div class="avatar-title rounded-circle">
-                                            <i class="ri-linkedin-fill"></i>
+                                            <i class="ri-whatsapp-fill"></i>
                                         </div>
                                     </a>
                                 </li>
@@ -630,13 +625,13 @@
                                         </div>
                                     </a>
                                 </li>
-                                <li class="list-inline-item">
+                                {{-- <li class="list-inline-item">
                                     <a href="javascript: void(0);" class="avatar-xs d-block">
                                         <div class="avatar-title rounded-circle">
-                                            <i class="ri-dribbble-line"></i>
+                                            <i class="ri-tik-line"></i>
                                         </div>
                                     </a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                     </div>

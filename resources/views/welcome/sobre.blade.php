@@ -23,9 +23,9 @@
 
     <style>
         .section {
-    padding: 40px 0;
-    position: relative;
-}
+        padding: 40px 0;
+        position: relative;
+    }
     </style>
 
     <!-- Begin page -->
@@ -393,10 +393,7 @@
                                         <a href="#" class="nav-link" data-key="t-crypto"> Sobre nosotros </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link" data-key="t-analytics"> Contactos </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link" data-key="t-projects"> Terminos y condiciones </a>
+                                        <a href="{{ route('welcome.terminos') }}" class="nav-link" data-key="t-projects"> Terminos y condiciones </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#" class="nav-link" data-key="t-nft"> Terminos y condiciones de whatsapp</a>

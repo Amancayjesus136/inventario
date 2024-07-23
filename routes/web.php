@@ -27,6 +27,7 @@ Route::get('/listado/bebidas', [LandingController::class, 'details_bebidas'])->n
 Route::get('/listado/cocteles', [LandingController::class, 'details_cocteles'])->name('listado.cocteles');
 Route::get('/direccion', [LandingController::class, 'direccion'])->name('welcome.direcion');
 Route::get('/sobre-mi', [LandingController::class, 'sobre_mi'])->name('welcome.sobre-mi');
+Route::get('/terminos/condiciones', [LandingController::class, 'terminos'])->name('welcome.terminos');
 
 /*
 |--------------------------------------------------------------------------

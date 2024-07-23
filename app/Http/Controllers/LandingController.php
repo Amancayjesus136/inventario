@@ -49,4 +49,9 @@ class LandingController extends Controller
         return view('welcome.sobre');
     }
 
+    public function terminos()
+    {
+        return view('welcome.terminos');
+    }
+
 }
