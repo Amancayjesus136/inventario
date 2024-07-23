@@ -208,20 +208,23 @@
                                                     @foreach ($permisos as $grupo => $permisos_lista)
                                                         <div class="permiso">
                                                             <h4>
-                                                                <div class="form-check form-switch form-switch-info">
-                                                                    <input class="form-check-input marcar-todos" type="checkbox" role="switch" id="switch-grupo-{{ $loop->index }}">
-                                                                    <label class="form-check-label" for="switch-grupo-{{ $loop->index }}">{{ $grupo }}</label>
+                                                                <div class="form-check form-check-primary mb-3">
+                                                                    <input class="form-check-input marcar-todos" type="checkbox" id="formCheck_{{ $grupo }}">
+                                                                    <label class="form-check-label" for="formCheck_{{ $grupo }}">
+                                                                        {{ $grupo }}
+                                                                    </label>
                                                                 </div>
                                                             </h4>
                                                             <div class="row mb-2">
                                                                 @foreach ($permisos_lista as $idpermiso => $permiso)
-                                                                    <div class="col-12 permiso-item">
-                                                                        <label class="form-label">{{ $permiso }}</label>
-                                                                        <div class="form-check form-switch form-switch-info">
+                                                                    <div class="col-3">
+                                                                        <div class="form-check form-check-primary mb-3">
                                                                             <input class="form-check-input permiso-check" type="checkbox" name="permisos[]" value="{{ $idpermiso }}"
-                                                                                @if (in_array($idpermiso, $permisos_checked)) checked @endif
-                                                                                id="switch-permiso-{{ $idpermiso }}">
-                                                                            <label class="form-check-label" for="switch-permiso-{{ $idpermiso }}"></label>
+                                                                                id="permiso_{{ $idpermiso }}"
+                                                                                @if (in_array($idpermiso, $permisos_checked)) checked @endif>
+                                                                            <label class="form-check-label" for="permiso_{{ $idpermiso }}">
+                                                                                {{ $permiso }}
+                                                                            </label>
                                                                         </div>
                                                                     </div>
                                                                 @endforeach

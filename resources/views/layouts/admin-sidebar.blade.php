@@ -31,7 +31,7 @@
             margin-top: -20px;
             width: fit-content;
             font-size: 12px;
-            padding: 5px 7px;
+            padding: 0px 7px;
             background: #dedede;
             color: #333;
             border-radius: 5px;
@@ -47,6 +47,7 @@
         .permiso-item label {
             margin-bottom: 0;
         }
+
 
     </style>
 
